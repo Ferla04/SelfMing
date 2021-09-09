@@ -28,6 +28,7 @@ section{
     border: 2px solid #fff;
     box-shadow: 4px 4px 0 #ffc957;
     transition: all ease .5s;
+    cursor: pointer;
 }
 
 .texto a:hover{

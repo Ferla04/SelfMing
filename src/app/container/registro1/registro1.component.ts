@@ -47,7 +47,7 @@ export class Registro1Component implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.client.postRequestSendForm('http://localhost:10102/registroUser', {
+      this.client.postRequestSendForm('http://localhost:10101/registroUser', {
         nombre: this.form.value.nombre,
         usuario: this.form.value.usuario,
         email: this.form.value.email,
