@@ -1,0 +1,48 @@
+section{
+    padding: 85px 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.texto{
+    width: 50%;
+}
+
+.texto p{
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 55px;
+    margin-bottom: 40px;
+}
+
+.texto a{
+    font-size: 14px;
+    font-weight: 900;
+    background-color: #460e56;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 13px 20px;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    box-shadow: 4px 4px 0 #ffc957;
+    transition: all ease .5s;
+}
+
+.texto a:hover{
+    background-color: transparent;
+    box-shadow: 4px 4px 10px #ffc957;
+}
+
+section img{
+    width: 350px;
+    border-radius: 50%;
+    transition: all ease-in 1s;
+}
+
+section img:hover{
+    width: 350px;
+    background-color: yellow;
+    box-shadow: 0px 0px 100px yellow;
+}

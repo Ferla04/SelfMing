@@ -1,0 +1,61 @@
+<body>
+    <div class="registro2">
+        <h2>Registrate</h2>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <section>
+                <article>     
+                    <div class="grupo">
+                        <input class="inputs" type="text" formControlName="nombre">
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="far fa-user-circle"></i>Nombre Completo</label>
+                    </div>
+                    <div class="grupo">
+                        <input class="inputs" type="text" formControlName="usuario">
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="far fa-smile-beam"></i>Nombre de Usuario</label>
+                    </div>
+                    <div class="grupo">
+                        <input class="inputs" type="email" formControlName="email">
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="far fa-envelope"></i>Correo</label>
+                    </div>
+                    <div class="grupo">
+                        <input class="inputs" type="tel" formControlName="celular">
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="fas fa-mobile-alt"></i>Celular</label>
+                    </div>
+                    <div class="grupo">
+                        <input class="inputs" type="password" formControlName="password" id="inputMostrar">
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="fas fa-unlock-alt"></i>Contraseña</label>
+                        <i class="fas fa-eye" id="ver" (click)="mostrarpass()"></i>
+                    </div>
+                </article>
+                <article>
+                    <div class="grupo">
+                        <label class="label" for=""><i class="fas fa-briefcase"></i>Portafolio</label>  
+                        <input class="inputs" type="text" formControlName="portafolio">
+                        <span class="barra"></span>
+                    </div>
+                    <div class="grupo">
+                        <label class="label" for=""><i class="fas fa-laptop-code"></i>Rango de Programador</label>  
+                        <input class="inputs" type="text" formControlName="rango">
+                        <span class="barra"></span>
+                    </div>
+                    <div class="grupo">
+                        <label class="label" for=""><i class="fas fa-robot"></i>Especialidad</label>  
+                        <input class="inputs" type="text" formControlName="especialidad">
+                        <span class="barra"></span>
+                    </div>
+                    <div class="grupo grupo2">
+                        <label class="label" for="">Descripción</label>  
+                        <!-- <input class="inputs inputDifferent" type="text" name="" id="name9" required> -->
+                        <textarea class="inputs inputDifferent" formControlName="descripcion" cols="30" rows="15"></textarea>
+                    </div>
+                </article>
+            </section>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
