@@ -32,9 +32,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    width: 100%;
+    width: 1140px;
     height: 100%;
+    margin: auto;
 }
+
+
 .imagenes img{
     object-fit: cover;
     width: 265px;
