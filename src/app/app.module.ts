@@ -17,6 +17,12 @@ import { NavComponent } from './components/nav/nav.component';
 import { PerfilesComponent } from './components/perfiles/perfiles.component';
 import { Registro2Component } from './container/registro2/registro2.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { BannerComponent } from './components/banner/banner.component';
+import { PortafolioComponent } from './components/portafolio/portafolio.component';
+import { PerfilprogComponent } from './container/perfilprog/perfilprog.component';
+import { PerfiluserComponent } from './container/perfiluser/perfiluser.component';
+import { InfouserComponent } from './components/infouser/infouser.component';
+import { PropuestasComponent } from './components/propuestas/propuestas.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,13 @@ import { ModalComponent } from './components/modal/modal.component';
     NavComponent,
     PerfilesComponent,
     Registro2Component,
-    ModalComponent
+    ModalComponent,
+    BannerComponent,
+    PortafolioComponent,
+    PerfilprogComponent,
+    PerfiluserComponent,
+    InfouserComponent,
+    PropuestasComponent
   ],
   imports: [
     BrowserModule,

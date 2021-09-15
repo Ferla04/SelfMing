@@ -1,0 +1,37 @@
+.section2{
+    padding: 0px 270px;
+}
+
+.section2 ul{
+    width: 100%;
+    display: flex;
+}
+
+.section2 li {
+    width: 25%;
+    list-style: none;
+    text-align: center; 
+    border: none; 
+    padding: 5px;
+}
+
+.propuestas { 
+    margin-bottom: 10px;
+}
+
+.propuestas ul{
+    border-radius: 10px;
+    background-color: #460e56;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.propuestas i{
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.correo{color: #fdb824;}
+.ojo{color:#b04ab6;}
+.propuestas .rojo{color: #ff0000;}
+.propuestas .verde{color: #3cff3c;}
