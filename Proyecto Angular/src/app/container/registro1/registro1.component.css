@@ -56,7 +56,7 @@ label i{
     margin-right:4px;
 }
 
-.transInput{
+input:focus ~ label, .transInput {
     top: -14px;
     font-size: 14px;
     color: #460e56;
