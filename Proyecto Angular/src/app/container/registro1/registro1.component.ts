@@ -38,7 +38,7 @@ export class Registro1Component implements OnInit {
     });
   }
 
-  //servicios
+  //servicios 
   mostrarpass(){
     let tipo = document.getElementById('inputMostrar');
     let ver:any = document.getElementById('ver');

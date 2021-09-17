@@ -54,7 +54,7 @@ export class Registro2Component implements OnInit {
       this.client.postRequestSendForm('http://localhost:10101/registroProg', {
         nombre: this.form.value.nombre,
         usuario: this.form.value.usuario,
-        email: this.form.value.email,
+        correo: this.form.value.email,
         celular: this.form.value.celular,
         password: this.form.value.password,
         portafolio: this.form.value.portafolio,
