@@ -49,10 +49,11 @@ export class LoginComponent implements OnInit {
         password: this.form.value.password
       }).subscribe(
         (response: any) => {
-          console.log(response);
-          // localStorage.setItem('email', response.email)
-          // sessionStorage.setItem('pass', response.password)
-          //console.log(localStorage.getItem('email'));
+          //se guarda el valor de la propiedad token en el almacenamiento local persistente
+          localStorage.setItem('token', response.token)
+          //recuperamos el valor de  token  guardada anteriormete y la imprimimos
+          console.log(localStorage.getItem('token'));
+          //dirigimos al usuario a la ruta /Inicio
           this.route.navigate( ['/inicio']);
 
       },

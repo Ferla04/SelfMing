@@ -37,17 +37,20 @@
                         <input class="inputs" type="text" formControlName="portafolio">
                         <span class="barra"></span>
                     </div>
-                    <div class="grupo">
-                        <label class="label" for=""><i class="fas fa-laptop-code"></i>Rango de Programador</label>  
-                        <input class="inputs" type="text" formControlName="rango">
-                        <span class="barra"></span>
+                    <div class="select">
+                        <span><i class="fas fa-laptop-code"></i>Rango de Programador</span>
+                        <select name="rango">
+                            <option value="junior">Junior</option>
+                            <option value="semiSenior">Semi-Senior</option>
+                            <option value="senior">Senior</option>
+                        </select>
                     </div>
                     <div class="grupo">
                         <label class="label" for=""><i class="fas fa-robot"></i>Especialidad</label>  
                         <input class="inputs" type="text" formControlName="especialidad">
                         <span class="barra"></span>
                     </div>
-                    <div class="grupo grupo2">
+                    <div class="grupo descrip">
                         <label class="label" for="">Descripción</label>  
                         <!-- <input class="inputs inputDifferent" type="text" name="" id="name9" required> -->
                         <textarea class="inputs inputDifferent" formControlName="descripcion" cols="30" rows="15"></textarea>

@@ -52,17 +52,13 @@ form .grupo{
     color: #5e5d5d;
 }
 
-form .grupo2{
-    margin-top: 40px ;
-}
-
 .inputDifferent{
     font-family: Arial, Helvetica, sans-serif;
     border: 1px solid #808080;
     min-width: 100%;
     max-width: 100%;
-    min-height: 105px;
-    max-height: 105px;
+    min-height: 100px;
+    max-height: 100px;
     font-size: 15px;
 }
 
@@ -81,12 +77,11 @@ label{
     pointer-events: none;
 }
 
-label i{
+label i, span i{
     margin-right:4px;
 }
 
-
-input:focus ~ label, .transInput {
+.transInput{
     top: -14px;
     font-size: 14px;
     color: #460e56;
@@ -137,4 +132,33 @@ button:hover{
     right: 5px;
     top: 15px;
     cursor: pointer;
+}
+
+/*---------------------------------------------------------------------------------------*/
+.select{
+    color: #808080;
+    display: flex;
+    flex-direction: column;
+}
+
+.select span{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 15px;
+    display: block;
+}
+
+.select select{
+    border: none;
+    background-color: #80808028;
+    color: #808080;
+    margin-top: 5px;
+    font-size: 15px;
+    height: 30px;
+    width: 85%;
+    align-self: center;
+}
+
+.select select:focus{
+    color: #460e56;
+    outline: none;
 }
