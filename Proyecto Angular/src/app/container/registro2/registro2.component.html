@@ -30,30 +30,37 @@
                         <label class="label" for=""><i class="fas fa-unlock-alt"></i>Contraseña</label>
                         <i class="fas fa-eye" id="ver" (click)="mostrarpass()"></i>
                     </div>
-                </article>
-                <article>
                     <div class="grupo">
-                        <label class="label" for=""><i class="fas fa-briefcase"></i>Portafolio</label>  
                         <input class="inputs" type="text" formControlName="portafolio">
                         <span class="barra"></span>
+                        <label class="label" for=""><i class="fas fa-briefcase"></i>Portafolio</label>  
                     </div>
+                </article>
+                <article>
+                    
                     <div class="select">
                         <span><i class="fas fa-laptop-code"></i>Rango de Programador</span>
-                        <select name="rango">
+                        <select formControlName="rango" >
                             <option value="junior">Junior</option>
                             <option value="semiSenior">Semi-Senior</option>
                             <option value="senior">Senior</option>
                         </select>
                     </div>
-                    <div class="grupo">
-                        <label class="label" for=""><i class="fas fa-robot"></i>Especialidad</label>  
-                        <input class="inputs" type="text" formControlName="especialidad">
-                        <span class="barra"></span>
+                    <div class="select espe">
+                        <span class="diseño"><i class="fas fa-robot"></i>Especialidad</span>  
+                        <textarea class="inputValores" [(ngModel)]="lista" type="text" formControlName="especialidad" readonly="readonly"></textarea>
+                        <div>
+                            <select id="select" (change)="ShowSelected($event.target.value)">
+                                <option value="0">Selecciona una opción</option>
+                                <option *ngFor="let e of especialidad" [ngValue]="e">{{ e }} </option>
+                            </select>
+                            <span (click)="quitarUltimo()">Quitar</span>
+                        </div>
+                        
                     </div>
                     <div class="grupo descrip">
-                        <label class="label" for="">Descripción</label>  
-                        <!-- <input class="inputs inputDifferent" type="text" name="" id="name9" required> -->
-                        <textarea class="inputs inputDifferent" formControlName="descripcion" cols="30" rows="15"></textarea>
+                        <span class="diseño"><i class="fas fa-align-left"></i>Descripción</span>  
+                        <textarea class="inputDifferent" formControlName="descripcion" cols="30" rows="15"></textarea>
                     </div>
                 </article>
             </section>

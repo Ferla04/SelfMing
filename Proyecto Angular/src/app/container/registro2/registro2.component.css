@@ -30,10 +30,9 @@ article{
     width: 47%;
 }
 
-
 form .grupo{
     position: relative;
-    margin: 30px 10px;
+    margin: 30px 10px 35px;
 }
 
 .inputs{
@@ -55,17 +54,45 @@ form .grupo{
 .inputDifferent{
     font-family: Arial, Helvetica, sans-serif;
     border: 1px solid #808080;
-    min-width: 100%;
-    max-width: 100%;
+    min-width: 94%;
+    max-width: 94%;
     min-height: 100px;
     max-height: 100px;
     font-size: 15px;
+    background: none;
+    color: #292828;
+    font-size: 15px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    margin: 10px auto 0;
 }
 
-.inputDifferent:focus{
+.inputDifferent:focus, .inputValores:focus{
+    outline: none;
+    color: #5e5d5d;
     border: 2px solid;
     border-image: linear-gradient(to right, #460e56, #fdb824) 3;
 }
+
+.inputValores{
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #808080;
+    min-width: 85%;
+    max-width: 85%;
+    min-height: 70px;
+    max-height: 70px;
+    font-size: 15px;
+    align-self: center;
+    margin-top: 15px;
+    cursor: pointer;
+    background: none;
+    color: #292828;
+    font-size: 15px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    margin: 10px auto 0;
+}
+
 
 label{
     color: #808080;
@@ -113,7 +140,7 @@ button{
     border-radius: 20px;
     display: block;
     width: 25%;
-    margin: 40px auto 10px;
+    margin: 10px auto;
     color: #ffff;
     height: 40px;
     font-size: 16px;
@@ -139,6 +166,14 @@ button:hover{
     color: #808080;
     display: flex;
     flex-direction: column;
+    margin: 40px 0 0;
+}
+
+.diseño{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 15px;
+    display: block;
+    color: #808080;
 }
 
 .select span{
@@ -151,7 +186,7 @@ button:hover{
     border: none;
     background-color: #80808028;
     color: #808080;
-    margin-top: 5px;
+    margin-top: 15px;
     font-size: 15px;
     height: 30px;
     width: 85%;
@@ -161,4 +196,45 @@ button:hover{
 .select select:focus{
     color: #460e56;
     outline: none;
+}
+/* Especialidad */
+.select input{
+    border: none;
+    font-size: 15px;
+    height: 30px;
+    width: 85%;
+    align-self: center;
+    outline: none;
+}
+.select div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#select{
+    margin: 0;
+    width: 65%;
+    overflow-y: scroll;
+}
+
+.select > div span{
+    margin: 0;
+    cursor: pointer;
+    padding: 6px 15px;
+    background-color: #80808028;
+    color: #808080;
+}
+
+.inputValores::-webkit-scrollbar, .inputDifferent::-webkit-scrollbar{
+    width: 6px;
+}
+
+.inputValores::-webkit-scrollbar-thumb, .inputDifferent::-webkit-scrollbar-thumb{
+    width: 5px;
+    border-radius: 5px;
+    background: #460e56;
+}
+
+.inputValores::-webkit-scrollbar-thumb:hover, .inputDifferent::-webkit-scrollbar-thumb:hover{
+    background: #460e56;
 }

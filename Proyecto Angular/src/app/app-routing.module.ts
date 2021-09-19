@@ -12,10 +12,10 @@ import { PerfiluserComponent } from './container/perfiluser/perfiluser.component
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'registro', component: Registro1Component},
+  {path: 'registroUser', component: Registro1Component},
   {path: 'login', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
-  {path: 'registro2', component: Registro2Component},
+  {path: 'registroProg', component: Registro2Component},
   {path: 'perfilProg', component: PerfilprogComponent},
   {path: 'perfilUser', component: PerfiluserComponent}
 ];

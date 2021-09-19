@@ -4,6 +4,7 @@ import { FrontService } from '../../servicios/front.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({ 
   selector: 'app-registro2',
   templateUrl: './registro2.component.html',
@@ -12,6 +13,10 @@ import { Router } from '@angular/router';
 
 export class Registro2Component implements OnInit {
   form: FormGroup;
+  especialidad: string[] = ['Python', 'JavaScript', 'TypeScript', 'PHP', 'HTML/CSS', 'Java', 'C#', 'Ruby', 'Angular', 'React.js', 'Node.js', 'Express', 'Mongodb', 'MySQL'];
+  valores:string[] = []
+  valoresUnicos:string[] = []
+  lista:string;
 
   constructor(
     public client: ClientService,
@@ -46,6 +51,25 @@ export class Registro2Component implements OnInit {
     let tipo = document.getElementById('inputMostrar');
     let ver:any = document.getElementById('ver');
     this.front.mostrarpass2(tipo,ver);
+  }
+
+  // Especialidades
+  ShowSelected(seleccion:any):void{
+    if(seleccion != 0){
+      this.valores.push(seleccion)
+    }
+    // Quitar opción repetida
+    this.valoresUnicos = this.valores.filter((valor, indice) => {
+      return this.valores.indexOf(valor) === indice;
+    })
+    // Transformar array a string
+    this.lista = this.valoresUnicos.join("  ");
+  }
+  // Quitar ultimo elemento del array
+  quitarUltimo(){
+    this.valoresUnicos.pop();
+    this.valores = this.valoresUnicos;
+    this.lista = this.valoresUnicos.join("  ");
   }
 
 

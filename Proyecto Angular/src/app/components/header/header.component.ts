@@ -31,11 +31,11 @@ export class HeaderComponent implements OnInit {
     })
 
     registroU.addEventListener('click',()=>{
-      this.route.navigate( ['/registro']);
+      this.route.navigate( ['/registroUser']);
     })
 
     registroF.addEventListener('click',()=>{
-      this.route.navigate( ['/registro2']);
+      this.route.navigate( ['/registroProg']);
     })
 
   }
