@@ -45,11 +45,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.client.postRequestSendForm('http://localhost:10103/login', {
+      this.client.postRequestSendForm('http://localhost:10101/login', {
         correo: this.form.value.email,
         password: this.form.value.password
       }).subscribe(
         (response: any) => {
+          console.log(response);
           //se guarda el valor de la propiedad token en el almacenamiento local persistente
           localStorage.setItem('token', response.token)
           //recuperamos el valor de  token  guardada anteriormete y la imprimimos
