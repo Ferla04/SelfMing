@@ -9,6 +9,7 @@ import { InicioComponent } from './container/inicio/inicio.component';
 import { Registro2Component } from './container/registro2/registro2.component';
 import { PerfilprogComponent } from './container/perfilprog/perfilprog.component';
 import { PerfiluserComponent } from './container/perfiluser/perfiluser.component';
+import { PagosComponent } from './container/pagos/pagos.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'registroProg', component: Registro2Component},
   {path: 'perfilProg', component: PerfilprogComponent},
-  {path: 'perfilUser', component: PerfiluserComponent}
+  {path: 'perfilUser', component: PerfiluserComponent},
+  {path: 'pagos', component: PagosComponent}
 ];
 
 @NgModule({

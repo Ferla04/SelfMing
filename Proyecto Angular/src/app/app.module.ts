@@ -23,6 +23,7 @@ import { PerfilprogComponent } from './container/perfilprog/perfilprog.component
 import { PerfiluserComponent } from './container/perfiluser/perfiluser.component';
 import { InfouserComponent } from './components/infouser/infouser.component';
 import { PropuestasComponent } from './components/propuestas/propuestas.component';
+import { PagosComponent } from './container/pagos/pagos.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { PropuestasComponent } from './components/propuestas/propuestas.componen
     PerfilprogComponent,
     PerfiluserComponent,
     InfouserComponent,
-    PropuestasComponent
+    PropuestasComponent,
+    PagosComponent
   ],
   imports: [
     BrowserModule,

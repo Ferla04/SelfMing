@@ -1,0 +1,69 @@
+<body>
+    <form action="">
+        <div class="datos">
+            <div class="datosGrupo">
+                <span>Proyecto</span>
+                <input type="text">
+            </div>
+            <div class="datosGrupo">
+                <span>Email</span>
+                <input type="text">
+            </div>
+            <div class="datosGrupo">
+                <span>valor: </span>
+                <span id="valor">1'000.000</span>
+            </div>
+            <button type="submit">Enviar</button>
+        </div>
+        <div class="pago">
+            <div class="extra">
+                <h2>Selecciona tu tipo de tarjeta</h2>
+                <select formControlName="Tarjeta">
+                    <option value="armenia">Crédito</option>
+                    <option value="pereira" selected>Débito</option>
+                </select>
+            </div> 
+            <div class="card">
+                <img src="../../../assets/chip.png" alt="" class="chip">
+                <div class="logo"></div>
+                <h2 class="banco">Llena los Espacios</h2>
+                <div class="inputsCard">
+                    <div class="inputBox">
+                        <span>Numero Tarjeta</span>
+                        <input type="text" placeholder="0123 4567 8901 2345" maxlength="19">
+                    </div>
+                    <div class="inputBox">
+                        <span>Nombre y Apellido</span>
+                        <input type="text" placeholder="your name">
+                    </div>
+                    <div class="grupo">
+                        <div class="inputBox">
+                            <span>Fecha Expiración</span>
+                            <input type="text" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="inputBox">
+                            <span>CCV</span>
+                            <input type="password" placeholder="***" maxlength="4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="extra2">
+                <div>
+                    <span>Numero de Documento</span>
+                    <input class="extraInputs" type="number">
+                </div>
+                <div>
+                    <span>Tipo de Documento: </span>
+                    <select class="extraInputs" formControlName="Documento">
+                        <option value="cc" selected>CC</option>
+                        <option value="ti">TI</option>
+                        <option value="ce">CE</option>
+                        <option value="rc">RC</option>
+                        <option value="pa">PA</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
