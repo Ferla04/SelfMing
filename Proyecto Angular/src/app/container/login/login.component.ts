@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.front.mostrarpass2(tipo,ver);
   }
 
-  onSubmit() {
+  onSubmit() { 
     if (this.form.valid) {
       this.client.postRequestSendForm('http://localhost:10101/login', {
         correo: this.form.value.email,

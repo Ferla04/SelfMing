@@ -18,8 +18,8 @@ export class ClientService {
     }
     //configuracion de una cabecera,, en este caso la cabecera se llama Authorization y
     //su valor es 57ydf544ljka559ahjkfgd1
-    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] = header;
+    const header = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    config["headers"] = header;
     //se retorna el observable el cual emitira un valor una vez el server haya devuelto 
     //la respuesta, tal valor es la descarga esperada. Recordar que el observador debe
     //suscribirse a este observable para poder tener acceso al valor de descarga
