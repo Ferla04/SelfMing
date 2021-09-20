@@ -1,6 +1,8 @@
 main{
-    padding: 40px 270px 50px;
+    margin: 40px 270px 20px;
     position: relative;
+    height: 220px;
+    border-bottom: 2px solid #460e56;
 }
 
 .section1{
@@ -72,15 +74,8 @@ main button{
     border: none; 
     border-radius: 20px;
     position: absolute;
-    left: 600px;
-    bottom: 2px;
-}
-.linea{
-    background-color: #460e56;
-    width: 776px;
-    height: 3px;
-    position:absolute;
-    bottom: 15px;
+    left: 320px;
+    bottom: -14px;
 }
 
 .section2{
