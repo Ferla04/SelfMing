@@ -32,7 +32,7 @@ export class Registro2Component implements OnInit {
     let ver:any = document.getElementById('ver');
 
     //servicios
-    this.front.ojo(4,inputs,label,ver);
+    this.front.ojo(inputs,label,ver,4); 
 
     this.form = this.fb.group({
       nombre: ['', Validators.required],

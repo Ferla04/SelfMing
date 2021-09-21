@@ -7,7 +7,7 @@ export class FrontService {
 
   constructor() { }
 
-  ojo(number: number,inputs:any,label:any,ver:any){
+  ojo(inputs:any,label:any,ver?:any,number?: number,){
     for(let i = 0; i < inputs.length; i++){
         inputs[i].addEventListener('keyup',()=>{
             if(inputs[i].value.length > 0){

@@ -24,6 +24,7 @@ import { PerfiluserComponent } from './container/perfiluser/perfiluser.component
 import { InfouserComponent } from './components/infouser/infouser.component';
 import { PropuestasComponent } from './components/propuestas/propuestas.component';
 import { PagosComponent } from './container/pagos/pagos.component';
+import { ProyectoComponent } from './container/proyecto/proyecto.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { PagosComponent } from './container/pagos/pagos.component';
     PerfiluserComponent,
     InfouserComponent,
     PropuestasComponent,
-    PagosComponent
+    PagosComponent,
+    ProyectoComponent
   ],
   imports: [
     BrowserModule,

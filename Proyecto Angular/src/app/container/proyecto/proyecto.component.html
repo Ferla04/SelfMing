@@ -1,0 +1,41 @@
+<body>
+    <div class="proyecto">
+        <h2>Proyecto</h2>
+        <form [formGroup]="form">
+            <section>
+                <article>
+                    <div class="grupo">
+                        <input class="inputs" type="text" required>
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="far fa-lightbulb"></i>Nombre Proyecto</label>
+                    </div>
+                    <div class="grupo">
+                        <input class="inputs" type="text" required>
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="far fa-calendar-alt"></i>Fecha de entrega</label>
+                    </div>
+                    <div class="grupo">
+                        <span class="diseño"><i class="fas fa-laptop-code"></i>Programador</span> 
+                        <input id="prog" formControlName ='programador' type="email"  [(ngModel)]="progamador" required readonly='readonly'>
+                    </div>
+                    <div class="grupo">
+                        <input class="inputs" type="tel"  id="name4" required>
+                        <span class="barra"></span>
+                        <label class="label" for=""><i class="far fa-envelope"></i>Correo</label>
+                    </div>
+                </article>
+                <article>
+                    <div class="grupo descrip">
+                        <span class="diseño"><i class="fas fa-align-left"></i>Descripción</span>  
+                        <textarea class="inputDifferent" cols="30" rows="15"></textarea>
+                    </div>
+                    <div class="archivo">
+                        <span class="diseño"><i class="fas fa-upload"></i>Archivos:</span> 
+                        <a class="diseño">Adjuntar</a>
+                    </div>
+                </article>
+            </section>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>

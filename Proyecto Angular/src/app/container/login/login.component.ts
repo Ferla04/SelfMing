@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     let ver:any = document.getElementById('ver');
 
     //servicios
-    this.front.ojo(1,inputs,label,ver);
+    this.front.ojo(inputs,label,ver,1);
 
     this.form = this.fb.group({
       email: ['', Validators.email],

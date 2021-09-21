@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@500&display=swap');
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1c1321;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.proyecto{
+    background-color: #fff;
+    width: 720px;
+    padding: 40px 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #fff;
+}
+
+.proyecto h2{
+    text-align: center;
+}
+
+form section{
+    display: flex;
+    justify-content: space-around;
+}
+
+form section article{
+    width: 50%;
+}
+
+form .grupo{
+    position: relative;
+    margin: 33px 25px;
+}
+
+input{
+    background: none;
+    color: #292828;
+    font-size: 17px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #808080;
+}
+
+input:focus{
+    outline: none;
+    color: #5e5d5d;
+}
+
+label{
+    color: #808080;
+    font-size: 16.5px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    transition: 0.3s ease-out all;
+    pointer-events: none;
+}
+
+label i{
+    margin-right:4px;
+}
+
+.transInput{
+    top: -14px;
+    font-size: 14px;
+    color: #460e56;
+}
+
+.barra{
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.barra::before{
+    content: "";
+    height: 2px;
+    width: 0%;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(to left,#460e56, #fdb824); 
+    transition: 0.3s ease width;
+}
+
+input:focus~.barra::before{
+    width: 100%;
+}
+
+button{
+    background: linear-gradient(to left,#460e56, #1c1321);
+    border:none;
+    border-radius: 20px;
+    display: block;
+    width: 30%;
+    margin: 20px auto 10px;
+    color: #ffff;
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .5s ease box-shadow;
+}
+
+button:hover{
+    box-shadow: 3px 3px 10px #460e56;
+}
+
+/*---------------------------------------------------------------------------------------*/
+
+.inputDifferent{
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid #808080;
+    min-width: 94%;
+    max-width: 94%;
+    min-height: 190px;
+    max-height: 190px;
+    font-size: 15px;
+    background: none;
+    color: #292828;
+    font-size: 15px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    margin: 10px auto 0;
+}
+
+.inputDifferent:focus{
+    outline: none;
+    color: #5e5d5d;
+    border: 2px solid;
+    border-image: linear-gradient(to right, #460e56, #fdb824) 3;
+}
+
+.archivo{
+    margin: 0px 25px;
+}
+
+.archivo span, .archivo a{
+    display: inline;
+}
+
+.archivo a{
+    text-decoration: underline;
+}
+
+.diseño{
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    color: #808080;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.diseño i{
+    margin-right: 5px;
+}
+
+#prog{
+    color:#5e5d5d; 
+}
