@@ -29,6 +29,7 @@ export class BannerComponent implements OnInit {
     (error) => {
       //se imprime el status del error
       console.log(error.status);
+      this.route.navigate( ['/']);
       }
     )
   }
