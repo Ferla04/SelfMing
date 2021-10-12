@@ -18,7 +18,7 @@
                 <label class="label" for=""><i class="far fa-envelope"></i>Correo</label>
             </div>
             <div class="grupo">
-                <input class="inputs" type="tel" formControlName="celular">
+                <input class="inputs" type="number" formControlName="celular">
                 <span class="barra"></span>
                 <label class="label" for=""><i class="fas fa-mobile-alt"></i>Celular</label>
             </div>
@@ -28,8 +28,8 @@
                 <label class="label" for=""><i class="fas fa-unlock-alt"></i>Contraseña</label>
                 <i class="fas fa-eye" id="ver" (click)="mostrarpass()"></i>
             </div>
-
-            <button type="submit">Enviar</button>
+            <div *ngIf="!load" class="spinner"></div>
+            <button *ngIf="load" type="submit">Enviar</button>
         </form>
     </div>
 </body>

@@ -108,3 +108,40 @@ button:hover{
     top: 15px;
     cursor: pointer;
 }
+
+.spinner {
+    display: flex;
+    justify-content: center;
+  }
+    
+  
+  .spinner::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 8px solid #dddddd;
+    border-top-color: #460e56;
+    border-radius: 50%;
+    transform: rotate(0.16turn);
+    animation: spinner 1s ease infinite;
+  }
+  
+  @keyframes spinner {
+    /* Safari support */
+    from {
+      transform: rotate(0turn);
+    }
+    
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }

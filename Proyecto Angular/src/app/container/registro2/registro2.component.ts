@@ -17,7 +17,8 @@ export class Registro2Component implements OnInit {
   valores:string[] = []
   valoresUnicos:string[] = []
   lista:string;
-
+  load: boolean = true;
+  
   constructor(
     public client: ClientService,
     public front: FrontService,
@@ -73,9 +74,10 @@ export class Registro2Component implements OnInit {
   }
 
 
-  onSubmit() {
+  async onSubmit() {
     if (this.form.valid) {
-      this.client.postRequestSendForm('http://localhost:10101/registroProg', {
+      this.load = false;
+      this.client.postRequestSendForm('http://localhost:10101/registroprog', {
         nombre: this.form.value.nombre,
         usuario: this.form.value.usuario,
         correo: this.form.value.email,
@@ -96,6 +98,7 @@ export class Registro2Component implements OnInit {
       },
 
       (error) => {
+        this.load = true;
         console.log(error.status);
       })
       

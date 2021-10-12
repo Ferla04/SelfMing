@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 
 export class Registro1Component implements OnInit {
   form: FormGroup;
+  load: boolean = true;
 
   constructor(
     public client: ClientService,
@@ -45,9 +46,10 @@ export class Registro1Component implements OnInit {
     this.front.mostrarpass2(tipo,ver);
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.form.valid) {
-      this.client.postRequestSendForm('http://localhost:10101/registroUser', {
+      this.load = false;
+      this.client.postRequestSendForm('http://localhost:10101/registrouser', {
         nombre: this.form.value.nombre,
         usuario: this.form.value.usuario,
         correo: this.form.value.email,
@@ -59,11 +61,14 @@ export class Registro1Component implements OnInit {
           // localStorage.setItem('email', response.email)
           // sessionStorage.setItem('pass', response.password)
           //console.log(localStorage.getItem('email'));
+          
+          
           this.route.navigate( ['/login']);
 
       },
 
       (error) => {
+        this.load = true;
         console.log(error.status);
       })
       
@@ -72,3 +77,5 @@ export class Registro1Component implements OnInit {
     }
   }
 }
+
+

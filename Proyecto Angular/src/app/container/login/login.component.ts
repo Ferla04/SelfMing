@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
   form: FormGroup;
-
+  load: boolean = true;
   
   constructor(
     public client: ClientService,
@@ -43,8 +43,9 @@ export class LoginComponent implements OnInit {
     this.front.mostrarpass2(tipo,ver);
   }
 
-  onSubmit() { 
+ async onSubmit() { 
     if (this.form.valid) {
+      this.load = false;
       this.client.postRequestSendForm('http://localhost:10101/login', {
         correo: this.form.value.email,
         password: this.form.value.password
@@ -61,6 +62,7 @@ export class LoginComponent implements OnInit {
       },
 
       (error) => {
+        this.load = true;
         console.log(error.status);
       })
       
