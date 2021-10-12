@@ -70,6 +70,7 @@ export class Registro1Component implements OnInit {
       (error) => {
         this.load = true;
         console.log(error.status);
+        console.log(error.error.errors);
       })
       
     } else {
