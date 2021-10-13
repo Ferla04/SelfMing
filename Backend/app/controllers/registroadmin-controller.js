@@ -15,7 +15,7 @@ let registroadmin = async (req, res) => {
     const especialidad = req.body.especialidad;
     const descripcion = req.body.descripcion;
     let hashPass = bcrypt.hashSync(password, 8);
-    let spleep = await db.sleepTime(3000);
+    let spleep = await db.sleepTime(2000);
     
     db.registroadmin(connection,correo,nombre,usuario,celular,hashPass,descripcion,rango,portafolio,especialidad).then(resolve =>{
         res.status(200).json({

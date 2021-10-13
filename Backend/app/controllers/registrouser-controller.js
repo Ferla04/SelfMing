@@ -11,7 +11,7 @@ let registrouser = async (req, res) => {
     const celular= req.body.celular;
     const password= req.body.password;
     let hashPass = bcrypt.hashSync(password, 8);
-    let spleep = await db.sleepTime(3000);
+    let spleep = await db.sleepTime(2000);
 
     db.registrouser(connection,correo,nombre,usuario,celular,hashPass).then(resolve =>{
         res.status(200).json({

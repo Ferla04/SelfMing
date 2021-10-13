@@ -1,7 +1,7 @@
 const CREDENTIALS = {
     connectionLimit: 10,
     host     : 'localhost',
-    user     : 'fernanda264',
+    user     : 'selfming264',
     password : 'Pizza.Rica264123',
     database : 'pruebaSelfMing'
 }

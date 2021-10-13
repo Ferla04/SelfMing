@@ -10,7 +10,7 @@ let auth = async (req, res) => {
 
     const correo = req.body.correo;
     const password = req.body.password;
-    let spleep = await db.sleepTime(3000);
+    let spleep = await db.sleepTime(2000);
 
     db.login(connection, correo, 'registrouser').then(resolve =>{
    
