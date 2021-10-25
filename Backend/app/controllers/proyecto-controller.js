@@ -1,4 +1,4 @@
-const db = require('../module/mysql')
+const db = require('../model/mysql')
 
 let proyecto = (req, res) => {
 

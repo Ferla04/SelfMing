@@ -122,24 +122,20 @@ function sleepTime(time) {
 }
 
 //Enviar Correo
-function sendEmail(correo){
-    let jConfig = {
-        host:"smtp-mail.Outlook.com", 
-        port: 587, 
-        secureConnection: false,
-        tls: {
-            ciphers:'SSLv3'
-        },
-        auth:{ 
-            user:"selfming@hotmail.com", 
-            pass:"newton264" 
-        },
-    };
-    
-    
+function sendEmail(tipo,destinatario,remitente,contraseña){
+    let jConfig;
+
+    if(tipo == 'hotmail'){
+        jConfig = jConfigHotmail(remitente,contraseña);
+    }else if(tipo == 'gmail'){
+        jConfig = jConfigGmail(remitente,contraseña);
+    }else{
+        return console.log('No existe');
+    }
+
     let email ={ 
-        from:'"SelfMing" <selfming@hotmail.com>',  //remitente
-        to: correo,  //destinatario
+        from:`"SelfMing" <${remitente}>`,  //remitente
+        to: destinatario,  //destinatario
         subject:"SelfMing Project",  //asunto del correo
         html:`
         <div style="background-color: #1c1321; color: #fff; width: 400px;height: 450px; font-family: Arial, Helvetica, sans-serif;
@@ -161,7 +157,7 @@ function sendEmail(correo){
                 border-bottom: 5px solid #ffc957;
                 border-right: 4px solid #ffc957;
                 transition: all ease .5s;
-            " href="http://localhost:10103/cEmail?email=${correo}">Confirmar</a>
+            " href="http://localhost:10103/cEmail?email=${destinatario}">Confirmar</a>
             <p style="margin-top: 25px; font-size: 14px;"
             >Creadores: <br> Juan Esteban Reyes Quintero <br> Fernanda Velásquez Medina </p>
         </div>
@@ -180,6 +176,34 @@ function sendEmail(correo){
         } 
         createTransport.close(); 
     });
+}
+
+function jConfigHotmail(remitente,contraseña){
+    return jConfig = {
+        host:"smtp-mail.Outlook.com", 
+        port: 587, 
+        secureConnection: false,
+        tls: {
+            ciphers:'SSLv3'
+        },
+        auth:{ 
+            user:`${remitente}`, 
+            pass:`${contraseña}` 
+        },
+    };
+}
+
+
+function jConfigGmail(remitente,contraseña){
+    return jConfig = {
+        host:"smtp.gmail.com", 
+        port:465, 
+        secure:true,
+        auth:{ 
+            user:`${remitente}`, 
+            pass:`${contraseña}`  
+        },
+    };
 }
 
 module.exports = {

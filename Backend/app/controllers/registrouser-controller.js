@@ -1,4 +1,4 @@
-let db = require('../module/mysql');
+let db = require('../model/mysql');
 const bcrypt = require('bcryptjs');
 
 let registrouser = async (req, res) => {

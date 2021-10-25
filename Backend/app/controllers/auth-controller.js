@@ -1,4 +1,4 @@
-const db = require('../module/mysql')
+const db = require('../model/mysql')
 const key = require('../config/key');
 const bcrypt = require('bcryptjs');
 const nJwt = require('njwt');

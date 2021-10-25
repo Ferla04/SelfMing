@@ -1,4 +1,4 @@
-let db = require('../module/mysql');
+let db = require('../model/mysql');
 const bcrypt = require('bcryptjs');
 
 let registroadmin = async (req, res) => {
@@ -44,7 +44,8 @@ let registroadmin = async (req, res) => {
                 "especialidad": especialidad,
                 "descripcion": descripcion
             })
-            db.sendEmail(correo);
+            db.sendEmail('gmail',correo,'selfming264@gmail.com','gwtnwclwdfrbtzfw');
+            // db.sendEmail('hotmail',correo,'selfming@hotmail.com','newton264');
             connection.end();
         }).catch(err =>{
             console.log(err);
