@@ -7,6 +7,7 @@
     "express-bearer-token": "^2.4.0",
     "express-validator": "^6.12.2",
     "mysql": "^2.18.1",
-    "njwt": "^1.1.0"
+    "njwt": "^1.1.0",
+    "nodemailer": "^6.7.0"
   }
 }

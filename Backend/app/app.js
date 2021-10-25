@@ -9,6 +9,7 @@ const registrouser = require('./routes/registrouser');
 const registroadmin = require('./routes/registroadmin')
 const pagos = require('./routes/pagos');
 const proyecto = require('./routes/proyecto');
+const email = require('./routes/email');
 
 const app = express()
   .use(cors({credentials: true, origin: 'http://localhost:4200'}))
@@ -23,7 +24,7 @@ app.use('/registrouser', registrouser);
 app.use('/registroprog', registroadmin);
 app.use('/pagos', pagos);
 app.use('/proyecto', proyecto);
-
+app.use('/cEmail', email);
 
 
 module.exports = app;

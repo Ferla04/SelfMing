@@ -1,4 +1,4 @@
-let db = require('../db/mysql');
+let db = require('../module/mysql');
 
 let pagos = (req, res) => {
 
