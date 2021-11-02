@@ -93,7 +93,11 @@ export class Registro2Component implements OnInit {
           // localStorage.setItem('email', response.email)
           // sessionStorage.setItem('pass', response.password)
           //console.log(localStorage.getItem('email'));
-          this.route.navigate( ['/login']);
+          if(response.status != 'correo ya existente'){
+            return this.route.navigate( ['/login']);
+          }
+          console.log(response.status);
+          this.load = true; 
 
       },
 

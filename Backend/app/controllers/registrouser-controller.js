@@ -21,7 +21,7 @@ let registrouser = async (req, res) => {
         }
         connection.end();
         return res.status(200).json({
-            "Status": "correo ya existente", 
+            "status": "correo ya existente", 
         })
     }).catch(err => {
         console.log(err);

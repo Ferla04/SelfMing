@@ -1,22 +1,33 @@
-section{
-    padding: 85px 220px;
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@500&display=swap');
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1c1321;
+    height: 100vh;
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: space-between;
+    color: #fff;
 }
 
-.texto{
-    width: 50%;
+div{
+    text-align: center;
 }
 
-.texto p{
-    font-size: 40px;
-    font-weight: 900;
-    line-height: 55px;
-    margin-bottom: 40px;
+h1{
+    margin-bottom: 5px;
+    letter-spacing: 5px;
+    font-size: 70px;
+    font-family: 'Baloo Chettan 2', cursive;
 }
 
-.texto a{
+h2{
+    margin-bottom: 15px;
+    font-size: 26px;
+}
+
+a{
+    display: inline-block;
     font-size: 14px;
     font-weight: 900;
     background-color: #460e56;
@@ -31,18 +42,18 @@ section{
     cursor: pointer;
 }
 
-.texto a:hover{
+a:hover{
     background-color: transparent;
     box-shadow: 4px 4px 10px #ffc957;
 }
 
-section img{
-    width: 350px;
+img{
+    width: 450px;
     border-radius: 50%;
     transition: all ease-in 1s;
 }
 
-section img:hover{
+img:hover{
     background-color: #ffff00;
     box-shadow: 0px 0px 100px #ffff00;
 }

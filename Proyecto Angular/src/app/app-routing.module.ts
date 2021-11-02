@@ -11,6 +11,7 @@ import { PerfilprogComponent } from './container/perfilprog/perfilprog.component
 import { PerfiluserComponent } from './container/perfiluser/perfiluser.component';
 import { PagosComponent } from './container/pagos/pagos.component';
 import { ProyectoComponent } from './container/proyecto/proyecto.component';
+import { AprobaremailComponent } from './container/aprobaremail/aprobaremail.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'perfilProg', component: PerfilprogComponent},
   {path: 'perfilUser', component: PerfiluserComponent},
   {path: 'pagos', component: PagosComponent},
-  {path: 'proyecto', component: ProyectoComponent}
+  {path: 'proyecto', component: ProyectoComponent},
+  {path: 'cEmail', component: AprobaremailComponent}
 ];
 
 @NgModule({

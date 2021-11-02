@@ -25,6 +25,7 @@ import { InfouserComponent } from './components/infouser/infouser.component';
 import { PropuestasComponent } from './components/propuestas/propuestas.component';
 import { PagosComponent } from './container/pagos/pagos.component';
 import { ProyectoComponent } from './container/proyecto/proyecto.component';
+import { AprobaremailComponent } from './container/aprobaremail/aprobaremail.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ProyectoComponent } from './container/proyecto/proyecto.component';
     InfouserComponent,
     PropuestasComponent,
     PagosComponent,
-    ProyectoComponent
+    ProyectoComponent,
+    AprobaremailComponent
   ],
   imports: [
     BrowserModule,
