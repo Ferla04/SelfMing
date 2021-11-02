@@ -11,9 +11,9 @@ let njwtAuth = (req, res, next) => {
 	if (err) {
 		return res.status(500).send({ auth: false, message: err });
 	}
-	rol = decoded.body.rol;
-
-	next();
+		return res.status(200).json({
+			"Status": "Token ok",
+		});
 	});
 };
 

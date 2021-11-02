@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FormulariosHttp"
+    }
+  },
+  "defaultProject": "FormulariosHttp",
+  "cli": {
+    "analytics": "56812cda-5787-49f5-ad0e-0c228ec4c34b"
+  }
 }
