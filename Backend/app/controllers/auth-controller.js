@@ -35,7 +35,7 @@ let auth = async (req, res) => {
 
         }else if(resolve[0].estado == 'A'){
             if(!bcrypt.compareSync(password, resolve[0].password)){
-                return res.status(401).send({ status: 'Usuario y/o password incorrectas', auth: false});
+                return res.status(401).send({ message: 'Usuario y/o password incorrectas', auth: false});
                 
             }else{                    
                 

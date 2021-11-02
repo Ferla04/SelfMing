@@ -22,13 +22,8 @@ export class PerfilesComponent implements OnInit {
         headers: { "Content-type": "application/json" }
       })
       const data = await resPieces.json(); 
-      this.card = data
-      console.log(this.card);
-      
-      // this.movies.forEach(e => {
-      //   e.status = true;
-      //   e.buttonM = 'Ocultar';
-      // });
+      this.card = data;
+
     } catch (error) {
       console.log(error);
     }

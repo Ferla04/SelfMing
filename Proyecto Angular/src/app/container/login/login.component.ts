@@ -52,18 +52,24 @@ export class LoginComponent implements OnInit {
       }).subscribe(
         (response: any) => {
           console.log(response);
-          //se guarda el valor de la propiedad token en el almacenamiento local persistente
-          localStorage.setItem('token', response.token)
-          //recuperamos el valor de  token  guardada anteriormete y la imprimimos
-          console.log(localStorage.getItem('token'));
-          //dirigimos al usuario a la ruta /Inicio
-          this.route.navigate( ['/inicio']);
+          console.log(response.status);
 
-      },
-
+          if(response.status != 'Cuenta Inactiva'){
+            this.route.navigate( ['/inicio']);
+            localStorage.setItem('token', response.token)
+            console.log(localStorage.getItem('token'));
+          }
+          this.load = true;
+        },
+        
       (error) => {
         this.load = true;
-        console.log(error.status);
+        if(error.status == 422){
+          console.log(error.error.errors);
+        }else{
+          console.log(error.status);
+          console.log(error.error.status);
+        }
       })
       
     } else {
