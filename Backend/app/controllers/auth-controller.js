@@ -18,7 +18,7 @@ let auth = async (req, res) => {
             db.login(connection, correo, 'registroprog').then(resolve =>{
                 if(resolve.length == 0 || !bcrypt.compareSync(password, resolve[0].password)){
                     return res.status(401).send({ status: 'Usuario y/o password incorrectas', auth: false});
-                }else if(resolve[0].estado == 'a'){
+                }else if(resolve[0].estado == 'A'){
                     let jwt = nJwt.create({ idprog: resolve[0].idprog, rol: 'prog' }, key.SIGNING_KEY);
                     jwt.setExpiration(new Date().getTime() + (2 * 60 * 1000));
                     token = jwt.compact();
@@ -33,7 +33,7 @@ let auth = async (req, res) => {
                 console.log(err);
             })
 
-        }else if(resolve[0].estado == 'a'){
+        }else if(resolve[0].estado == 'A'){
             if(!bcrypt.compareSync(password, resolve[0].password)){
                 return res.status(401).send({ status: 'Usuario y/o password incorrectas', auth: false});
                 

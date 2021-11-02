@@ -22,8 +22,8 @@ const app = express()
 app.use('/login', auth);
 app.use('/registrouser', registrouser);
 app.use('/registroprog', registroadmin);
-app.use('/pagos', pagos);
-app.use('/proyecto', proyecto);
+app.use('/pagar', pagos);
+app.use('/enviarPropuesta', proyecto);
 app.use('/cEmail', email);
 
 

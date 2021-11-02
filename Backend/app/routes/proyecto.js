@@ -5,7 +5,7 @@ const validatorToken = require('../middleware/auth-token');
 const router = express.Router();
 
 
-router.post('/', validatorToken.njwtAuth,validatorProyecto.validatorParams, validatorProyecto.validator, proyectoController.proyecto);
+router.get('/', validatorToken.njwtAuth,validatorProyecto.validatorParams, validatorProyecto.validator, proyectoController.proyecto);
 
 
 module.exports = router; 
