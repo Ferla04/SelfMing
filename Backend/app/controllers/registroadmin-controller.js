@@ -32,9 +32,11 @@ let registroadmin = async (req, res) => {
     
     function register(){
         db.registroadmin(connection,correo,nombre,usuario,celular,hashPass,descripcion,rango,portafolio,especialidad).then(resolve =>{
-            res.status(200).json({
-                "Status": "ok registrado", 
-                "reg": true, 
+
+
+            res.status(200).json(
+                {"Status": "ok registrado", 
+                "reg": true,
                 "nombre": nombre,
                 "usuario": usuario,
                 "correo": correo,
@@ -43,8 +45,8 @@ let registroadmin = async (req, res) => {
                 "portafolio": portafolio,
                 "rango": rango,
                 "especialidad": especialidad,
-                "descripcion": descripcion
-            })
+                "descripcion": descripcion})
+
             mail.sendEmail('gmail',correo,'selfming264@gmail.com','gwtnwclwdfrbtzfw');
             // mail.sendEmail('hotmail',correo,'selfming@hotmail.com','newton264');
             connection.end();

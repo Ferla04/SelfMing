@@ -112,6 +112,20 @@ function changetoActive(c,correo,tabla){
     })
 }
 
+function bringAdmin(c){
+    return new Promise((resolve,reject) =>{
+        c.query('SELECT correo, nomcompleto, nomprog, celular, descripcion, rango, urlprog FROM registroprog' ,
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            console.log(results);
+            return resolve(results)
+        })
+    })
+}
+
+
 //Tiempo de espera
 function sleepTime(time) {
     return new Promise((resolve, reject)=>{
@@ -130,5 +144,6 @@ module.exports = {
     proyecto,
     searchMail,
     changetoActive,
-    sleepTime
+    sleepTime,
+    bringAdmin
 }

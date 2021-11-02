@@ -11,6 +11,7 @@ const pagos = require('./routes/pagos');
 const proyecto = require('./routes/proyecto');
 const email = require('./routes/email');
 const verificartoken = require('./routes/verificartoken');
+const inicio = require('./routes/inicio')
 
 const app = express()
   .use(cors({credentials: true, origin: 'http://localhost:4200'}))
@@ -27,6 +28,6 @@ app.use('/pagos', pagos);
 app.use('/proyecto', proyecto);
 app.use('/verificartoken', verificartoken);
 app.use('/cEmail', email);
-
+app.use('/inicio', inicio);
 
 module.exports = app;

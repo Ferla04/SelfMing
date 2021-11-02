@@ -33,9 +33,13 @@ a{
 
 h2{
     font-size: 18px;
+    width: 180px;
+    overflow: hidden;
 }
 .descripcion{
     margin-bottom: 8px;
+    height: 55px;
+    overflow: hidden;
 }
 .reputacion{
     width: 100%;
@@ -52,4 +56,17 @@ h2{
 .reputacion img{
     width: 20px;
     margin-right: 5px;
+}
+article{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+
+}
+section{
+    display: flex;
+    justify-content:start;
+    flex-wrap: wrap;
+    width: 1120px;
+   
 }

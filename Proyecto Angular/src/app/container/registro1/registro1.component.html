@@ -3,7 +3,7 @@
         <h2>Registrate</h2>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="grupo">
-                <input class="inputs" type="text" formControlName="nombre">
+                <input class="inputs" type="text" formControlName="nombre" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32) || (event.charCode==241)">
                 <span class="barra"></span>
                 <label class="label" for=""><i class="far fa-user-circle"></i>Nombre Completo</label>
             </div>

@@ -1,13 +1,21 @@
-<div class="caja">
-    <img class="banner" src="../../../assets/attack.jpg">
-    <div class="nombre">
-        <img class="perfil" src="../../../assets/1029828.png">
-        <a href="/perfilProg"><h2>Fernanda Velásquez</h2></a>
-    </div>
+
+
+<article>
+    <section>
+        <div class="caja" *ngFor="let i of card">
+            <img class="banner" src="../../../assets/attack.jpg">
+            <div class="nombre">
+                <img class="perfil" src="../../../assets/1029828.png">
+                <a href="/perfilProg"><h2>{{i.nomcompleto}}</h2></a>
+            </div>
+            
+            <p class="descripcion">{{i.descripcion}}</p>
+            <div class="reputacion">
+                <img src="../../../assets/estrella.png">
+                <p>5.0</p>
+            </div>
+        </div>
+    </section>
     
-    <p class="descripcion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, inventore.</p>
-    <div class="reputacion">
-        <img src="../../../assets/estrella.png">
-        <p>5.0</p>
-    </div>
-</div>
+</article>
+
