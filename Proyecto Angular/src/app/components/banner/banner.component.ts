@@ -18,7 +18,7 @@ export class BannerComponent implements OnInit {
   }
 
   hacerPago(){
-    this.client.getRequestAllProducts("http://localhost:10101/pagar").subscribe(
+    this.client.getRequestAllProducts("http://localhost:10103/pagar").subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
         console.log(response);
@@ -29,13 +29,13 @@ export class BannerComponent implements OnInit {
     (error) => {
       //se imprime el status del error
       console.log(error.status);
-      this.route.navigate( ['/']);
+      // this.route.navigate( ['/']);
       }
     )
   }
 
   hacerPropuesta(){
-    this.client.getRequestAllProducts("http://localhost:10101/hacerPropuesta").subscribe(
+    this.client.getRequestAllProducts("http://localhost:10103/enviarPropuesta").subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
         console.log(response);

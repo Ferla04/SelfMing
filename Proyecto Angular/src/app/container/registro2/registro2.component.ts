@@ -77,7 +77,7 @@ export class Registro2Component implements OnInit {
   async onSubmit() {
     if (this.form.valid) {
       this.load = false;
-      this.client.postRequestSendForm('http://localhost:10101/registroprog', {
+      this.client.postRequestSendForm('http://localhost:10103/registroprog', {
         nombre: this.form.value.nombre,
         usuario: this.form.value.usuario,
         correo: this.form.value.email,

@@ -213,7 +213,6 @@ module.exports = {
     registroadmin,
     pagos,
     proyecto,
-    searchMail,
     sendEmail,
     changetoActive,
     sleepTime
