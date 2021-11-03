@@ -48,13 +48,17 @@ h2{
 }
 .reputacion p{
     height: 20px;
-    color: #ffde3d;
+    -webkit-text-stroke: 1px #663399;
+    color: #0a0a0a;
     font-weight: bold;
     font-size: 20px;
 
 }
-.reputacion img{
-    width: 20px;
+.reputacion i{
+    text-shadow: 0 0 5px #663399;
+    -webkit-text-stroke: 1px #663399;
+    color: #0a0a0a;
+    font-size: 20px;
     margin-right: 5px;
 }
 article{
