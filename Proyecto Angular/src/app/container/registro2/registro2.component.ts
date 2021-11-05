@@ -3,7 +3,7 @@ import { ClientService } from '../../servicios/client.service';
 import { FrontService } from '../../servicios/front.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Component({ 
   selector: 'app-registro2',
@@ -94,7 +94,15 @@ export class Registro2Component implements OnInit {
           // sessionStorage.setItem('pass', response.password)
           //console.log(localStorage.getItem('email'));
           if(response.status != 'correo ya existente'){
-            return this.route.navigate( ['/login']);
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Su registro ha sido exitoso',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            setTimeout(()=>{ this.route.navigate( ['/login']) }, 1500);
+            return;
           }
           console.log(response.status);
           this.load = true; 
