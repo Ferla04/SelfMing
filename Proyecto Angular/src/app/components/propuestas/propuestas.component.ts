@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../servicios/client.service';
+import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./propuestas.component.css']
 })
 export class PropuestasComponent implements OnInit {
+
+  BASE_API: string = environment.BASE_API;
 
   constructor(
     public client: ClientService,
@@ -18,7 +21,7 @@ export class PropuestasComponent implements OnInit {
   }
 
   verProyecto(){
-    this.client.getRequestAllProducts("http://localhost:10101/hacerPropuesta").subscribe(
+    this.client.getRequestAllProducts(`${this.BASE_API}/hacerPropuesta`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
         console.log(response);

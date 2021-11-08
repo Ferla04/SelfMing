@@ -1,3 +1,17 @@
+article{
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+
+}
+
+section{
+    display: flex;
+    justify-content:start;
+    flex-wrap: wrap;
+    width: 1120px;
+}
+
 a{
     text-decoration: none;
     color: #000;
@@ -12,17 +26,23 @@ a{
     padding: 10px;
     box-shadow: 3px 1px 12px #80808096;
 }
+
+.caja:hover{
+    box-shadow: 3px 1px 12px #663399;
+    cursor: pointer;
+}
+
 .banner{
     width: 100%;
     border-radius: 5px;
 }
-
 
 .nombre{
     display: flex;
     align-items: center;
     margin: 8px 0;
 }
+
 .perfil{
     object-fit: cover;
     width: 30px;
@@ -36,24 +56,27 @@ h2{
     width: 180px;
     overflow: hidden;
 }
+
 .descripcion{
     margin-bottom: 8px;
     height: 55px;
     overflow: hidden;
 }
+
 .reputacion{
     width: 100%;
     display: flex;
     align-items: center;
 }
+
 .reputacion p{
     height: 20px;
     -webkit-text-stroke: 1px #663399;
     color: #0a0a0a;
     font-weight: bold;
     font-size: 20px;
-
 }
+
 .reputacion i{
     text-shadow: 0 0 5px #663399;
     -webkit-text-stroke: 1px #663399;
@@ -61,16 +84,4 @@ h2{
     font-size: 20px;
     margin-right: 5px;
 }
-article{
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
 
-}
-section{
-    display: flex;
-    justify-content:start;
-    flex-wrap: wrap;
-    width: 1120px;
-   
-}

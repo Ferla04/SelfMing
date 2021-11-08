@@ -2,15 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../servicios/client.service';
 import { FrontService } from '../../servicios/front.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
-})
+}) 
 
 export class LoginComponent implements OnInit {
+
+  BASE_API: string = environment.BASE_API;
   form: FormGroup;
   load: boolean = true;
   
@@ -46,7 +51,7 @@ export class LoginComponent implements OnInit {
  async onSubmit() { 
     if (this.form.valid) {
       this.load = false;
-      this.client.postRequestSendForm('http://localhost:10103/login', {
+      this.client.postRequestSendForm(`${this.BASE_API}/login`, {
         correo: this.form.value.email,
         password: this.form.value.password
       }).subscribe(
@@ -55,9 +60,18 @@ export class LoginComponent implements OnInit {
           console.log(response.status);
 
           if(response.status != 'Cuenta Inactiva'){
-            this.route.navigate( ['/inicio']);
             localStorage.setItem('token', response.token)
             console.log(localStorage.getItem('token'));
+            this.route.navigate(['/inicio']);
+          }else if(response.status == 'Cuenta Inactiva'){
+            Swal.fire({
+              position: 'top-end',
+              icon: 'warning',
+              title: 'Cuenta Inactiva :(',
+              text: 'Revisa tu correo',
+              showConfirmButton: false,
+              timer: 1500
+            });
           }
           this.load = true;
         },
@@ -66,10 +80,20 @@ export class LoginComponent implements OnInit {
         this.load = true;
         if(error.status == 422){
           console.log(error.error.errors);
-        }else{
-          console.log(error.status);
-          console.log(error.error.status);
+          return;
+        }else if(error.status == 401){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Usuario y/o password incorrectas',
+            showConfirmButton: false,
+            timer: 1800
+          });
         }
+
+        console.log(error.status);
+        console.log(error.error.status);
+
       })
       
     } else {

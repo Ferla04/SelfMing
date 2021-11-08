@@ -3,6 +3,7 @@ import { ClientService } from '../../servicios/client.service';
 import { FrontService } from '../../servicios/front.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,6 +13,8 @@ import Swal from 'sweetalert2';
 })
 
 export class Registro1Component implements OnInit {
+  
+  BASE_API: string = environment.BASE_API;
   form: FormGroup;
   load: boolean = true;
 
@@ -50,7 +53,7 @@ export class Registro1Component implements OnInit {
   async onSubmit() {
     if (this.form.valid) {
       this.load = false;
-      this.client.postRequestSendForm('http://localhost:10103/registrouser', {
+      this.client.postRequestSendForm(`${this.BASE_API}/registrouser`, {
         nombre: this.form.value.nombre,
         usuario: this.form.value.usuario,
         correo: this.form.value.email,
@@ -72,7 +75,6 @@ export class Registro1Component implements OnInit {
               timer: 1500
             });
             setTimeout(()=>{ this.route.navigate( ['/login']) }, 1500);
-            return;
           }
           console.log(response.status);
           this.load = true;           

@@ -21,13 +21,13 @@ const app = express()
   .use(bearerToken());
 
 
-app.use('/login', auth);
-app.use('/registrouser', registrouser);
-app.use('/registroprog', registroadmin);
-app.use('/pagos', pagos);
-app.use('/proyecto', proyecto);
-app.use('/verificartoken', verificartoken);
-app.use('/cEmail', email);
-app.use('/inicio', inicio);
+app.use('/api/v01/login', auth);
+app.use('/api/v01/registrouser', registrouser);
+app.use('/api/v01/registroprog', registroadmin);
+app.use('/api/v01/pagos', pagos);
+app.use('/api/v01/proyecto', proyecto);
+app.use('/api/v01/verificartoken', verificartoken);
+app.use('/api/v01/cEmail', email);
+app.use('/api/v01/inicio', inicio);
 
 module.exports = app;

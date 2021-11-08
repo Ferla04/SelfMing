@@ -3,6 +3,7 @@ import { ClientService } from '../../servicios/client.service';
 import { FrontService } from '../../servicios/front.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({ 
@@ -12,6 +13,8 @@ import Swal from 'sweetalert2';
 })
 
 export class Registro2Component implements OnInit {
+
+  BASE_API: string = environment.BASE_API;
   form: FormGroup;
   especialidad: string[] = ['Python', 'JavaScript', 'TypeScript', 'PHP', 'HTML/CSS', 'Java', 'C#', 'Ruby', 'Angular', 'React.js', 'Node.js', 'Express', 'Mongodb', 'MySQL'];
   valores:string[] = []
@@ -77,7 +80,7 @@ export class Registro2Component implements OnInit {
   async onSubmit() {
     if (this.form.valid) {
       this.load = false;
-      this.client.postRequestSendForm('http://localhost:10103/registroprog', {
+      this.client.postRequestSendForm(`${this.BASE_API}/registroprog`, {
         nombre: this.form.value.nombre,
         usuario: this.form.value.usuario,
         correo: this.form.value.email,
@@ -102,7 +105,6 @@ export class Registro2Component implements OnInit {
               timer: 1500
             });
             setTimeout(()=>{ this.route.navigate( ['/login']) }, 1500);
-            return;
           }
           console.log(response.status);
           this.load = true; 

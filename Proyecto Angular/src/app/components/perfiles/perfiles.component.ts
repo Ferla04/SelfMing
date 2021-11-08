@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-perfiles',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perfiles.component.css']
 })
 export class PerfilesComponent implements OnInit {
+
+  BASE_API: string = environment.BASE_API;
   card:any[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,7 +21,7 @@ export class PerfilesComponent implements OnInit {
 
   async getAdmins(){
     try {
-      const resPieces = await fetch('http://localhost:10103/inicio',{
+      const resPieces = await fetch(`${this.BASE_API}/inicio`,{
         method: 'GET',
         headers: { "Content-type": "application/json" }
       })

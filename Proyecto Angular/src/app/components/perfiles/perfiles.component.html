@@ -1,11 +1,11 @@
 
 <article>
     <section>
-        <div class="caja" *ngFor="let i of card">
-            <img class="banner" src="../../../assets/attack.jpg">
+        <a href="/perfilProg" class="caja" *ngFor="let i of card">
+            <img class="banner" src="../../../assets/portada.jpg">
             <div class="nombre">
-                <img class="perfil" src="../../../assets/1029828.png">
-                <a href="/perfilProg"><h2>{{i.nomcompleto}}</h2></a>
+                <img class="perfil" src="../../../assets/perfil.jpg">
+                <h2>{{i.nomcompleto}}</h2>
             </div>
             
             <p class="descripcion">{{i.descripcion}}</p>
@@ -13,7 +13,7 @@
                 <i class="fas fa-star"></i>
                 <p>5.0</p>
             </div>
-        </div>
+        </a>
     </section>
     
 </article>
