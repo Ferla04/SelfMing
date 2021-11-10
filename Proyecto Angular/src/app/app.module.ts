@@ -26,6 +26,8 @@ import { PropuestasComponent } from './components/propuestas/propuestas.componen
 import { PagosComponent } from './container/pagos/pagos.component';
 import { ProyectoComponent } from './container/proyecto/proyecto.component';
 import { AprobaremailComponent } from './container/aprobaremail/aprobaremail.component';
+import { Header2Component } from './components/header2/header2.component';
+import { TarjetapagosComponent } from './components/tarjetapagos/tarjetapagos.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AprobaremailComponent } from './container/aprobaremail/aprobaremail.com
     PropuestasComponent,
     PagosComponent,
     ProyectoComponent,
-    AprobaremailComponent
+    AprobaremailComponent,
+    Header2Component,
+    TarjetapagosComponent
   ],
   imports: [
     BrowserModule,

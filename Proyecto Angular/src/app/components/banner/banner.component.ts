@@ -10,17 +10,32 @@ import { Router } from '@angular/router';
 })
 
 export class BannerComponent implements OnInit {
-
+  
+  data:any[] = [];
   BASE_API: string = environment.BASE_API;
-
+  
   constructor(
     public client: ClientService,
     private route: Router
     ) { }
-
-  ngOnInit(): void {
-  }
-
+    
+    ngOnInit(): void {
+      let idprog = localStorage.getItem('idprog');
+      this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${idprog}`).subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+          console.log(response);
+          this.data = response;   
+      },
+      //si ocurre un error en el proceso de envío del formulario...
+      (error) => {
+          //se imprime el status del error
+          console.log(error.status);
+          // this.route.navigate( ['/']);
+          }
+        )          
+    }
+       
   hacerPago(){
     this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
@@ -53,6 +68,19 @@ export class BannerComponent implements OnInit {
       }
     )
   }
-
-
 }
+
+ // async getAdmins(idprog){
+        //   try {
+        //     const resPieces = await fetch(`${this.BASE_API}/traerprog?id=${idprog}`,{
+        //       method: 'GET',
+        //       headers: { "Content-type": "application/json" }
+        //     })
+        //     const data = await resPieces.json(); 
+        //     this.data = data;
+            
+        //   } catch (error) {
+        //     console.log(error);
+        //   }
+          
+        // }

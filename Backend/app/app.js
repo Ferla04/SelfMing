@@ -12,6 +12,7 @@ const proyecto = require('./routes/proyecto');
 const email = require('./routes/email');
 const verificartoken = require('./routes/verificartoken');
 const inicio = require('./routes/inicio')
+const traerprog = require('./routes/traerprog')
 
 const app = express()
   .use(cors({credentials: true, origin: 'http://localhost:4200'}))
@@ -29,5 +30,6 @@ app.use('/api/v01/proyecto', proyecto);
 app.use('/api/v01/verificartoken', verificartoken);
 app.use('/api/v01/cEmail', email);
 app.use('/api/v01/inicio', inicio);
+app.use('/api/v01/traerprog', traerprog);
 
 module.exports = app;

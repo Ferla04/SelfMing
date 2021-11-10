@@ -10,9 +10,6 @@ let confirmEmail = (req, res) => {
             return db.changetoActive(connection,email,resolve[1]).then(resolve2=>{
                 console.log('realizado');
                 res.redirect(`http://localhost:4200/cEmail`)
-                // return res.status(200).json({ 
-                //     "Activo": true, 
-                // })
             })
         }
         connection.end();

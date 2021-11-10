@@ -114,7 +114,19 @@ function changetoActive(c,correo,tabla){
 
 function bringAdmin(c){
     return new Promise((resolve,reject) =>{
-        c.query('SELECT correo, nomcompleto, nomprog, celular, descripcion, rango, urlprog FROM registroprog' ,
+        c.query('SELECT idprog, correo, nomcompleto, nomprog, celular, descripcion, rango, urlprog FROM registroprog' ,
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results)
+        })
+    })
+}
+
+function selectedAdmin(c, idprog){
+    return new Promise((resolve,reject) =>{
+        c.query('SELECT idprog, correo, nomcompleto, nomprog, celular, descripcion, especialidad, rango, urlprog FROM registroprog WHERE idprog = ?', [idprog],
         (err, results) => {
             if(err){
                 return reject(err);
@@ -144,5 +156,6 @@ module.exports = {
     searchMail,
     changetoActive,
     sleepTime,
-    bringAdmin
+    bringAdmin,
+    selectedAdmin
 }

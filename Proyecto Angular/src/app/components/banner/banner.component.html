@@ -1,44 +1,49 @@
-<section> 
-    <div class="foto_descripcion">
-        <img class="foto" src="../../../assets/perfil.jpg">
-        <img class="banner" src="../../../assets/portada.jpg">
-        <div class="descripcion">
-            <div class="contener_nombre">
-                <h2>Fernanda Velásquez</h2>
+<div *ngFor="let i of data">
+    <section> 
+        <div class="foto_descripcion" >
+            <img class="foto" src="../../../assets/perfil.jpg">
+            <img class="banner" src="../../../assets/portada.jpg">
+            <div class="descripcion">
+                <div class="contener_nombre">
+                    <h2>{{i.nomcompleto}}</h2>
+                </div>
+                <h3>Decripción:</h3>
+                <p>{{i.descripcion}}</p>
+                <div class="reputacion">
+                    <i class="fas fa-star"></i>
+                    <p>5.0</p>
+                </div>
             </div>
-            <h3>Decripción:</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sunt, impedit molestias voluptates minima dolorum. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores quae cum veritatis maiores eligendi quidem? lorem15.</p>
-            <div class="reputacion">
-                <i class="fas fa-star"></i>
-                <p>5.0</p>
+        </div>
+        <div class="botones">
+            <a class="propuesta" (click)="hacerPago()">Pagar</a>
+            <a class="enviar" (click)="hacerPropuesta()">Enviar Propuestas</a>
+        </div>
+    </section>
+    
+    <div class="informacion">
+        <div class="izquierda">
+            <div class="campo">
+                <h3 class="largo">Rango de Programador:</h3>
+                <p>{{i.rango}}</p>
+            </div>
+            <div class="campo">
+                <h3>Especialidad:</h3>
+                <p>{{i.especialidad}}</p>
+            </div>
+        </div>
+        <div clas="derecha">
+            <div class="campo">
+                <h3>Correo:</h3>
+                <p>{{i.correo}}</p>
+            </div>
+            <div class="campo">
+                <h3>GitHub:</h3>
+                <p>{{i.urlprog}}</p>
             </div>
         </div>
     </div>
-    <div class="botones">
-        <a class="propuesta" (click)="hacerPago()">Pagar</a>
-        <a class="enviar" (click)="hacerPropuesta()">Enviar Propuestas</a>
-    </div>
-</section>
-
-<div class="informacion">
-    <div class="izquierda">
-        <div class="campo">
-            <h3 class="largo">Rango de Programador:</h3>
-            <p>Senior</p>
-        </div>
-        <div class="campo">
-            <h3>Especialidad:</h3>
-            <p>Programación Web</p>
-        </div>
-    </div>
-    <div clas="derecha">
-        <div class="campo">
-            <h3>Correo:</h3>
-            <p>jrjuanreyes64@gmail.com</p>
-        </div>
-        <div class="campo">
-            <h3>GitHub:</h3>
-            <p>http://github.com</p>
-        </div>
-    </div>
+    
 </div>
+
+<!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sunt, impedit molestias voluptates minima dolorum. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores quae cum veritatis maiores eligendi quidem? lorem15. -->

@@ -38,7 +38,7 @@ function sendEmail(tipo,destinatario,remitente,contraseña){
                 border-bottom: 5px solid #ffc957;
                 border-right: 4px solid #ffc957;
                 transition: all ease .5s;
-            " href="http://localhost:10103/cEmail?email=${destinatario}">Confirmar</a>
+            " href="http://localhost:10103/api/v01/cEmail?email=${destinatario}">Confirmar</a>
             <p style="margin-top: 25px; font-size: 14px;"
             >Creadores: <br> Juan Esteban Reyes Quintero <br> Fernanda Velásquez Medina </p>
         </div>

@@ -1,10 +1,11 @@
 let db = require('../model/mysql');
 
-let bringAdmin = (req, res) => {
+let traerAdmin = (req, res) => {
 
     const connection = db.connection();
-
-    db.bringAdmin(connection).then(resolve =>{
+    const idprog = req.query.id;
+    console.log(idprog);
+    db.selectedAdmin(connection, idprog).then(resolve =>{
         // Enviar API de los programadores
         return res.status(200).json(resolve);
 
@@ -12,9 +13,8 @@ let bringAdmin = (req, res) => {
         console.log(err);
     })
     connection.end();
-
 }
 
 module.exports = {
-    bringAdmin
+    traerAdmin
 }

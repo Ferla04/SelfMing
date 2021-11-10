@@ -1,7 +1,7 @@
 
-<article>
+<article >
     <section>
-        <a href="/perfilProg" class="caja" *ngFor="let i of card">
+        <div class="caja" *ngFor="let i of card" (click)="verPerfil(i.idprog)">
             <img class="banner" src="../../../assets/portada.jpg">
             <div class="nombre">
                 <img class="perfil" src="../../../assets/perfil.jpg">
@@ -13,7 +13,7 @@
                 <i class="fas fa-star"></i>
                 <p>5.0</p>
             </div>
-        </a>
+        </div>
     </section>
     
 </article>
