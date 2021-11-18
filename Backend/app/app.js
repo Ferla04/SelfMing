@@ -21,15 +21,16 @@ const app = express()
   .use(cookieParser())
   .use(bearerToken());
 
+const baseApi = '/api/v01'
 
-app.use('/api/v01/login', auth);
-app.use('/api/v01/registrouser', registrouser);
-app.use('/api/v01/registroprog', registroadmin);
-app.use('/api/v01/pagos', pagos);
-app.use('/api/v01/proyecto', proyecto);
-app.use('/api/v01/verificartoken', verificartoken);
-app.use('/api/v01/cEmail', email);
-app.use('/api/v01/inicio', inicio);
-app.use('/api/v01/traerprog', traerprog);
+app.use(`${baseApi}/login`, auth);
+app.use(`${baseApi}/registrouser`, registrouser);
+app.use(`${baseApi}/registroprog`, registroadmin);
+app.use(`${baseApi}/pagos`, pagos);
+app.use(`${baseApi}/proyecto`, proyecto);
+app.use(`${baseApi}/verificartoken`, verificartoken);
+app.use(`${baseApi}/cEmail`, email);
+app.use(`${baseApi}/inicio`, inicio);
+app.use(`${baseApi}/traerprog`, traerprog);
 
 module.exports = app;
