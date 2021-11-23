@@ -12,9 +12,9 @@ function connection(){
 
 
 //LOGIN
-function login(c, correo, tabla){
+function login(c, correo, tabla, id){
     return new Promise((resolve,reject) =>{
-        c.query(`SELECT correo, password, estado FROM ${tabla} WHERE correo=?`, [correo],
+        c.query(`SELECT ${id}, correo, password, estado FROM ${tabla} WHERE correo=?`, [correo],
         (err, results) => {
             if(err){
                 return reject(err);
