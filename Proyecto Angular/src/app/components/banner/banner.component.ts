@@ -20,8 +20,11 @@ export class BannerComponent implements OnInit {
     ) { }
     
     ngOnInit(): void {
-      let idprog = localStorage.getItem('idprog');
-      this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${idprog}`).subscribe(
+      let tokenId = localStorage.getItem('id');
+      let signUp = tokenId.split(',')[0];
+      let id = tokenId.split(',')[1];
+
+      this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${id}`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
           console.log(response);
@@ -33,7 +36,7 @@ export class BannerComponent implements OnInit {
           console.log(error.status);
           // this.route.navigate( ['/']);
           }
-        )          
+        )         
     }
        
   hacerPago(){

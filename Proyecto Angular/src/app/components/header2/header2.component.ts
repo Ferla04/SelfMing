@@ -27,9 +27,16 @@ export class Header2Component implements OnInit {
     this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
-        console.log(response);
-        // localStorage.setItem('idprog');
-        // this.route.navigate( ['/perfilProg']);
+        let id = response.id;
+        let role = response.role;
+
+        localStorage.setItem('id', `U,${id}`);
+        if(role == 'prog'){
+          if(this.route.url == '/perfilProg') return window.location.reload();
+          return this.route.navigate( ['/perfilProg']), 1000; 
+        } 
+        return this.route.navigate( ['/perfilUser']);
+
     },
     //si ocurre un error en el proceso de envío del formulario...
     (error) => {
