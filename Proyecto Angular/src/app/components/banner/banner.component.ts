@@ -18,7 +18,7 @@ export class BannerComponent implements OnInit{
   @ViewChild('editTextarea') editTextarea: ElementRef;
 
   form: FormGroup;
-  
+  id:any;
   editar:boolean = false;
   data:any[] = [];
   BASE_API: string = environment.BASE_API;
@@ -40,7 +40,7 @@ export class BannerComponent implements OnInit{
 
       let tokenId = localStorage.getItem('id');
       let signUp = tokenId.split(',')[0];
-      let id = tokenId.split(',')[1];
+      this.id = tokenId.split(',')[1];
       
       if(signUp == 'S'){
         this.changeButton = false;
@@ -49,13 +49,14 @@ export class BannerComponent implements OnInit{
       }
 
 
-      this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${id}`).subscribe(
+      this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${this.id}`).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
           // console.log(response);
           this.data = response;   
           
           this.form = this.fb.group({
+            img: [null],
             descripcion: [this.data[0].descripcion, Validators.required],
             rango: [this.data[0].rango, Validators.required],
             especialidad: [this.data[0].especialidad, Validators.required],
@@ -69,10 +70,30 @@ export class BannerComponent implements OnInit{
           console.log(error.status);
           // this.route.navigate( ['/']);
         }
-        )   
-      }
+      )   
+    }
       
    onSubmit(){
+    this.salirEdicion()
+    console.log('holii');
+     
+    let formData: any = new FormData();
+    formData.append("files", this.form.get('img').value);
+    console.log(formData);
+    // formData.append("perfil", this.form.get('perfil').value);
+
+    
+   
+
+    this.client.postRequestSendForm(`${this.BASE_API}/subirimagen?id=${this.id}`, formData).subscribe(
+      (response: any) => {
+      
+    },
+    (error) => {
+ 
+      console.log(error);
+    })
+
     // if (this.form.valid) {
       // descripcion: this.form.value.descripcion;
       // rango: this.form.value.rango;
@@ -82,18 +103,29 @@ export class BannerComponent implements OnInit{
     // }
    }
     
-    editarPerfil(){
-      this.editar = true;
-      this.Renderer.setStyle(this.editTextarea.nativeElement, 'border', '1px solid #000');
-      this.Renderer.removeAttribute(this.editTextarea.nativeElement, 'readonly');
+  editarPerfil(){
+    this.editar = true;
+    this.Renderer.setStyle(this.editTextarea.nativeElement, 'border', '1px solid #000');
+    this.Renderer.removeAttribute(this.editTextarea.nativeElement, 'readonly');
+    
+    this.editInputs.forEach(e => {
+      this.Renderer.setStyle(e.nativeElement, 'border-bottom', '1.5px solid #000');
+      this.Renderer.removeAttribute(e.nativeElement, 'readonly');
+    });
+  }
 
-  
-      this.editInputs.forEach(e => {
-        this.Renderer.setStyle(e.nativeElement, 'border-bottom', '1.5px solid #000');
-        this.Renderer.removeAttribute(e.nativeElement, 'readonly');
+  subirFoto(event){
+    console.log(event);
+    
+    const file = (event.target as HTMLInputElement).files[0];
+    console.log(file);
+    this.form.patchValue({
+      
+      img: file
 
     });
-
+    this.form.get('img').updateValueAndValidity()
+    
   }
 
   salirEdicion(){
@@ -142,18 +174,3 @@ export class BannerComponent implements OnInit{
     )
   }
 }
-
- // async getAdmins(idprog){
-        //   try {
-        //     const resPieces = await fetch(`${this.BASE_API}/traerprog?id=${idprog}`,{
-        //       method: 'GET',
-        //       headers: { "Content-type": "application/json" }
-        //     })
-        //     const data = await resPieces.json(); 
-        //     this.data = data;
-            
-        //   } catch (error) {
-        //     console.log(error);
-        //   }
-          
-        // }

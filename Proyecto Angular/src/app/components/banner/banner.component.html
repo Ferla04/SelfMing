@@ -2,8 +2,8 @@
 <div *ngFor="let i of data">
         <section> 
 
-            <div class="container-file filePortada" *ngIf="editar"><input type="file"></div>
-            <div class="container-file filePerfil" *ngIf="editar"><input type="file"></div>
+            <div class="container-file filePortada" *ngIf="editar" ><input  (change)="subirFoto($event)"  type="file"></div>
+            <div class="container-file filePerfil" *ngIf="editar" ><input (change)="subirFoto($event, 'perfil')" type="file"></div>
 
             <div class="foto_descripcion" >
                 <img class="foto" src="../../../assets/perfil.jpg">
@@ -28,7 +28,7 @@
                 </div>
                 <div *ngIf="changeButton" class="botones">
                     <a class="editar" *ngIf="!editar" id="entrarEdicion" (click)="editarPerfil()">Editar perfil</a>
-                    <button type="submit" class="editar" *ngIf="editar" id="quitarEdicion" (click)="salirEdicion()">salir de edición</button>
+                    <button type="submit" class="editar" *ngIf="editar" id="quitarEdicion" >Salir y Guardar</button>
                     <a class="enviar" (click)="hacerPropuesta()">Ver Propuestas</a>
                 </div>
             </div>
