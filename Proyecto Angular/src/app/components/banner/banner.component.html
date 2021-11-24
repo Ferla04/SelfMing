@@ -1,49 +1,62 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 <div *ngFor="let i of data">
-    <section> 
-        <div class="foto_descripcion" >
-            <img class="foto" src="../../../assets/perfil.jpg">
-            <img class="banner" src="../../../assets/portada.jpg">
-            <div class="descripcion">
-                <div class="contener_nombre">
-                    <h2>{{i.nomcompleto}}</h2>
-                </div>
-                <h3>Decripción:</h3>
-                <p>{{i.descripcion}}</p>
-                <div class="reputacion">
-                    <i class="fas fa-star"></i>
-                    <p>5.0</p>
+        <section> 
+
+            <div class="container-file filePortada" *ngIf="editar"><input type="file"></div>
+            <div class="container-file filePerfil" *ngIf="editar"><input type="file"></div>
+
+            <div class="foto_descripcion" >
+                <img class="foto" src="../../../assets/perfil.jpg">
+                <img class="banner" src="../../../assets/portada.jpg">
+                <div class="descripcion">
+                    <div class="contener_nombre">
+                        <h2>{{i.nomcompleto}}</h2>
+                    </div>
+                    <h3>Decripción:</h3>
+                    <textarea #editTextarea class="edit" cols="50" maxlength="450" formControlName="descripcion" readonly="true">{{i.descripcion}}</textarea>
+
+                    <div class="reputacion">
+                        <i class="fas fa-star"></i>
+                        <p>5.0</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="botones">
-            <a class="propuesta" (click)="hacerPago()">Pagar</a>
-            <a class="enviar" (click)="hacerPropuesta()">Enviar Propuestas</a>
-        </div>
-    </section>
+            <div>
+                <div *ngIf="!changeButton" class="botones">
+                    <a class="propuesta" (click)="hacerPago()">Pagar</a>
+                    <a class="enviar" (click)="hacerPropuesta()">Enviar Propuestas</a>
+                </div>
+                <div *ngIf="changeButton" class="botones">
+                    <a class="editar" *ngIf="!editar" id="entrarEdicion" (click)="editarPerfil()">Editar perfil</a>
+                    <button type="submit" class="editar" *ngIf="editar" id="quitarEdicion" (click)="salirEdicion()">salir de edición</button>
+                    <a class="enviar" (click)="hacerPropuesta()">Ver Propuestas</a>
+                </div>
+            </div>
+        </section>
     
-    <div class="informacion">
-        <div class="izquierda">
-            <div class="campo">
-                <h3 class="largo">Rango de Programador:</h3>
-                <p>{{i.rango}}</p>
+        <div class="informacion">
+            <div class="izquierda">
+                <div class="campo">
+                    <h3 class="largo">Rango de Programador:</h3>
+                    <input #editInputs class="edit" type="text" readonly="true" formControlName="rango" value={{i.rango}}>
+                </div>
+                <div class="campo">
+                    <h3>Especialidad:</h3>
+                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="especialidad" value={{i.especialidad}}>
+                </div>
             </div>
-            <div class="campo">
-                <h3>Especialidad:</h3>
-                <p>{{i.especialidad}}</p>
-            </div>
-        </div>
-        <div clas="derecha">
-            <div class="campo">
-                <h3>Correo:</h3>
-                <p>{{i.correo}}</p>
-            </div>
-            <div class="campo">
-                <h3>GitHub:</h3>
-                <p>{{i.urlprog}}</p>
+            <div clas="derecha">
+                <div class="campo">
+                    <h3>Correo:</h3>
+                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="correo" value={{i.correo}}>
+                </div>
+                <div class="campo">
+                    <h3>GitHub:</h3>
+                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="repositorio" value={{i.urlprog}}>
+                </div>
             </div>
         </div>
     </div>
-    
-</div>
+</form>
 
 <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sunt, impedit molestias voluptates minima dolorum. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores quae cum veritatis maiores eligendi quidem? lorem15. -->

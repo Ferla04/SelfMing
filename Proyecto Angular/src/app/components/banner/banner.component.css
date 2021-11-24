@@ -1,3 +1,7 @@
+input{
+    outline: none;
+}
+
 section{
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
@@ -9,6 +13,42 @@ section{
     width: 100%;
     height: 380px;
     border-bottom: 2px solid #460e56;
+}
+
+.container-file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Baloo Chettan 2', cursive;
+    background-color: #fdb824e7;
+    color: black;
+    border-radius: 20px; 
+}
+
+.filePortada{
+    position: absolute;
+    bottom: 10px;
+    left: 17%;
+}
+
+.filePerfil{
+    position: absolute;
+    left: 43%;
+    top: 250px;
+    z-index: 100;
+}
+
+.container-file::before{
+    content: 'cambiar Imagen'; 
+    position: absolute;
+}
+
+.container-file input[type="file"] {
+    opacity: 0;
+    width: 180px;
+    height: 35px;
+    display: inline-block;
 }
 
 .banner{
@@ -44,11 +84,16 @@ section{
     margin-top: 15px;
 }
 
-.descripcion p{
-    line-height: 25px;
-    height: 100px;
-    width: 465px;
+.descripcion textarea{
+    max-height: 130px;
+    min-height: 130px;
+    max-width: 465px;
+    min-width: 465px;
     overflow: hidden;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    padding: 2px;
 }
 
 .reputacion {
@@ -96,17 +141,22 @@ section{
     top: 95%;
 }
 
-.propuesta{
+.propuesta, .editar{
     text-align: center;
     line-height: 35px;
     text-decoration: none;
     width: 180px;
     height: 35px;
-    background-color: rgb(0, 0, 0);
+    background-color: #000000;
     color: white;
     border-radius: 20px; 
     cursor: pointer;
-    
+}
+
+#quitarEdicion{
+    border: none;
+    font-size: 16px;
+    background-color: #460e56;
 }
 
 .enviar{
@@ -142,15 +192,20 @@ section{
     margin-right: 10px;
 }
 
-.campo p{
-    height: 28px;
+.campo input{
+    padding-left: 5px;
+    padding-bottom: 2px;
     font-size: 20px;
-    border-bottom: 1px solid rgb(0, 0, 0);
+    border: none;
+    border-bottom: 1.5px solid #707070;
+    width: 260px;
+}
+
+.campo .especiali{
     width: 100%;
 }
 
 .largo{
-    width: 440px;
+    width: 230px;
 }
-
 
