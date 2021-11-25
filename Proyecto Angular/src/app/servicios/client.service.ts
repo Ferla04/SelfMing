@@ -61,6 +61,7 @@ export class ClientService {
   //metodo que recibe como parametro una url un json a ser enviado. Esta solicitud se hace con metodo POST
   //en este caso el json proviene de los datos de un formulario.
   postRequestSendForm(route: string, data?:any) {
+    console.log(data);
     let config:any = {
       responseType: "json"
     }

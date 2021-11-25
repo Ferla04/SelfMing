@@ -24,6 +24,7 @@ export class BannerComponent implements OnInit{
   BASE_API: string = environment.BASE_API;
   changeButton: boolean = true;
   edit:any;
+  archivos: any = [];
 
   containerFile:any;
   
@@ -77,17 +78,27 @@ export class BannerComponent implements OnInit{
     this.salirEdicion()
     console.log('holii');
      
+    // try {
+    //   const fd = new FormData();
+    //   this.archivos.forEach((e:any) => {
+    //     fd.append('files', e);
+    //   });
+    //   this.client.postRequestSendForm(`${this.BASE_API}/subirimagen?id=${this.id}`, fd)
+    //   .subscribe(res => {
+    //     console.log('respuesta:', res);
+    //   })
+
+    // } catch (err) {
+    //   console.log(`ERROR: ${err}`);
+    // }
+
     let formData: any = new FormData();
-    formData.append("files", this.form.get('img').value);
+    formData.append("img", this.form.get('img').value);
     console.log(formData);
-    // formData.append("perfil", this.form.get('perfil').value);
 
-    
-   
-
-    this.client.postRequestSendForm(`${this.BASE_API}/subirimagen?id=${this.id}`, formData).subscribe(
-      (response: any) => {
-      
+    this.client.postRequestSendForm(`${this.BASE_API}/subirimagen`, formData).subscribe(
+      (res: any) => {
+        console.log('respuesta:', res);
     },
     (error) => {
  
@@ -95,11 +106,11 @@ export class BannerComponent implements OnInit{
     })
 
     // if (this.form.valid) {
-      // descripcion: this.form.value.descripcion;
-      // rango: this.form.value.rango;
-      // especialidad: this.form.value.especialidad;
-      // correo: this.form.value.correo;
-      // repositorio: this.form.value.repositorio;
+    //   descripcion: this.form.value.descripcion;
+    //   rango: this.form.value.rango;
+    //   especialidad: this.form.value.especialidad;
+    //   correo: this.form.value.correo;
+    //   repositorio: this.form.value.repositorio;
     // }
    }
     
@@ -115,16 +126,18 @@ export class BannerComponent implements OnInit{
   }
 
   subirFoto(event){
-    console.log(event);
+    // console.log(event.target.files);
+    // const archivosCapturados = event.target.files[0];
+    // this.archivos.push(archivosCapturados);
+    // console.log(this.archivos);
     
     const file = (event.target as HTMLInputElement).files[0];
     console.log(file);
     this.form.patchValue({
-      
       img: file
 
     });
-    this.form.get('img').updateValueAndValidity()
+    this.form.get('img').updateValueAndValidity();
     
   }
 
