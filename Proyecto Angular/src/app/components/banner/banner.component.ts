@@ -29,6 +29,9 @@ export class BannerComponent implements OnInit{
   nombrePerfil: string;
 
   containerFile:any;
+
+  photoSelectedPortafolio: any;
+  photoSelectedPerfil: any;
   
   constructor(
     public client: ClientService,
@@ -89,14 +92,23 @@ export class BannerComponent implements OnInit{
   }
 
   subirFoto(event, nombre){
-    const archivosCapturados = event.target.files[0];
-    if(nombre == 'portada'){
-      this.nombrePortada = `portada,${archivosCapturados.name},${this.id},P`;
-    }else{
-      this.nombrePerfil = `perfil,${archivosCapturados.name},${this.id},P`;
-    }
+    if(event.target.files && event.target.files[0]){
 
-    this.archivos.push(archivosCapturados);
+      const archivosCapturados = event.target.files[0];
+      const reader = new FileReader();
+
+      if(nombre == 'portada'){
+        this.nombrePortada = `${archivosCapturados.name},portada,${this.id},P`;
+        reader.onload = e => this.photoSelectedPortafolio = reader.result;
+        reader.readAsDataURL(archivosCapturados);
+      }else{
+        this.nombrePerfil = `${archivosCapturados.name},perfil,${this.id},P`;
+        reader.onload = e => this.photoSelectedPerfil = reader.result;
+        reader.readAsDataURL(archivosCapturados);
+      }
+  
+      this.archivos.push(archivosCapturados);
+    }
       
   }
 
@@ -107,11 +119,13 @@ export class BannerComponent implements OnInit{
       const fd = new FormData();
 
       this.archivos.forEach((e:any) => {
-        if(e.name == this.nombrePortada.split(',')[1]){
-          fd.append('files',e,this.nombrePortada);
+        if(e.name == this.nombrePortada.split(',')[0]){
+          let nuevoNombre = this.nombrePortada.split(',').splice(1,3).join();
+          fd.append('files',e,nuevoNombre);
           
-        }else if(e.name == this.nombrePerfil.split(',')[1]){
-          fd.append('files',e,this.nombrePerfil);
+        }else if(e.name == this.nombrePerfil.split(',')[0]){
+          let nuevoNombre = this.nombrePerfil.split(',').splice(1,3).join();
+          fd.append('files',e,nuevoNombre);
         }        
       });
 
