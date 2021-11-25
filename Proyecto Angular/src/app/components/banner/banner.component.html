@@ -1,9 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div *ngFor="let i of data">
         <section> 
-
-            <div class="container-file filePortada" *ngIf="editar" ><input (change)="subirFoto($event)"  type="file"></div>
-            <div class="container-file filePerfil" *ngIf="editar" ><input (change)="subirFoto($event)" type="file"></div>
+            <div class="container-file filePortada" *ngIf="editar" ><input (change)="subirFoto($event, 'portada')"  type="file"></div>
+            <div class="container-file filePerfil" *ngIf="editar" ><input (change)="subirFoto($event, 'perfil')" type="file"></div>
 
             <div class="foto_descripcion" >
                 <img class="foto" src="../../../assets/perfil.jpg">
@@ -38,21 +37,21 @@
             <div class="izquierda">
                 <div class="campo">
                     <h3 class="largo">Rango de Programador:</h3>
-                    <input #editInputs class="edit" type="text" readonly="true" formControlName="rango" value={{i.rango}}>
+                    <input #editInputs class="edit" type="text" readonly="true" formControlName="rango">
                 </div>
                 <div class="campo">
                     <h3>Especialidad:</h3>
-                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="especialidad" value={{i.especialidad}}>
+                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="especialidad">
                 </div>
             </div>
             <div clas="derecha">
                 <div class="campo">
                     <h3>Correo:</h3>
-                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="correo" value={{i.correo}}>
+                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="correo">
                 </div>
                 <div class="campo">
                     <h3>GitHub:</h3>
-                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="repositorio" value={{i.urlprog}}>
+                    <input #editInputs class="edit especiali" type="text" readonly="true" formControlName="repositorio">
                 </div>
             </div>
         </div>

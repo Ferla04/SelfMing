@@ -1,15 +1,18 @@
 let upload = (req, res) => {
+    let id = req.query.id;
     
-  console.log('ssssssssssiiiiiiiiiii', req['files']);
-  return res.status(201).json({"Status": "upload ok"}); 
-    // let id = req.query.id;
-    // console.log(id);
-    // console.log(req.files);
-    // let file = req['files'].img.mv(`./${id}-${nombre}.png`, function(err) {
+    req['files'].files.forEach((element, index )=> {
+      element.mv(`./images/${element.name}.png`, function(err) {
+        console.log(err);
+      });
+    });
+    console.log(req['files']);
+
+    // req['files'].files.mv(`./images/${id}.png`, function(err) {
     //   console.log(err);
     // });
-    // console.log(file);
-    // return res.status(201).json({"Status": "upload ok"}); 
+    console.log(req['files']);
+    return res.status(201).json({"Status": "upload ok"}); 
 }
   
   

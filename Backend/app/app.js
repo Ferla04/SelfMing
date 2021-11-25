@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const bearerToken = require('express-bearer-token');
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 
 const auth = require('./routes/auth'); 
 const registrouser = require('./routes/registrouser');
@@ -20,7 +21,8 @@ const app = express()
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended: true}))
   .use(cookieParser())
-  .use(bearerToken());
+  .use(bearerToken())
+  .use(fileUpload());
 
 const baseApi = '/api/v01'
 

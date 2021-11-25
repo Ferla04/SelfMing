@@ -25,6 +25,8 @@ export class BannerComponent implements OnInit{
   changeButton: boolean = true;
   edit:any;
   archivos: any = [];
+  nombrePortada: string;
+  nombrePerfil: string;
 
   containerFile:any;
   
@@ -73,46 +75,7 @@ export class BannerComponent implements OnInit{
         }
       )   
     }
-      
-   onSubmit(){
-    this.salirEdicion()
-    console.log('holii');
-     
-    // try {
-    //   const fd = new FormData();
-    //   this.archivos.forEach((e:any) => {
-    //     fd.append('files', e);
-    //   });
-    //   this.client.postRequestSendForm(`${this.BASE_API}/subirimagen?id=${this.id}`, fd)
-    //   .subscribe(res => {
-    //     console.log('respuesta:', res);
-    //   })
-
-    // } catch (err) {
-    //   console.log(`ERROR: ${err}`);
-    // }
-
-    let formData: any = new FormData();
-    formData.append("img", this.form.get('img').value);
-    console.log(formData);
-
-    this.client.postRequestSendForm(`${this.BASE_API}/subirimagen`, formData).subscribe(
-      (res: any) => {
-        console.log('respuesta:', res);
-    },
-    (error) => {
- 
-      console.log(error);
-    })
-
-    // if (this.form.valid) {
-    //   descripcion: this.form.value.descripcion;
-    //   rango: this.form.value.rango;
-    //   especialidad: this.form.value.especialidad;
-    //   correo: this.form.value.correo;
-    //   repositorio: this.form.value.repositorio;
-    // }
-   }
+    
     
   editarPerfil(){
     this.editar = true;
@@ -125,20 +88,41 @@ export class BannerComponent implements OnInit{
     });
   }
 
-  subirFoto(event){
-    // console.log(event.target.files);
-    // const archivosCapturados = event.target.files[0];
-    // this.archivos.push(archivosCapturados);
-    // console.log(this.archivos);
-    
-    const file = (event.target as HTMLInputElement).files[0];
-    console.log(file);
-    this.form.patchValue({
-      img: file
+  subirFoto(event, nombre){
+    const archivosCapturados = event.target.files[0];
+    if(nombre == 'portada'){
+      this.nombrePortada = `portada,${archivosCapturados.name},${this.id},P`;
+    }else{
+      this.nombrePerfil = `perfil,${archivosCapturados.name},${this.id},P`;
+    }
 
-    });
-    this.form.get('img').updateValueAndValidity();
+    this.archivos.push(archivosCapturados);
+      
+  }
+
+  onSubmit(){
+    this.salirEdicion()
     
+    try {
+      const fd = new FormData();
+
+      this.archivos.forEach((e:any) => {
+        if(e.name == this.nombrePortada.split(',')[1]){
+          fd.append('files',e,this.nombrePortada);
+          
+        }else if(e.name == this.nombrePerfil.split(',')[1]){
+          fd.append('files',e,this.nombrePerfil);
+        }        
+      });
+
+      this.client.postRequestSendForm(`${this.BASE_API}/subirimagen`, fd).subscribe(res => {
+        console.log('respuesta:', res);
+      })      
+      this.archivos.length = 0;
+      
+    } catch (err) {
+      console.log(`ERROR: ${err}`);
+    }
   }
 
   salirEdicion(){
@@ -153,7 +137,10 @@ export class BannerComponent implements OnInit{
     });
 
   }
-       
+  
+  
+
+
   hacerPago(){
     this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
