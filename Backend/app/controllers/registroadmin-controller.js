@@ -7,7 +7,6 @@ let registroadmin = async (req, res) => {
     const connection = db.connection();
 
     const nombre = req.body.nombre;
-    const usuario = req.body.usuario;
     const correo = req.body.correo;
     const celular = req.body.celular;
     const password = req.body.password;
@@ -31,14 +30,13 @@ let registroadmin = async (req, res) => {
     })
     
     function register(){
-        db.registroadmin(connection,correo,nombre,usuario,celular,hashPass,descripcion,rango,portafolio,especialidad).then(resolve =>{
+        db.registroadmin(connection,correo,nombre,celular,hashPass,descripcion,rango,portafolio,especialidad).then(resolve =>{
 
 
             res.status(200).json(
                 {"Status": "ok registrado", 
                 "reg": true,
                 "nombre": nombre,
-                "usuario": usuario,
                 "correo": correo,
                 "celular": celular,
                 "password": password,

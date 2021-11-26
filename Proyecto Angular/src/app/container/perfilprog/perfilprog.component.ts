@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfilprog',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilprogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit(): void {
+    let id = localStorage.getItem('id');
+    
+    if(id[0] == 'U'){
+      this.route.navigate(['/inicio'])
+    }
   }
 
 }

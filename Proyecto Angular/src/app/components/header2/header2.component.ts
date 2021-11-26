@@ -30,11 +30,12 @@ export class Header2Component implements OnInit {
         let id = response.id;
         let role = response.role;
 
-        localStorage.setItem('id', `U,${id}`);
         if(role == 'prog'){
+          localStorage.setItem('id', `P,${id}`);
           if(this.route.url == '/perfilProg') return window.location.reload();
           return this.route.navigate( ['/perfilProg']), 1000; 
         } 
+        localStorage.setItem('id', `U,${id}`);
         return this.route.navigate( ['/perfilUser']);
 
     },

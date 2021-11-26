@@ -32,11 +32,10 @@ export class Registro1Component implements OnInit {
     let ver:any = document.getElementById('ver');
 
     //servicios
-    this.front.ojo(inputs,label,ver,4);
+    this.front.ojo(inputs,label,ver,3);
 
     this.form = this.fb.group({
       nombre: ['', Validators.required],
-      usuario: ['', Validators.required],
       email: ['', Validators.email],
       celular: ['', Validators.required],
       password: ['', Validators.required]
@@ -55,7 +54,6 @@ export class Registro1Component implements OnInit {
       this.load = false;
       this.client.postRequestSendForm(`${this.BASE_API}/registrouser`, {
         nombre: this.form.value.nombre,
-        usuario: this.form.value.usuario,
         correo: this.form.value.email,
         celular: this.form.value.celular,
         password: this.form.value.password
@@ -89,7 +87,10 @@ export class Registro1Component implements OnInit {
     } else {
       console.log("Form error");
     }
+  
   }
+
+
 }
 
 

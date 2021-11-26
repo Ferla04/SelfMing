@@ -7,7 +7,6 @@ let registrouser = async (req, res) => {
     const connection = db.connection()
 
     const nombre= req.body.nombre; 
-    const usuario= req.body.usuario;
     const correo= req.body.correo;
     const celular= req.body.celular;
     const password= req.body.password;
@@ -28,13 +27,12 @@ let registrouser = async (req, res) => {
     })
 
     function register(){
-        db.registrouser(connection,correo,nombre,usuario,celular,hashPass).then(resolve =>{
+        db.registrouser(connection,correo,nombre,celular,hashPass).then(resolve =>{
             res.status(200).json({
                 "Status": "ok registrado", 
                 "reg": true, 
                 "correo": correo,
                 "nombre": nombre,
-                "usuario": usuario,
                 "celular": celular,
                 "password":password
             })

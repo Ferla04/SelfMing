@@ -25,9 +25,9 @@ function login(c, correo, tabla, id){
 }
 
 //REGISTRO USUARIO
-function registrouser(c, correo,nombre,usuario,celular,hashPass){
+function registrouser(c, correo,nombre,celular,hashPass){
     return new Promise((resolve, reject) =>{
-        c.query('INSERT INTO registrouser SET ?', {correo:correo, nomcompleto:nombre, nomuser:usuario, celular:celular, password:hashPass, estado:'I'},
+        c.query('INSERT INTO registrouser SET ?', {correo:correo, nomcompleto:nombre, celular:celular, password:hashPass, estado:'I'},
         (err, results) => {
             if(err){
                 return reject(err);
@@ -38,9 +38,9 @@ function registrouser(c, correo,nombre,usuario,celular,hashPass){
 }
 
 //REGISTRO PROGRAMADOR
-function registroadmin(c, correo,nombre,usuario,celular,hashPass,descripcion,rango,urlprog,especialidad){
+function registroadmin(c, correo,nombre,celular,hashPass,descripcion,rango,urlprog,especialidad){
     return new Promise((resolve, reject) =>{
-        c.query('INSERT INTO registroprog SET ?', {correo:correo, nomcompleto:nombre, nomprog:usuario, celular:celular, password:hashPass, descripcion:descripcion, rango:rango, urlprog:urlprog, especialidad:especialidad, estado:'I'},
+        c.query('INSERT INTO registroprog SET ?', {correo:correo, nomcompleto:nombre, celular:celular, password:hashPass, descripcion:descripcion, rango:rango, urlprog:urlprog, especialidad:especialidad, estado:'I'},
         (err, results) => {
             if(err){
                 return reject(err);
@@ -114,7 +114,7 @@ function changetoActive(c,correo,tabla){
 
 function bringAdmin(c){
     return new Promise((resolve,reject) =>{
-        c.query('SELECT idprog, correo, nomcompleto, nomprog, celular, descripcion, rango, urlprog FROM registroprog' ,
+        c.query('SELECT idprog, correo, nomcompleto, celular, descripcion, rango, urlprog FROM registroprog' ,
         (err, results) => {
             if(err){
                 return reject(err);
@@ -126,7 +126,7 @@ function bringAdmin(c){
 
 function selectedAdmin(c, idprog){
     return new Promise((resolve,reject) =>{
-        c.query('SELECT idprog, correo, nomcompleto, nomprog, celular, descripcion, especialidad, rango, urlprog FROM registroprog WHERE idprog = ?', [idprog],
+        c.query('SELECT idprog, correo, nomcompleto, celular, descripcion, especialidad, rango, urlprog FROM registroprog WHERE idprog = ?', [idprog],
         (err, results) => {
             if(err){
                 return reject(err);
