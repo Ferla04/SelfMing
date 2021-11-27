@@ -15,6 +15,8 @@ const verificartoken = require('./routes/verificartoken');
 const inicio = require('./routes/inicio');
 const traerprog = require('./routes/traerprog');
 const subirimagen = require('./routes/subirimagen');
+const actualizaradmin = require('./routes/actualizaradmin');
+
 
 const app = express()
   .use(cors({credentials: true, origin: 'http://localhost:4200'}))
@@ -36,5 +38,7 @@ app.use(`${baseApi}/cEmail`, email);
 app.use(`${baseApi}/inicio`, inicio);
 app.use(`${baseApi}/traerprog`, traerprog);
 app.use(`${baseApi}/subirimagen`, subirimagen);
+app.use(`${baseApi}/actualizaradmin`, actualizaradmin);
+
 
 module.exports = app;

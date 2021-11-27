@@ -114,24 +114,40 @@ export class BannerComponent implements OnInit{
 
   onSubmit(){
     this.salirEdicion()
-    
+    let nuevaPortada:string;
+    let nuevoPerfil:string;
     try {
       const fd = new FormData();
 
       this.archivos.forEach((e:any) => {
         if(e.name == this.nombrePortada.split(',')[0]){
-          let nuevoNombre = this.nombrePortada.split(',').splice(1,3).join();
-          fd.append('files',e,nuevoNombre);
+          nuevaPortada = this.nombrePortada.split(',').splice(1,3).join();
+          fd.append('files',e,nuevaPortada);
           
         }else if(e.name == this.nombrePerfil.split(',')[0]){
-          let nuevoNombre = this.nombrePerfil.split(',').splice(1,3).join();
-          fd.append('files',e,nuevoNombre);
+          nuevoPerfil = this.nombrePerfil.split(',').splice(1,3).join();
+          fd.append('files',e,nuevoPerfil);
         }        
       });
 
       this.client.postRequestSendForm(`${this.BASE_API}/subirimagen`, fd).subscribe(res => {
         console.log('respuesta:', res);
       })      
+
+      this.client.putRequestSendForm(`${this.BASE_API}/actualizaradmin`, {
+        descripcion: this.form.value.descripcion,
+        urlprog: this.form.value.repositorio,
+        rango: this.form.value.rango,
+        especialidad: this.form.value.especialidad,
+        correo: this.form.value.correo,
+        portada: `./images/${nuevaPortada}`,
+        perfil: `./images/${nuevoPerfil}`,
+      }).subscribe(res => {
+        console.log('respuesta:', res);
+      })
+
+
+
       this.archivos.length = 0;
       
     } catch (err) {

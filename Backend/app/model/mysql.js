@@ -136,6 +136,18 @@ function selectedAdmin(c, idprog){
     })
 }
 
+function updateAdmin(c, correo,nombre,celular,hashPass,descripcion,rango,urlprog,especialidad){
+    return new Promise((resolve,reject) =>{
+        c.query('SELECT idprog, correo, nomcompleto, celular, descripcion, especialidad, rango, urlprog FROM registroprog WHERE idprog = ?', [idprog],
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results)
+        })
+    })
+}
+
 
 //Tiempo de espera
 function sleepTime(time) {
