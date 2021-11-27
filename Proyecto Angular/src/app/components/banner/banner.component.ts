@@ -30,8 +30,11 @@ export class BannerComponent implements OnInit{
 
   containerFile:any;
 
-  photoSelectedPortafolio: any;
+  photoSelectedPortada: any;
   photoSelectedPerfil: any;
+
+  nuevaPortada:string;
+  nuevoPerfil:string;
   
   constructor(
     public client: ClientService,
@@ -59,8 +62,28 @@ export class BannerComponent implements OnInit{
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
           // console.log(response);
-          this.data = response;   
+          this.data = response; 
+          console.log(this.data);  
+
+          if(this.data[0].portada == 'N'){
+            this.nombrePortada = '../../../assets/portada.jpg';
+            this.nuevaPortada = 'N';
+          }else{
+            this.nombrePortada =`${this.BASE_API}/downloadimage?imagen=${this.data[0].portada}`;
+            this.nuevaPortada = this.nombrePortada.split('=')[1].split('/')[3];
+          }
+
+          if(this.data[0].perfil == 'N'){
+            this.nombrePerfil = '../../../assets/perfil.jpg';
+            this.nuevoPerfil = 'N';
+          }else{
+            this.nombrePerfil = `${this.BASE_API}/downloadimage?imagen=${this.data[0].perfil}`;
+            this.nuevoPerfil =  this.nombrePerfil.split('=')[1].split('/')[3];
+          }
           
+          this.photoSelectedPortada = this.nombrePortada;
+          this.photoSelectedPerfil = this.nombrePerfil;
+
           this.form = this.fb.group({
             img: [null],
             descripcion: [this.data[0].descripcion, Validators.required],
@@ -97,11 +120,12 @@ export class BannerComponent implements OnInit{
       const archivosCapturados = event.target.files[0];
       const reader = new FileReader();
 
-      if(nombre == 'portada'){
+      console.log(archivosCapturados);
+      if(nombre == 'portada' && archivosCapturados){
         this.nombrePortada = `${archivosCapturados.name},portada,${this.id},P`;
-        reader.onload = e => this.photoSelectedPortafolio = reader.result;
+        reader.onload = e => this.photoSelectedPortada = reader.result;
         reader.readAsDataURL(archivosCapturados);
-      }else{
+      }else  if(archivosCapturados){
         this.nombrePerfil = `${archivosCapturados.name},perfil,${this.id},P`;
         reader.onload = e => this.photoSelectedPerfil = reader.result;
         reader.readAsDataURL(archivosCapturados);
@@ -114,34 +138,43 @@ export class BannerComponent implements OnInit{
 
   onSubmit(){
     this.salirEdicion()
-    let nuevaPortada:string;
-    let nuevoPerfil:string;
+    
     try {
       const fd = new FormData();
 
       this.archivos.forEach((e:any) => {
         if(e.name == this.nombrePortada.split(',')[0]){
-          nuevaPortada = this.nombrePortada.split(',').splice(1,3).join();
-          fd.append('files',e,nuevaPortada);
+          this.nuevaPortada = this.nombrePortada.split(',').splice(1,3).join();
+          console.log(this.nuevaPortada);
+          fd.append('files',e,this.nuevaPortada);
           
         }else if(e.name == this.nombrePerfil.split(',')[0]){
-          nuevoPerfil = this.nombrePerfil.split(',').splice(1,3).join();
-          fd.append('files',e,nuevoPerfil);
-        }        
+          console.log(this.nuevoPerfil);
+          this.nuevoPerfil = this.nombrePerfil.split(',').splice(1,3).join();
+          fd.append('files',e,this.nuevoPerfil);
+        }      
       });
 
-      this.client.postRequestSendForm(`${this.BASE_API}/subirimagen`, fd).subscribe(res => {
-        console.log('respuesta:', res);
-      })      
+      if(this.archivos.length > 0){
+        this.client.postRequestSendForm(`${this.BASE_API}/subirimagen`, fd).subscribe(res => {
+          console.log('respuesta:', res);
+        })  
+      }
+      
+
+      if(this.nuevaPortada !== 'N') this.nuevaPortada = `./images/portadaprog/${this.nuevaPortada}`;
+      if(this.nuevoPerfil !== 'N') this.nuevoPerfil = `./images/perfilprog/${this.nuevoPerfil}`
+      
 
       this.client.putRequestSendForm(`${this.BASE_API}/actualizaradmin`, {
+        id: this.id,
         descripcion: this.form.value.descripcion,
         urlprog: this.form.value.repositorio,
         rango: this.form.value.rango,
         especialidad: this.form.value.especialidad,
         correo: this.form.value.correo,
-        portada: `./images/${nuevaPortada}`,
-        perfil: `./images/${nuevoPerfil}`,
+        portada: this.nuevaPortada,
+        perfil: this.nuevoPerfil,
       }).subscribe(res => {
         console.log('respuesta:', res);
       })

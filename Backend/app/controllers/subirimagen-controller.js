@@ -1,21 +1,39 @@
 let upload = (req, res) => {
     let id = req.query.id;
-    
+    let rut;
+
     if(req['files'].files.length > 1){
-      req['files'].files.forEach((element, index )=> {
-        element.mv(`./images/${element.name}.png`, function(err) {
+      req['files'].files.forEach((element )=> {
+
+        let nomImage = element.name.split(',');
+        if(nomImage[2] == 'P' && nomImage[0] == 'perfil'){
+          rut = './images/perfilprog/';
+        }else{
+          rut = './images/portadaprog/';
+        }
+
+        element.mv(`${rut}${element.name}.png`, function(err) {
           console.log(err);
         });
       });
+
     }else{
-      req['files'].files.mv(`./images/${req['files'].files.name}.png`, function(err) {
+      
+      let nomImage = req['files'].files.name.split(',');
+      if(nomImage[2] == 'P' && nomImage[0] == 'perfil'){
+        rut = './images/perfilprog/';
+      }else if(nomImage[2] == 'P' && nomImage[0] == 'portada'){
+        rut = './images/portadaprog/';
+      }else{
+        rut = './images/perfiluser/';
+      }
+
+      req['files'].files.mv(`${rut}${req['files'].files.name}.png`, function(err) {
         console.log(err);
       });
     }
     
-    console.log(req['files']);
 
-    console.log(req['files']);
     return res.status(201).json({"Status": "upload ok"});
 }
   

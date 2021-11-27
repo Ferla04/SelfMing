@@ -5,8 +5,8 @@
             <div class="container-file filePerfil" *ngIf="editar" ><input (change)="subirFoto($event, 'perfil')" type="file"></div>
 
             <div class="foto_descripcion" >
-                <img class="foto" [src]="photoSelectedPerfil || '../../../assets/perfil.jpg'">
-                <img class="banner" [src]="photoSelectedPortafolio || '../../../assets/portada.jpg'">
+                <img class="foto" src={{photoSelectedPerfil}}>
+                <img class="banner" src={{photoSelectedPortada}}>
                 <div class="descripcion">
                     <div class="contener_nombre">
                         <h2>{{i.nomcompleto}}</h2>

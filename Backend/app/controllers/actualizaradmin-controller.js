@@ -4,6 +4,7 @@ let actualizaradmin = async (req, res) => {
 
     const connection = db.connection();
 
+    const id = req.body.id;
     const descripcion = req.body.descripcion;
     const correo = req.body.correo;
     const urlprog = req.body.urlprog;
@@ -11,31 +12,23 @@ let actualizaradmin = async (req, res) => {
     const especialidad = req.body.especialidad;
     const portada = req.body.portada;
     const perfil = req.body.perfil
-    
+
     console.log(req.body);
-    
-    // function register(){
-    //     db.registroadmin(connection,correo,nombre,celular,hashPass,descripcion,rango,portafolio,especialidad).then(resolve =>{
+    console.log(portada);   
 
-    //         connection.end();
-    //     }).catch(err =>{
-    //         console.log(err);
-    //     })
-    // }
-
-    // res.status(200).json(
-    //     {"Status": "ok registrado", 
-    //     "reg": true,
-    //     "nombre": nombre,
-    //     "correo": correo,
-    //     "celular": celular,
-    //     "password": password,
-    //     "portafolio": portafolio,
-    //     "rango": rango,
-    //     "especialidad": especialidad,
-    //     "descripcion": descripcion})
-    res.status(200).json(
-        {"Status": "holaaaa"})
+    db.updateAdmin(connection,id,correo,descripcion,urlprog,rango,especialidad,portada,perfil).then(resolve => {
+        connection.end();
+        return res.status(200).json({
+            "Status": "ok registrado", 
+            "reg": true,
+            "correo": correo,
+            "rango": rango,
+            "especialidad": especialidad,
+            "descripcion": descripcion
+        })
+    }).catch(err =>{
+        console.log(err);
+    })
     
 }
   
