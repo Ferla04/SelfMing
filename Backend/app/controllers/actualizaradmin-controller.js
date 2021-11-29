@@ -11,10 +11,7 @@ let actualizaradmin = async (req, res) => {
     const rango = req.body.rango;
     const especialidad = req.body.especialidad;
     const portada = req.body.portada;
-    const perfil = req.body.perfil
-
-    console.log(req.body);
-    console.log(portada);   
+    const perfil = req.body.perfil 
 
     db.updateAdmin(connection,id,correo,descripcion,urlprog,rango,especialidad,portada,perfil).then(resolve => {
         connection.end();

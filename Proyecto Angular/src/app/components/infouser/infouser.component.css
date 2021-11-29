@@ -3,11 +3,15 @@ main{
     position: relative;
     height: 220px;
     border-bottom: 2px solid #460e56;
+    display: flex;
+    justify-content: center;
 }
 
 .section1{
+    width: 80%;
     display: flex;
     justify-content: space-between;
+    
 }
 
 .imagen{
@@ -15,12 +19,13 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .imagen div{
     background:black; 
-    width: 135px;
-    height:135px;
+    width: 190px;
+    height:190px;
     border-radius:50%; 
     border:3px solid #460e56;
 }
@@ -43,7 +48,8 @@ main{
 }
 
 .article{
-    width: 70%;
+    width: 65%;
+    height: 175px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -55,27 +61,39 @@ main{
 
 .article div p:first-child{
     font-weight: 900;
-    font-size: 18px;
+    font-size: 20px;
 }
 
-.article div p:last-child{
-    font-size: 18px;
+.article div input{
+    font-size: 20px;
+    padding-left: 4px;
     margin-left: 5px;
-    width: 560px;
-    border-bottom: 2px solid black;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #707070;
+    outline: none;
 }
 
-main button{
+.editar{
     background-color: black;
+    text-align: center;
+    width: 200px;
     color: #fff;
     font-size: 16px;
     font-weight: 900;
     padding: 5px 40px; 
-    border: none; 
     border-radius: 20px;
+    border: 2px solid #000;
     position: absolute;
     left: 320px;
     bottom: -14px;
+    cursor: pointer;
+}
+
+main button{
+    background-color: #fdb824;
+    border: 2px solid #460e56;
+    color: #000;
 }
 
 .section2{
@@ -102,3 +120,42 @@ main button{
     color: #460e56; 
     font-weight: 900;
 }
+
+
+
+
+.container-file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Baloo Chettan 2', cursive;
+    background-color: #460e56c9;
+    color: #fff;
+    border-radius: 20px; 
+}
+
+.filePortada{
+    position: absolute;
+    bottom: 20px;
+}
+
+.container-file::before{
+    content: 'cambiar Imagen'; 
+    position: absolute;
+}
+
+.container-file input[type="file"] {
+    opacity: 0;
+    width: 180px;
+    height: 35px;
+    display: inline-block;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }

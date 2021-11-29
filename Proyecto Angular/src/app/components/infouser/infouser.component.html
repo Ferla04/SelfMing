@@ -1,31 +1,37 @@
-<main>
-    <section class="section1">
-        <div class="imagen">
-            <div><img class="foto" src="../../../assets/perfil.jpg"></div>
-            <p>Pardo6421</p>
-        </div>
-        <article class="article">
-            <div>
-                <p>Nombre:</p>
-                <p>pardo Reyes Montoya</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <main>
+        <section class="section1">
+            <div class="imagen">
+                <div><img class="foto" src={{photoSelectedPerfil}}></div>
+                <article class="container-file filePortada" *ngIf="editar" ><input type="file" (change)="subirFoto($event)"></article>
             </div>
-            <div>
-                <p>Correo:</p>
-                <p>camijun@gmail.com</p>
-            </div>
-            <div>
-                <p>Celular:</p>
-                <p>320-750-9544</p>
-            </div>
-        </article>
+            <article class="article">
+                <div>
+                    <p>Nombre:</p>
+                    
+                    <input type="text" #editInputs formControlName="nombre" readonly="true">
+                </div>
+                <div>
+                    <p>Correo:</p>
+                    <input type="email" #editInputs formControlName="correo" readonly="true">
+
+                </div>
+                <div>
+                    <p>Celular:</p>
+                    <input type="number" #editInputs formControlName="celular" readonly="true">
+                </div>
+            </article>
+        </section>
+        <a class="editar" *ngIf="!editar" id="entrarEdicion" (click)="editarPerfil()">Editar perfil</a>
+        <button class="editar" *ngIf="editar" type="submit" >Salir y Guardar</button>
+    </main>
+</form>
+
+    <section class="section2">
+        <h2>Propuestas enviadas</h2>
+        <ul class="titulos">
+            <li>Freelancer</li>
+            <li>Fecha de Entrega</li>
+            <li>Estados</li>
+        </ul>
     </section>
-    <button type="submit">Editar</button>
-</main>
-<section class="section2">
-    <h2>Propuestas enviadas</h2>
-    <ul class="titulos">
-        <li>Freelancer</li>
-        <li>Fecha de Entrega</li>
-        <li>Estados</li>
-    </ul>
-</section>

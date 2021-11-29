@@ -150,6 +150,32 @@ function updateAdmin(c,id,correo,descripcion,urlprog,rango,especialidad,portada,
 }
 
 
+function selectedUser(c, iduser){
+    return new Promise((resolve,reject) =>{
+        c.query('SELECT idusuario, correo, nomcompleto, celular, perfil FROM registrouser WHERE idusuario = ?', [iduser],
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results)
+        })
+    })
+}
+
+
+function updateUser(c,id,correo,nombre,celular,perfil){
+    return new Promise((resolve,reject) =>{
+        c.query(`UPDATE registrouser SET ?
+        WHERE idusuario=${id}`,{correo:correo, nomcompleto:nombre, celular:celular, perfil:perfil},
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results)
+        })
+    })
+}
+
 //Tiempo de espera
 function sleepTime(time) {
     return new Promise((resolve, reject)=>{
@@ -168,8 +194,11 @@ module.exports = {
     proyecto,
     searchMail,
     changetoActive,
-    sleepTime,
     bringAdmin,
     updateAdmin,
-    selectedAdmin
+    updateUser,
+    selectedAdmin,
+    selectedUser,
+    sleepTime,
+
 }

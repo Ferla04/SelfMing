@@ -13,10 +13,13 @@ const proyecto = require('./routes/proyecto');
 const email = require('./routes/email');
 const verificartoken = require('./routes/verificartoken');
 const inicio = require('./routes/inicio');
-const traerprog = require('./routes/traerprog');
 const subirimagen = require('./routes/subirimagen');
 const actualizaradmin = require('./routes/actualizaradmin');
-const downloadimage = require('./routes/downloadimage')
+const actualizaruser = require('./routes/actualizaruser');
+const downloadimage = require('./routes/downloadimage');
+const traerprog = require('./routes/traerprog');
+const traeruser = require('./routes/traeruser')
+
 
 
 const app = express()
@@ -40,7 +43,10 @@ app.use(`${baseApi}/inicio`, inicio);
 app.use(`${baseApi}/traerprog`, traerprog);
 app.use(`${baseApi}/subirimagen`, subirimagen);
 app.use(`${baseApi}/actualizaradmin`, actualizaradmin);
+app.use(`${baseApi}/actualizaruser`, actualizaruser);
 app.use(`${baseApi}/downloadimage`, downloadimage);
+app.use(`${baseApi}/traeruser`, traeruser);
+
 
 
 

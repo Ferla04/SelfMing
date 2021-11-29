@@ -1,5 +1,5 @@
 let upload = (req, res) => {
-    let id = req.query.id;
+
     let rut;
 
     if(req['files'].files.length > 1){
