@@ -30,6 +30,7 @@ section{
     position: absolute;
     bottom: 10px;
     left: 17%;
+    cursor: pointer;
 }
 
 .filePerfil{

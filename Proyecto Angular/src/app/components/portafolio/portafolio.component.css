@@ -2,7 +2,17 @@
     width: 100%;
     background-color: #1c1321;
     padding: 50px 50px 20px;
+    min-height: 250px;
 }
+
+
+.contVentana p{
+    font-size: 30px;
+    font-family: 'Baloo Chettan 2', cursive;
+    font-style: italic;
+    color: #707070c9;
+}
+
 .portafolio h2{
     color: white;
     font-size: 35px;
@@ -45,4 +55,159 @@
     border-radius: 5px;
     box-shadow: 4px 4px 15px #150d1a;
     margin: 8px;
+}
+
+.contVentana{
+    text-align: center;
+}
+.ventana{
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px 26px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #fdb824;
+    cursor: pointer;
+}
+.ventana:hover{
+    box-shadow: 0 0 15px #cc60ba;
+}
+
+/*--------- Ventana Modal ----------*/
+
+.contModal{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: fixed;
+    top: 3px;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.modal{
+    margin: auto;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0px 0px 5px #fff;
+    width: 480px;
+    height: 340px;
+    padding: 30px 50px;
+    border-radius: 10px;
+}
+
+.modal > i{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.modal h1{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+form{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form div{
+    display: flex;
+    margin: 15px 0;
+}
+
+form div label{
+    font-size: 17px;
+    margin-right: 5px;
+}
+
+form div input{
+    border: none;
+    font-size: 17px;
+    padding: 0 5px;
+    outline: none;
+    border-bottom: 2px solid #1c1321;
+}
+
+.inputfile{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.modal button{
+    margin-top: 10px;
+    background-color: #1c1321;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    width: 110px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: .5s ease box-shadow;
+}
+
+.modal button:hover{
+    box-shadow: 3px 3px 10px #460e56;
+}
+
+.container-file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Baloo Chettan 2', cursive;
+    background-color: #fdb824e7;
+    color: black;
+    border-radius: 20px; 
+}
+
+/* .filePortada{
+    position: absolute;
+    bottom: 10px;
+    left: 17%;
+    cursor: pointer;
+} */
+/* 
+.container-file::before{
+    content: var(--h); 
+    position: absolute;
+} */
+
+.container-file p{
+    font-size: 16px;
+    position: absolute;
+}
+
+.container-file input[type="file"] {
+    opacity: 0;
+    width: 210px;
+    height: 35px;
+    display: inline-block;
 }

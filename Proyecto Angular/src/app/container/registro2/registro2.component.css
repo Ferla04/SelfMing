@@ -140,7 +140,7 @@ button{
     border-radius: 20px;
     display: block;
     width: 25%;
-    margin: 10px auto;
+    margin: 0 auto;
     color: #ffff;
     height: 40px;
     font-size: 16px;
@@ -166,7 +166,11 @@ button:hover{
     color: #808080;
     display: flex;
     flex-direction: column;
-    margin: 40px 0 0;
+    margin-bottom: 25px;
+}
+
+.rango{
+    margin-top: 40px;
 }
 
 .diseño{
