@@ -4,7 +4,7 @@ let traerAdmin = (req, res) => {
 
     const connection = db.connection();
     const idprog = req.query.id;
-    console.log(idprog);
+
     db.selectedAdmin(connection, idprog).then(resolve =>{
         // Enviar API de los programadores
         return res.status(200).json(resolve);

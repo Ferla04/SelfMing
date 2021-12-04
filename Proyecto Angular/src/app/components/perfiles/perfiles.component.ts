@@ -32,11 +32,42 @@ export class PerfilesComponent implements OnInit {
       const data = await resPieces.json(); 
       this.card = data;
       console.log(this.card);
+
+      // if(this.data[0].portada == 'N'){
+      //   this.nombrePortada = '../../../assets/portada.jpg';
+      // }else{
+      //   this.nombrePortada =`${this.BASE_API}/downloadimage?imagen=${this.data[0].portada}`;
+      // }
+      
+
+      setTimeout((e)=>{
+        let banner = document.querySelectorAll('.banner');
+        let perfil = document.querySelectorAll('.perfil');
+    
+        console.log(banner);
+        this.card.forEach((e,i) =>{
+          if(e.portada == 'N'){
+            banner[i].setAttribute('src','../../../assets/portada.jpg')
+          }else{
+            banner[i].setAttribute('src',`${this.BASE_API}/downloadimage?imagen=${e.portada}`)
+          }
+
+          if(e.perfil == 'N'){
+            perfil[i].setAttribute('src','../../../assets/perfil.jpg')
+          }else{
+            perfil[i].setAttribute('src',`${this.BASE_API}/downloadimage?imagen=${e.perfil}`)
+          }
+        
+        })
+      },50)
       
     } catch (error) {
       console.log(error);
     }
+
+
   }
+
 
   verPerfil(idprog){
     this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(

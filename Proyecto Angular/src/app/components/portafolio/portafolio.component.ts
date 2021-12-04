@@ -12,12 +12,17 @@ import { Router } from '@angular/router';
 })
 export class PortafolioComponent implements OnInit {
 
+  BASE_API: string = environment.BASE_API;
   form: FormGroup;
   id:any;
   changeButton:boolean;
   imagenes:any[] = [];
-  portafolios:any[] = [];
   mensaje:string = 'Seleccione 4 Imagenes';
+  modal: boolean = false;
+  showButton:boolean = true;
+  showMessage:boolean = true;
+
+  portafolios:any[] = [];
 
   constructor(
     public client: ClientService,
@@ -43,10 +48,37 @@ export class PortafolioComponent implements OnInit {
       url: ['', Validators.required],
     });
 
+    this.client.getRequestAllProducts(`${this.BASE_API}/traerporta?id=${this.id}`).subscribe(
+      (response: any) => {
+        console.log(response);
+
+        if(response.length > 0){
+          this.portafolios = response[0];
+          for(let i = 0; i < this.portafolios.length; i++){
+            this.portafolios[i]['imgsPort'] = response[i+1];
+          }
+        }
+        console.log(this.portafolios)
+
+        if(response[0].length >= 2){
+          this.showButton = false;
+        }else{
+          this.showButton = true;
+        }
+
+        if(response[0].length > 0){
+          this.showMessage = false
+        }else{
+          this.showMessage = true
+        }
+      },
+      (error) => {
+        console.log(error.status);
+      })
   }
 
   CrearPortafolio(){
-
+    this.modal= true;
   }
 
   subirFoto(event:any){
@@ -62,24 +94,45 @@ export class PortafolioComponent implements OnInit {
       return;
     }
 
-    this.imagenes = event.target.files;
-    console.log(this.imagenes);
-    
+    for (const i of event.target.files) {
+      this.imagenes.push(i);
+    }
     
   }
 
   onSubmit(){
-    if(this.imagenes.length > 0){
-      const fd = new FormData();
-      let nombreImagen:string;
-      for(const i in this.imagenes){
+    this.modal = false;
 
-        nombreImagen = `portafolio,${i},${this.id}`;
-        fd.append('files',this.imagenes[i],nombreImagen);
+    if (this.form.valid) {
+      this.client.postRequestSendForm(`${this.BASE_API}/nuevoportafolio`, {
+        id: this.id,
+        nombre: this.form.value.nombre,
+        url: this.form.value.url
+      }).subscribe(
+        (response: any) => {
 
-      }  
+          if(this.imagenes.length > 0){
+            const fd = new FormData();
+            let nombreImagen:string;
 
+            for(const i in this.imagenes){
+              nombreImagen = `portafolio,${i},${this.id},${response.idportafolio}`;
+              fd.append('files',this.imagenes[i],nombreImagen);
+            }  
+
+            this.client.postRequestSendForm(`${this.BASE_API}/imagenesportafolio?idportafolio=${response.idportafolio}`, fd).subscribe(res => {
+              console.log('respuesta:', res);
+              window.location.reload();
+            }) 
+          }
+
+      },
+      (error) => {
+        console.log(error.status);
+        console.log(error.error.errors);
+      })
     }
+
   }
 
 }

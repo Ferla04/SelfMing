@@ -19,7 +19,9 @@ const actualizaruser = require('./routes/actualizaruser');
 const downloadimage = require('./routes/downloadimage');
 const traerprog = require('./routes/traerprog');
 const traeruser = require('./routes/traeruser')
-
+const nuevoportafolio = require('./routes/nuevoportafolio');
+const imagenesportafolio = require('./routes/imagenesportafolio');
+const traerporta = require('./routes/traerporta');
 
 
 const app = express()
@@ -46,6 +48,9 @@ app.use(`${baseApi}/actualizaradmin`, actualizaradmin);
 app.use(`${baseApi}/actualizaruser`, actualizaruser);
 app.use(`${baseApi}/downloadimage`, downloadimage);
 app.use(`${baseApi}/traeruser`, traeruser);
+app.use(`${baseApi}/nuevoportafolio`, nuevoportafolio);
+app.use(`${baseApi}/imagenesportafolio`,imagenesportafolio);
+app.use(`${baseApi}/traerporta`,traerporta);
 
 
 

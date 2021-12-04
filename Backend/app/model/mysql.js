@@ -176,6 +176,56 @@ function updateUser(c,id,correo,nombre,celular,perfil){
     })
 }
 
+
+function newPortafolio(c,id,nombre,url){
+    return new Promise((resolve,reject) =>{
+        c.query(`INSERT INTO portafolio SET ?`,{idprog:id, nombre:nombre, url:url},
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results.insertId);
+        })
+    })
+}
+
+
+function portafolioImage(c,id,url){
+    return new Promise((resolve,reject) =>{
+        c.query(`INSERT INTO imagenes SET ?`,{idportafolio:id, urlimagen:url},
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results.insertId);
+        })
+    })
+}
+
+function bringPortafolio(c, idprog){
+    return new Promise((resolve,reject) =>{
+        c.query('select * from portafolio where idprog = ?', [idprog],
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        })
+    })
+}
+
+function holasss(c,idporta){
+    return new Promise((resolve,reject) =>{
+        c.query(`select urlimagen from imagenes where idportafolio = ?`,[idporta],
+        (err, results)=>{
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        })
+    })
+}
+
 //Tiempo de espera
 function sleepTime(time) {
     return new Promise((resolve, reject)=>{
@@ -199,6 +249,10 @@ module.exports = {
     updateUser,
     selectedAdmin,
     selectedUser,
+    newPortafolio,
+    portafolioImage,
+    bringPortafolio,
+    holasss,
     sleepTime,
 
 }

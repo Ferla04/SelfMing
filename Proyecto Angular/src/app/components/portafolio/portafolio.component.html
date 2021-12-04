@@ -2,32 +2,27 @@
     <h2>
         Portafolio
     </h2>
-    <div class="contVentana">
-        <button *ngIf="changeButton" (click)="CrearPortafolio()" class="ventana">Crear Portafolio</button>
-        <p *ngIf="!changeButton">Este usuario no tiene portafolio</p>
-    </div>
 
-
-    <!-- <div class="galeria">
+    <div *ngFor="let i of portafolios" class="galeria">
         <div class="info_galeria">
-            <h3>Proyecto: <span class="nombre_proy">Selfming</span></h3>
-            <h3>Link: <span class="nombre_proy"><a href="#">http://SelfMing</a></span></h3>
+            <h3>Proyecto: <span class="nombre_proy">{{i.nombre}}</span></h3>
+            <h3>Link: <span class="nombre_proy"><a href=i.url>{{i.url}}</a></span></h3>
         </div>
         <div class="imagenes">
-            <img src="../../../assets/portada.jpg">
-            <img src="../../../assets/portada.jpg">
-            <img src="../../../assets/portada.jpg">
-            <img src="../../../assets/portada.jpg">
-            <img src="../../../assets/portada.jpg">
-            <img src="../../../assets/portada.jpg">
+            <!-- <img *ngFor="let j of i.imgsPort" [src]="http://localhost:3000/api/v01/downloadimage?imagen={{j.urlimage}} || ../../../assets/portada.jpg'"> -->
         </div>
-    </div> -->
+    </div>
+
+    <div class="contVentana">
+        <button *ngIf="changeButton && showButton" (click)="CrearPortafolio()" class="ventana">Crear Portafolio</button>
+        <p *ngIf="!changeButton && showMessage">Este usuario no tiene portafolio</p>
+    </div>
 
 </div>
 
-<article class="contModal" id ="contModal">
-    <div class="modal" id = 'modal'>
-        <i class="fas fa-times fa-lg" id ="close"></i>
+<article *ngIf="modal" class="contModal" id ="contModal">
+    <div class="modal" id ="modal">
+        <i class="fas fa-times fa-lg" (click)="modal = !modal"></i>
         <h1>Agregar Portafolio</h1>
         <form  [formGroup]="form" (ngSubmit)="onSubmit()">
             <div>
