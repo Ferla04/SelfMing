@@ -1,37 +1,39 @@
 <body>
     <div class="proyecto">
         <h2>Proyecto</h2>
-        <form [formGroup]="form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <section>
                 <article>
                     <div class="grupo">
-                        <input class="inputs" type="text" required>
-                        <span class="barra"></span>
-                        <label class="label" for=""><i class="far fa-lightbulb"></i>Nombre Proyecto</label>
+                        <span class="diseño"><i class="far fa-lightbulb"></i>Nombre Proyecto</span>
+                        <input class="inputs" type="text" formControlName="nombre" required>
+                        <p class="barra"></p>
                     </div>
                     <div class="grupo">
-                        <input class="inputs" type="text" required>
-                        <span class="barra"></span>
-                        <label class="label" for=""><i class="far fa-calendar-alt"></i>Fecha de entrega</label>
+                        <span class="diseño"><i class="far fa-calendar-alt"></i>Fecha de entrega</span>
+                        <input class="inputs" type="date" formControlName="fecha" required>
+                        <p class="barra"></p>
                     </div>
                     <div class="grupo">
                         <span class="diseño"><i class="fas fa-laptop-code"></i>Programador</span> 
-                        <input id="prog" formControlName ='programador' type="email"  [(ngModel)]="progamador" required readonly='readonly'>
+                        <input class="prog" formControlName="prog" type="text" required readonly>
                     </div>
                     <div class="grupo">
-                        <input class="inputs" type="tel"  id="name4" required>
-                        <span class="barra"></span>
-                        <label class="label" for=""><i class="far fa-envelope"></i>Correo</label>
+                        <span class="diseño"><i class="far fa-envelope"></i>Correo</span>
+                        <input class="prog" formControlName="user" type="text" required readonly>
                     </div>
                 </article>
                 <article>
                     <div class="grupo descrip">
                         <span class="diseño"><i class="fas fa-align-left"></i>Descripción</span>  
-                        <textarea class="inputDifferent" cols="30" rows="15"></textarea>
+                        <textarea class="inputDifferent" cols="30" rows="15" formControlName="descripcion"></textarea>
                     </div>
                     <div class="archivo">
                         <span class="diseño"><i class="fas fa-upload"></i>Archivos:</span> 
-                        <a class="diseño">Adjuntar</a>
+                        <div>
+                            <label class="diseño" for="archivo">{{statusFile}}</label>
+                            <input type="file" id="archivo" formControlName="archivo" (change)="adjuntarArchivo($event)">
+                        </div>
                     </div>
                 </article>
             </section>

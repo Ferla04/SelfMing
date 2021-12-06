@@ -40,9 +40,7 @@ export class InfouserComponent implements OnInit {
       celular: new FormControl()
    });
 
-    let tokenId = localStorage.getItem('id');
-    let signUp = tokenId.split(',')[0];
-    this.id = tokenId.split(',')[1];
+    this.id = localStorage.getItem('iduser');
 
     this.client.getRequestAllProducts(`${this.BASE_API}/traeruser?id=${this.id}`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..

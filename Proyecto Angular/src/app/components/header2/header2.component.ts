@@ -31,11 +31,11 @@ export class Header2Component implements OnInit {
         let role = response.role;
 
         if(role == 'prog'){
-          localStorage.setItem('id', `P,${id}`);
+          localStorage.setItem('idprog', `P,${id}`);
           if(this.route.url == '/perfilProg') return window.location.reload();
           return this.route.navigate( ['/perfilProg']), 1000; 
         } 
-        localStorage.setItem('id', `U,${id}`);
+        localStorage.setItem('iduser', `${id}`);
         return this.route.navigate( ['/perfilUser']);
 
     },

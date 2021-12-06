@@ -64,14 +64,14 @@ function pagos(c, nomproyecto,programador,usuario,fecha,valorp){
 }
 
 //PROYECTO
-function proyecto(c, nomproyecto,fecha,descripcion,estado,programador,usuario){
+function proyecto(c, nombre,fecha,descripcion,prog,user,archivo){
     return new Promise((resolve, reject) =>{
-        c.query('INSERT INTO proyecto SET ?', {nomproyecto:nomproyecto, fecentrega:fecha, descripcion:descripcion, estado:estado, programador:programador, usuario:usuario},
+        c.query('INSERT INTO proyecto SET ?', {nomproyecto:nombre, fecentrega:fecha, descripcion:descripcion, estado:'N', programador:prog, usuario:user, archivo:archivo},
         (err, results) => {
             if(err){
                 return reject(err);
             }
-            return resolve(results)
+            return resolve(results);
         })
     })
 }
@@ -204,7 +204,7 @@ function portafolioImage(c,id,url){
 
 function bringPortafolio(c, idprog){
     return new Promise((resolve,reject) =>{
-        c.query('select * from portafolio where idprog = ?', [idprog],
+        c.query('SELECT * from portafolio WHERE idprog = ?', [idprog],
         (err, results) => {
             if(err){
                 return reject(err);
@@ -214,9 +214,9 @@ function bringPortafolio(c, idprog){
     })
 }
 
-function holasss(c,idporta){
+function bringImages(c,idporta){
     return new Promise((resolve,reject) =>{
-        c.query(`select urlimagen from imagenes where idportafolio = ?`,[idporta],
+        c.query(`SELECT urlimagen from imagenes WHERE idportafolio = ?`,[idporta],
         (err, results)=>{
             if(err){
                 return reject(err);
@@ -252,7 +252,7 @@ module.exports = {
     newPortafolio,
     portafolioImage,
     bringPortafolio,
-    holasss,
+    bringImages,
     sleepTime,
 
 }

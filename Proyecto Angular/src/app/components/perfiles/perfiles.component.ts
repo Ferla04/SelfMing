@@ -73,7 +73,7 @@ export class PerfilesComponent implements OnInit {
     this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
-        localStorage.setItem('id', `S,${idprog}`);
+        localStorage.setItem('idprog', `S,${idprog}`);
         this.route.navigate( ['/perfilProg']);
     },
     //si ocurre un error en el proceso de envío del formulario...

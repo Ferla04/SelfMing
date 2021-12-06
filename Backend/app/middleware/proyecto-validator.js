@@ -2,12 +2,12 @@ const { check, validationResult } = require('express-validator');
 
 
 validatorParams = [
-    check('nomproyecto').isString(),
-    check('fecentrega').isDate(),
+    check('nombre').isString(),
+    check('prog').isInt(),
+    check('user').isInt(),
+    check('fecha').isDate(),
     check('descripcion').isString(),
-    check('estado').isString(),
-    check('usuario').isString(),
-    check('programador').isString(),
+    check('archivo').isString(),
 ];
 
 function validator(req, res, next) {

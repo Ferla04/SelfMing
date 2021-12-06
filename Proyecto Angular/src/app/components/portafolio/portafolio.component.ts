@@ -32,7 +32,7 @@ export class PortafolioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let tokenId = localStorage.getItem('id');
+    let tokenId = localStorage.getItem('idprog');
     let signUp = tokenId.split(',')[0];
     this.id = tokenId.split(',')[1];
     

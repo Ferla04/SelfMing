@@ -32,7 +32,7 @@ form section article{
 
 form .grupo{
     position: relative;
-    margin: 33px 25px;
+    margin: 22px 25px;
 }
 
 input{
@@ -51,7 +51,7 @@ input:focus{
     color: #5e5d5d;
 }
 
-label{
+.grupo label{
     color: #808080;
     font-size: 16.5px;
     position: absolute;
@@ -63,12 +63,6 @@ label{
 
 label i{
     margin-right:4px;
-}
-
-.transInput{
-    top: -14px;
-    font-size: 14px;
-    color: #460e56;
 }
 
 .barra{
@@ -116,15 +110,15 @@ button:hover{
     border: 1px solid #808080;
     min-width: 94%;
     max-width: 94%;
-    min-height: 190px;
-    max-height: 190px;
+    min-height: 230px;
+    max-height: 230px;
     font-size: 15px;
     background: none;
     color: #292828;
     font-size: 15px;
     padding: 10px 10px 10px 5px;
     display: block;
-    margin: 10px auto 0;
+    margin: 10px auto 25px;
 }
 
 .inputDifferent:focus{
@@ -136,21 +130,23 @@ button:hover{
 
 .archivo{
     margin: 0px 25px;
+    display: flex;
 }
 
-.archivo span, .archivo a{
-    display: inline;
-}
-
-.archivo a{
+.archivo label{
+    cursor: pointer;
     text-decoration: underline;
+}
+
+.archivo input{
+    display: none;
 }
 
 .diseño{
     font-family: Arial, Helvetica, sans-serif;
     display: block;
+    cursor:default;
     color: #808080;
-    cursor: pointer;
     margin-left: 4px;
 }
 
@@ -158,6 +154,24 @@ button:hover{
     margin-right: 5px;
 }
 
-#prog{
+.prog{
     color:#5e5d5d; 
+}
+
+input[type=date]::-webkit-datetime-edit-month-field, input[type=date]::-webkit-datetime-edit-day-field, input[type=date]::-webkit-datetime-edit-year-field{
+    color: #707070;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    font-size: 18px;
+    color: #707070;
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+    filter: drop-shadow(16px 16px 20px rgb(112, 112, 112)) invert(40%);
+}
+
+input[type=date]::-webkit-calendar-picker-indicator:active {
+color: blue;
 }

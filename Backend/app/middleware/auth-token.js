@@ -14,11 +14,13 @@ let njwtAuth = (req, res, next) => {
 
 	let id = decoded['body'].id;
 	let role = decoded['body'].role;
+	let correo = decoded['body'].correo
 
 		return res.status(200).json({
 			"Status": "Token ok",
 			id,
-			role
+			role,
+			correo
 		});
 	});
 };

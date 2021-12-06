@@ -19,7 +19,7 @@ let auth = async (req, res) => {
                 if(resolve.length == 0 || !bcrypt.compareSync(password, resolve[0].password)){
                     return res.status(401).send({ status: 'Usuario y/o password incorrectas', auth: false});
                 }else if(resolve[0].estado == 'A'){
-                    let jwt = nJwt.create({ id: resolve[0].idprog, role: 'prog' }, key.SIGNING_KEY);
+                    let jwt = nJwt.create({ id:resolve[0].idprog, correo:resolve[0].correo ,role: 'prog' }, key.SIGNING_KEY);
                     jwt.setExpiration(new Date().getTime() + (60 * 60 * 1000));
                     token = jwt.compact();
 
@@ -39,7 +39,7 @@ let auth = async (req, res) => {
                 
             }else{                    
                 
-                let jwt = nJwt.create({ id: resolve[0].idusuario,  role: 'user' }, key.SIGNING_KEY);
+                let jwt = nJwt.create({ id: resolve[0].idusuario, correo:resolve[0].correo, role: 'user' }, key.SIGNING_KEY);
                 jwt.setExpiration(new Date().getTime() + (60 * 60 * 1000));
                 token = jwt.compact();
                 console.log('soy usuario')

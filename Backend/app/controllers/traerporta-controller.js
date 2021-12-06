@@ -10,9 +10,9 @@ let traerporta = (req, res) => {
     db.bringPortafolio(connection, idprog).then(resolve =>{
         resultPorta.push(resolve);
         resolve.forEach(e => {
-            db.holasss(connection,e.idportafolio).then(resp =>{
+            db.bringImages(connection,e.idportafolio).then(resp =>{
                 resultPorta.push(resp);
-            }).catch(err =>{
+            }).catch(err =>{ 
                 console.log(err);
             })
         });

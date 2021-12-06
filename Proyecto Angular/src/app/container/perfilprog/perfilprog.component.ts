@@ -11,11 +11,6 @@ export class PerfilprogComponent implements OnInit {
   constructor(private route: Router) { }
 
   ngOnInit(): void {
-    let id = localStorage.getItem('id');
-    
-    if(id[0] == 'U'){
-      this.route.navigate(['/inicio'])
-    }
   }
 
 }
