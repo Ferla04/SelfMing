@@ -182,11 +182,10 @@ option{
 
 .datos{
     margin-top: 90px;
-    width: 200px;
+    width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* background-color: beige; */
 }
 
 .datosGrupo span{

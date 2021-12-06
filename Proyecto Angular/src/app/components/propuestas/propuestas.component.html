@@ -12,10 +12,24 @@
             <li>{{e.estado}}</li>
             <li>
                 <i class="prog fas fa-user-tie fa-lg" (click)="irPerfilProg(e.programador)"></i>
-                <i class="ojo fas fa-eye fa-lg"></i>
+                <i class="ojo fas fa-eye fa-lg" (click)="openProject(e.programador)"></i>
                 <i class="rojo fas fa-trash-alt fa-lg"></i>
             </li>
         </ul>
     </div>
 </section>
+
+<article *ngIf="modalProject" class="contModal" id ="contModal" >
+    <div class="modal">
+        <i class="fas fa-times fa-lg" id ="close" (click)="modalProject = !modalProject"></i>
+        <h1>Sefming</h1>
+        <p><span>Programador: </span>{{proyecto.programadorC}}</p>
+        <p><span>Estado: </span>{{proyecto.estado}}</p>
+        <p><span>Fecha Entrega: </span>{{proyecto.fecentrega}}</p>
+        <p><span>valor: </span>{{proyecto.valor}}</p>
+        <p id="respuesta"><span>Respuesta: </span>{{proyecto.descripcion}}</p>
+        <p><span>Archivo: </span>{{proyecto.archivo}}</p>
+
+    </div>
+</article>
 

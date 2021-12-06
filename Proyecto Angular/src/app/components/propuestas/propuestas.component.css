@@ -67,3 +67,58 @@
 .propuestas .rojo{color: #ff0000;}
 .propuestas .verde{color: #3cff3c;}
 
+
+.contModal{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: fixed;
+    top: 1px;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.modal{
+    margin: auto;
+    background-color: #fff;
+    color: #000;
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal i{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    cursor: pointer;
+}
+
+.modal h1{
+    width: 340px;
+    height: 45px;
+    font-size: 35px;
+    font-family: 'Baloo Chettan 2', cursive;
+    text-align: center;
+    margin: 5px 0 10px;
+    overflow: hidden;
+}
+
+
+.modal p{
+    margin: 12px 0;
+    width: 340px;
+    max-height: 20px;
+    overflow: hidden;
+}
+
+.modal #respuesta{
+    max-height: 110px;
+}
+
+.modal span{
+    font-size: 17px;
+    font-weight: 600;
+    color: #460e56;
+}

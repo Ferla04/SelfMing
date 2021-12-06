@@ -3,15 +3,15 @@
         <div class="datos">
             <div class="datosGrupo">
                 <span>Proyecto: </span>
-                <span>SelfMing </span>
+                <span>{{proyecto.nomproyecto}}</span>
             </div>
             <div class="datosGrupo">
-                <span>Email: </span>
-                <span>pardo@gmail.com </span>
+                <span>Email Programador: </span>
+                <span>{{proyecto.programadorC}}</span>
             </div>
             <div class="datosGrupo">
                 <span>valor: </span>
-                <span id="valor">1'000.000</span>
+                <span id="valor">{{proyecto.valor}}</span>
             </div>
             <button type="submit">Enviar</button>
         </div>
@@ -30,7 +30,7 @@
                 <div class="inputsCard">
                     <div class="inputBox">
                         <span>Numero Tarjeta</span>
-                        <input type="text" placeholder="0123 4567 8901 2345" maxlength="19">
+                        <input type="text" id="inputTarget" [(ngModel)]="numTarget" name="target" placeholder="0123 4567 8901 2345">
                     </div>
                     <div class="inputBox">
                         <span>Nombre y Apellido</span>

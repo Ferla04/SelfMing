@@ -242,7 +242,9 @@ function bringProjects(c,id, nombre){
 
 function selectProjects(c,idprog,iduser){
     return new Promise((resolve,reject) =>{
-        c.query(`SELECT * FROM proyecto WHERE usuario = ? and programador = ?`,[iduser,idprog],
+        c.query(`SELECT rp.correo as programadorC, ru.correo as usuarioC, p.* FROM proyecto p inner join registroprog rp on p.programador=rp.idprog
+        inner join registrouser ru on p.usuario=ru.idusuario WHERE p.usuario=? and p.programador=?`,
+        [iduser,idprog],
         (err, results)=>{
             if(err){
                 return reject(err);

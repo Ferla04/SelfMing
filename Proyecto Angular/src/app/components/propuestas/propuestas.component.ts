@@ -13,6 +13,9 @@ export class PropuestasComponent implements OnInit {
   BASE_API: string = environment.BASE_API;
   id:any;
   propuestas:any;
+  modalProject:boolean = false;
+  proyecto:any = {};
+
 
   constructor(
     public client: ClientService,
@@ -34,6 +37,7 @@ export class PropuestasComponent implements OnInit {
           if(e.estado == 'F') e.estado = 'Finalizado'; 
 
           e.fecentrega = e.fecentrega.slice(0,10);
+
         });
 
     },
@@ -43,9 +47,36 @@ export class PropuestasComponent implements OnInit {
     )
   }
 
-  irPerfilProg(idprog){
+  irPerfilProg(idprog:string){
     localStorage.setItem('idprog', `S,${idprog}`);
     // this.route.navigate( ['/perfilProg']);
     window.open('/perfilProg', '_blank');
   }
+
+  openProject(idprog:string){
+    this.modalProject = true;
+
+
+    this.client.getRequestAllProducts(`${this.BASE_API}/selectpropuesta?idprog=${idprog}&iduser=${this.id}`).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.proyecto = response[0];
+        console.log(this.proyecto);
+
+        if(this.proyecto.estado == 'N') this.proyecto.estado = 'Enviado'; 
+        if(this.proyecto.estado == 'A') this.proyecto.estado = 'Aceptado'; 
+        if(this.proyecto.estado == 'P') this.proyecto.estado = 'Pagado'; 
+        if(this.proyecto.estado == 'F') this.proyecto.estado = 'Finalizado'; 
+
+        this.proyecto.fecentrega = this.proyecto.fecentrega.slice(0,10);
+        
+        if(!this.proyecto.valor) this.proyecto.valor = 'No hay valor'
+        
+    },
+    (error) => {
+      console.log(error.status);
+    })
+
+  }
+
 }
