@@ -20,6 +20,7 @@ export class BannerComponent implements OnInit{
   form: FormGroup;
   id:any;
   editar:boolean = false;
+  notProgrammer:boolean = true;
   data:any[] = [];
   BASE_API: string = environment.BASE_API;
   changeButton: boolean = true;
@@ -55,6 +56,10 @@ export class BannerComponent implements OnInit{
         this.changeButton = false;
       }else{
         this.changeButton = true;
+      }
+
+      if(!localStorage.getItem('iduser')){
+        this.notProgrammer = false;
       }
 
 

@@ -74,6 +74,26 @@ export class LoginComponent implements OnInit {
             });
           }
           this.load = true;
+
+          this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(
+            //cuando la respuesta del server llega es emitida por el observable mediante next()..
+            (response: any) => {
+              let id = response.id;
+              let role = response.role;
+      
+              if(role == 'prog'){
+                return localStorage.setItem('idprog', `P,${id}`);
+              } 
+              return localStorage.setItem('iduser', `${id}`);
+          },
+          //si ocurre un error en el proceso de envío del formulario...
+          (error) => {
+            //se imprime el status del error
+            console.log(error.status);
+            // this.route.navigate( ['/']);
+            }
+          )
+
         },
         
       (error) => {

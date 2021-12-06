@@ -85,7 +85,9 @@ main{
     border-radius: 20px;
     border: 2px solid #000;
     position: absolute;
-    left: 320px;
+    left: 0;
+    right: 0;
+    margin: auto;
     bottom: -14px;
     cursor: pointer;
 }
@@ -95,32 +97,6 @@ main button{
     border: 2px solid #460e56;
     color: #000;
 }
-
-.section2{
-    padding: 20px 270px 0px;
-}
-.section2 h2{
-    margin-bottom: 20px;
-}
-
-.section2 ul{
-    width: 100%;
-    display: flex;
-}
-
-.section2 li {
-    width: 25%;
-    list-style: none;
-    text-align: center; 
-    border: none; 
-    padding: 5px;
-}
-
-.titulos li{
-    color: #460e56; 
-    font-weight: 900;
-}
-
 
 
 

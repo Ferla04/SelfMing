@@ -39,7 +39,7 @@ export class ProyectoComponent implements OnInit {
       descripcion: new FormControl(),
     });
 
-    let tokenId = localStorage.getItem('id');
+    let tokenId = localStorage.getItem('idprog');
     this.idProg = tokenId.split(',')[1];
 
     this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(
@@ -109,8 +109,7 @@ export class ProyectoComponent implements OnInit {
         archivo: nomProyecto
       }).subscribe(
         (response: any) => {
-          localStorage.setItem('id', `U,${this.idUser}`);
-          return this.route.navigate( ['/perfilUser']);
+          return this.route.navigate( ['/perfilProg']);
         },
 
         (error) => {

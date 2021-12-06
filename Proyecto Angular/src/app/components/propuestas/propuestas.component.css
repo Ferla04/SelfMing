@@ -1,5 +1,28 @@
 .section2{
+    margin-top: 50px;
     padding: 0px 270px;
+}
+
+.section2 h2{
+    margin-bottom: 20px;
+}
+
+.section2 ul{
+    width: 100%;
+    display: flex;
+}
+
+.section2 li {
+    width: 25%;
+    list-style: none;
+    text-align: center; 
+    border: none; 
+    padding: 5px;
+}
+
+.titulos li{
+    color: #460e56; 
+    font-weight: 900;
 }
 
 .section2 ul{
@@ -26,6 +49,14 @@
     margin-bottom: 10px;
 }
 
+.propuestas li{
+    margin: auto;
+    line-height: 22px;
+    width: 170px;
+    height: 31px;
+    overflow: hidden;
+}
+
 .propuestas i{
     margin: 0 10px;
     cursor: pointer;
@@ -35,3 +66,4 @@
 .ojo{color:#b04ab6;}
 .propuestas .rojo{color: #ff0000;}
 .propuestas .verde{color: #3cff3c;}
+

@@ -226,6 +226,20 @@ function bringImages(c,idporta){
     })
 }
 
+
+function bringProjects(c,id, nombre){
+    return new Promise((resolve,reject) =>{
+        c.query(`SELECT * FROM proyecto WHERE ${nombre} = ?`,[id],
+        (err, results)=>{
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        })
+    })
+}
+
+
 //Tiempo de espera
 function sleepTime(time) {
     return new Promise((resolve, reject)=>{
@@ -253,6 +267,7 @@ module.exports = {
     portafolioImage,
     bringPortafolio,
     bringImages,
+    bringProjects,
     sleepTime,
 
 }

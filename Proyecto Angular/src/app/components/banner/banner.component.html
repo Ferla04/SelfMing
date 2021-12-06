@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div>
-                <div *ngIf="!changeButton" class="botones">
+                <div *ngIf="!changeButton && notProgrammer" class="botones">
                     <a class="propuesta" (click)="hacerPago()">Pagar</a>
                     <a class="enviar" (click)="hacerPropuesta()">Enviar Propuestas</a>
                 </div>

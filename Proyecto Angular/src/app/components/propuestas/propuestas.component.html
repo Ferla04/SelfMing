@@ -1,32 +1,18 @@
 <section class="section2">
-    <div class="propuestas">
+    <h2>Propuestas enviadas</h2>
+    <ul class="titulos">
+        <li>Proyecto</li>
+        <li>Fecha de Entrega</li>
+        <li>Estados</li>
+    </ul>
+    <div class="propuestas" *ngFor="let e of propuestas">
         <ul>
-            <li>Newton Villarreal</li>
-            <li>15/10/2021</li>
-            <li>Aceptado</li>
+            <li>{{e.nomproyecto}}</li>
+            <li>{{e.fecentrega}}</li>
+            <li>{{e.estado}}</li>
             <li>
-                <i class="prog fas fa-user-tie fa-lg"></i>
-                <i class="ojo fas fa-eye fa-lg" (click)="verProyecto()"></i>
-                <i class="rojo fas fa-trash-alt fa-lg"></i>
-            </li>
-        </ul>
-        <ul>
-            <li>Fernanda Velásquez</li>
-            <li>15/10/2021</li>
-            <li>Denegado</li>
-            <li>
-                <i class="prog fas fa-user-tie fa-lg"></i>
-                <i class="ojo fas fa-eye fa-lg" (click)="verProyecto()"></i>
-                <i class="rojo fas fa-trash-alt fa-lg"></i>
-            </li>
-        </ul>
-        <ul>
-            <li>Juan Reyes</li>
-            <li>15/10/2021</li>
-            <li>Denegado</li>
-            <li>
-                <i class="prog fas fa-user-tie fa-lg"></i>
-                <i class="ojo fas fa-eye fa-lg" (click)="verProyecto()"></i>
+                <i class="prog fas fa-user-tie fa-lg" (click)="irPerfilProg()"></i>
+                <i class="ojo fas fa-eye fa-lg"></i>
                 <i class="rojo fas fa-trash-alt fa-lg"></i>
             </li>
         </ul>
