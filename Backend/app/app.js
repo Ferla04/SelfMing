@@ -23,7 +23,8 @@ const nuevoportafolio = require('./routes/nuevoportafolio');
 const imagenesportafolio = require('./routes/imagenesportafolio');
 const traerporta = require('./routes/traerporta');
 const adjuntarArchivo = require('./routes/adjuntarArchivo');
-const traerproyecto = require('./routes/traerproyecto')
+const traerproyecto = require('./routes/traerproyecto');
+const selectpropuesta = require('./routes/selectpropuesta');
 
 const app = express()
   .use(cors({credentials: true, origin: 'http://localhost:4200'}))
@@ -54,6 +55,7 @@ app.use(`${baseApi}/imagenesportafolio`,imagenesportafolio);
 app.use(`${baseApi}/traerporta`,traerporta);
 app.use(`${baseApi}/adjuntarArchivo`,adjuntarArchivo);
 app.use(`${baseApi}/traerproyecto`,traerproyecto);
+app.use(`${baseApi}/selectpropuesta`,selectpropuesta);
 
 
 

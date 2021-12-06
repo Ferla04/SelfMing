@@ -240,6 +240,18 @@ function bringProjects(c,id, nombre){
 }
 
 
+function selectProjects(c,idprog,iduser){
+    return new Promise((resolve,reject) =>{
+        c.query(`SELECT * FROM proyecto WHERE usuario = ? and programador = ?`,[iduser,idprog],
+        (err, results)=>{
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        })
+    })
+}
+
 //Tiempo de espera
 function sleepTime(time) {
     return new Promise((resolve, reject)=>{
@@ -268,6 +280,7 @@ module.exports = {
     bringPortafolio,
     bringImages,
     bringProjects,
+    selectProjects,
     sleepTime,
 
 }

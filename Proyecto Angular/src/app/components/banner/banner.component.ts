@@ -24,6 +24,8 @@ export class BannerComponent implements OnInit{
   data:any[] = [];
   BASE_API: string = environment.BASE_API;
   changeButton: boolean = true;
+  pagar:boolean = false;
+  propuesta:boolean = true;
   edit:any;
   archivos: any = [];
   nombrePortada: string;
@@ -60,6 +62,22 @@ export class BannerComponent implements OnInit{
 
       if(!localStorage.getItem('iduser')){
         this.notProgrammer = false;
+      }else{
+        let iduser = localStorage.getItem('iduser');
+        this.client.getRequestAllProducts(`${this.BASE_API}/selectpropuesta?idprog=${this.id}&iduser=${iduser}`).subscribe(
+          (response: any) => {
+            if(response[0].estado == 'A'){
+              this.pagar = true;
+            }
+
+            if(response.length >= 1){
+              this.propuesta = false;
+            }
+        },
+        (error) => {
+          console.log(error.status);
+          }
+        )
       }
 
 

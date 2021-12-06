@@ -43,23 +43,9 @@ export class PropuestasComponent implements OnInit {
     )
   }
 
-  // verProyecto(){
-  //   this.client.getRequestAllProducts(`${this.BASE_API}/hacerPropuesta`).subscribe(
-  //     //cuando la respuesta del server llega es emitida por el observable mediante next()..
-  //     (response: any) => {
-  //       console.log(response);
-  //       this.route.navigate( ['/proyecto']);
-  
-  //   },
-  //   //si ocurre un error en el proceso de envío del formulario...
-  //   (error) => {
-  //     //se imprime el status del error
-  //     console.log(error.status);
-  //     }
-  //   )
-  // }
-
-  irPerfilProg(){
-
+  irPerfilProg(idprog){
+    localStorage.setItem('idprog', `S,${idprog}`);
+    // this.route.navigate( ['/perfilProg']);
+    window.open('/perfilProg', '_blank');
   }
 }

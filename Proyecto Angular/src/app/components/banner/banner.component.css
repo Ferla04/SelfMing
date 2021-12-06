@@ -133,13 +133,22 @@ section{
 
 .botones{
     width: 400px;
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     position: absolute;
     left: 0; 
     right: 0; 
-    margin-left: 62%; 
+    margin-left: 62%;  */
+    
+}
+
+.botones a, .botones button{
+    position:  absolute;
     top: 95%;
+}
+
+.enviar,.propuesta, .editar{
+    right: 130px;
 }
 
 .propuesta, .editar{
