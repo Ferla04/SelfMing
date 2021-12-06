@@ -30,27 +30,27 @@
                 <div class="inputsCard">
                     <div class="inputBox">
                         <span>Numero Tarjeta</span>
-                        <input type="text" id="inputTarget" [(ngModel)]="numTarget" name="target" placeholder="0123 4567 8901 2345">
+                        <input  type="text" maxlength="19" id="inputTarget" [(ngModel)]="numTarget" name="target" placeholder="0123 4567 8901 2345">
                     </div>
                     <div class="inputBox">
                         <span>Nombre y Apellido</span>
-                        <input type="text" placeholder="your name">
+                        <input type="text" class="name" placeholder="your name">
                     </div>
                     <div class="grupo">
                         <div class="inputBox">
                             <span>Fecha Expiración</span>
-                            <input type="text" placeholder="MM/YY" maxlength="5">
+                            <input type="text" id="date" maxlength="5" placeholder="MM/YY" [(ngModel)]="dateTarget" name="date" >
                         </div>
                         <div class="inputBox">
                             <span>CCV</span>
-                            <input type="password" placeholder="***" maxlength="4">
+                            <input type="password" placeholder="***" maxlength="3">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="extra2">
                 <div>
-                    <span>Numero de Documento</span>
+                    <span>Número de Documento</span>
                     <input class="extraInputs hola" type="number">
                 </div>
                 <div>

@@ -9,7 +9,7 @@
             <h3>Link: <span class="nombre_proy"><a target="_blank" href={{i.url}}>{{i.url}}</a></span></h3>
         </div>
         <div class="imagenes">
-            <img *ngFor="let j of i.imgsPort" src="http://localhost:3000/api/v01/downloadimage?imagen=images/portafolio/{{j.urlimagen}}">
+            <img *ngFor="let j of i.imgsPort" src="{{BASE_API}}/downloadimage?imagen=images/portafolio/{{j.urlimagen}}">
         </div>
     </div>
 

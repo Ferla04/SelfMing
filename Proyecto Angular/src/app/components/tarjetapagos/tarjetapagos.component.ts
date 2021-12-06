@@ -11,7 +11,8 @@ export class TarjetapagosComponent implements OnInit {
 
   BASE_API: string = environment.BASE_API;
   proyecto:any = {};
-  numTarget:string;
+  numTarget:string = '';
+  dateTarget:string = '';
 
 
   constructor(
@@ -33,14 +34,22 @@ export class TarjetapagosComponent implements OnInit {
     })
 
     let inputTarget = document.getElementById('inputTarget');
+    let date = document.getElementById('date');
 
-    inputTarget.addEventListener('keyup',(event)=>{
-      let numCharacters = this.numTarget.toString().length;
-  
-      if(numCharacters == 4 || numCharacters == 9 || numCharacters == 14) this.numTarget += ' '
-
+    inputTarget.addEventListener('keyup',()=>{
+      this.numTarget = this.numTarget
+      .replace(/\s/g,'')
+      .replace(/\D/g,'')
+      .replace(/([0-9]{4})/g, '$1 ')
+      .trim()
     })
-
+    date.addEventListener('keyup', () => {
+      this.dateTarget = this.dateTarget
+      .replace(/\s/g,'')
+      .replace(/\D/g,'')
+      .replace(/([0-9]{2})/g, '$1/')
+      .slice(0,this.dateTarget.length)
+    })
 
   }
 }

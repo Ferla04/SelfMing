@@ -14,6 +14,15 @@ form{
     display: flex;
 }
 
+#inputTarget{
+    width: 250px;
+}
+
+.name{
+    text-transform: uppercase;
+    width: 380px;
+}
+
 .pago{
     margin-left: 50px;
 }
@@ -208,7 +217,7 @@ option{
 
 .datos button{
     border: none;
-    background-color: #ffdb52;
+    background-color: #ffcc00;
     font-family: 'Share Tech Mono', monospace;
     padding: 10px 40px;
     font-size: 17px;
@@ -216,6 +225,11 @@ option{
     border-radius: 10px;
     cursor: pointer;
     align-self: center;
+}
+
+.datos button:hover{
+    background-color: #b38f00;
+
 }
 
 input[type=number]::-webkit-inner-spin-button, 
