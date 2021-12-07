@@ -6,7 +6,7 @@
     <div *ngFor="let i of portafolios" class="galeria">
         <div class="info_galeria">
             <h3>Proyecto: <span class="nombre_proy">{{i.nombre}}</span></h3>
-            <h3>Link: <span class="nombre_proy"><a target="_blank" href={{i.url}}>{{i.url}}</a></span></h3>
+            <a target="_blank" href={{i.url}}>Visitar Sitio</a>
         </div>
         <div class="imagenes">
             <img *ngFor="let j of i.imgsPort" src="{{BASE_API}}/downloadimage?imagen=images/portafolio/{{j.urlimagen}}">

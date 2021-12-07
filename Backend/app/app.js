@@ -25,6 +25,8 @@ const traerporta = require('./routes/traerporta');
 const adjuntarArchivo = require('./routes/adjuntarArchivo');
 const traerproyecto = require('./routes/traerproyecto');
 const selectpropuesta = require('./routes/selectpropuesta');
+const actualizarestado = require('./routes/actualizarestado');
+
 
 const app = express()
   .use(cors({credentials: true, origin: 'http://localhost:4200'}))
@@ -56,8 +58,7 @@ app.use(`${baseApi}/traerporta`,traerporta);
 app.use(`${baseApi}/adjuntarArchivo`,adjuntarArchivo);
 app.use(`${baseApi}/traerproyecto`,traerproyecto);
 app.use(`${baseApi}/selectpropuesta`,selectpropuesta);
-
-
+app.use(`${baseApi}/actualizarestado`,actualizarestado);
 
 
 

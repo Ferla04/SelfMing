@@ -28,7 +28,8 @@
                 <div *ngIf="changeButton" class="botones">
                     <a class="editar" *ngIf="!editar" id="entrarEdicion" (click)="editarPerfil()">Editar perfil</a>
                     <button type="submit" class="editar" *ngIf="editar" id="quitarEdicion" >Salir y Guardar</button>
-                    <a class="enviar" (click)="hacerPropuesta()">Ver Propuestas</a>
+                    <a href="/pagos" class="targeta" *ngIf="editar">Tarjeta</a>
+                    <a class="enviar" *ngIf="!editar" (click)="modal = !modal">Ver Propuestas</a>
                 </div>
             </div>
         </section>
@@ -57,5 +58,122 @@
         </div>
     </div>
 </form>
+
+<article *ngIf="modal">
+    <div class="container">
+        <i class="fas fa-times fa-lg" (click)="modal = !modal"></i>
+        <ul class="cont-tabs">
+            <li class="list-options" (click)="changeview('propuestas')" [ngStyle]="changeStyle('propuestas')">Propuestas</li>
+            <li class="list-options" (click)="changeview('aceptadas')" [ngStyle]="changeStyle('aceptadas')">Aceptadas</li>
+            <li class="list-options" (click)="changeview('pagadas')" [ngStyle]="changeStyle('pagadas')">Pagadas</li>
+            <li class="list-options" (click)="changeview('finalizadas')" [ngStyle]="changeStyle('finalizadas')">Finalizadas</li>
+
+        </ul>
+
+        <div class="content">
+            <ul class="cont-titles">
+                <li>Nombre Usuario</li>
+                <li>Entrega</li>
+                <li>Información</li>
+            </ul>
+
+            <div class="cont-tags">
+                <div id="propuestas" *ngIf="tabs == 'propuestas'" class="label-options">
+                    <section *ngFor="let i of nuevo">
+                        <div class="tag">
+                            <p>{{i.nomuser}}</p>
+                            <p>{{i.fecentrega}}</p>
+                            <button class="button-dropdown" (click)="show(nuevo.indexOf(i))">Info</button>
+                        </div>
+                        <div class="dropdown">
+                            <div>
+                                <h2>{{i.nomproyecto}}</h2>
+                                <a href="" class="archivo">{{i.archivo}}</a>
+                            </div>
+                            <p>{{i.descripcion}}</p>
+                            <div class="estado">
+                                <button (click)="changeStatus(i,'R',nuevo.indexOf(i))">Rechazar</button>
+                                <div>
+                                    <input type="number" class="precio" placeholder='COL$'>
+                                    <button (click)="changeStatus(i,'A',nuevo.indexOf(i))">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </div>
+
+                <div id="aceptadas" class="label-options" *ngIf="tabs == 'aceptadas'">
+                    <section *ngFor="let i of aceptadas">
+                        <div class="tag">
+                            <p>{{i.nomuser}}</p>
+                            <p>{{i.fecentrega}}</p>
+                            <button class="button-dropdown" (click)="show(aceptadas.indexOf(i))">Info</button>
+                        </div>
+                        <div class="dropdown">
+                            <div>
+                                <h2>{{i.nomproyecto}}</h2>
+                                <a href="" class="archivo">{{i.archivo}}</a>
+                            </div>
+                            <p>{{i.descripcion}}</p>
+                            <div class="estado">
+                                <button (click)="changeStatus(i,'R',aceptadas.indexOf(i))">Cancelar</button>
+                                <div>
+                                    <p><span>Precio: </span>{{i.valor}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </div>
+
+                <div id="pagadas" class="label-options" *ngIf="tabs == 'pagadas'">
+                    <section *ngFor="let i of pagadas">
+                        <div class="tag">
+                            <p>{{i.nomuser}}</p>
+                            <p>{{i.fecentrega}}</p>
+                            <button class="button-dropdown" (click)="show(pagadas.indexOf(i))">Info</button>
+                        </div>
+                        <div class="dropdown">
+                            <div>
+                                <h2>{{i.nomproyecto}}</h2>
+                                <a href="" class="archivo">{{i.archivo}}</a>
+                            </div>
+                            <p>{{i.descripcion}}</p>
+                            <div class="estado2">
+                                <p><span>Precio: </span>{{i.valor}}</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div id="finalizadas" class="label-options" *ngIf="tabs == 'finalizadas'">
+                    <section *ngFor="let i of finalizadas">
+                        <div class="tag">
+                            <p>{{i.nomuser}}</p>
+                            <p>{{i.fecentrega}}</p>
+                            <button class="button-dropdown" (click)="show(finalizadas.indexOf(i))">Info</button>
+                        </div>
+                        <div class="dropdown">
+                            <div>
+                                <h2>{{i.nomproyecto}}</h2>
+                                <a href="" class="archivo">{{i.archivo}}</a>
+                            </div>
+                            <p>{{i.descripcion}}</p>
+                            <div class="estado3">
+                                <button>Adjuantar proyecto</button>
+                                <button class="send">Enviar</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
+          <!-- <button type="button">hola</button> -->
+
+        </div>
+    </div>
+</article>
 
 <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sunt, impedit molestias voluptates minima dolorum. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores quae cum veritatis maiores eligendi quidem? lorem15. -->

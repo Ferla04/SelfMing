@@ -28,7 +28,15 @@
 }
 .info_galeria a{
     text-decoration: none;
-    color: white;
+    line-height: 30px;
+    color: #fff;
+    font-weight: 18px;
+    font-weight: 600;
+    height: 30px;
+    width: 110px;
+    text-align: center;
+    border-bottom: 2px solid #fdb824;
+    cursor: pointer;
 }
 .galeria h3{
     color: white;

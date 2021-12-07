@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../servicios/client.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { HtmlAstPath } from '@angular/compiler';
 
 @Component({
   selector: 'app-banner',
@@ -38,6 +39,15 @@ export class BannerComponent implements OnInit{
 
   nuevaPortada:string;
   nuevoPerfil:string;
+
+  modal:boolean = false;
+  tabs:string = 'propuestas';
+
+  propuestas:any;
+  nuevo:any = [];
+  aceptadas:any = [];
+  pagadas:any = [];
+  finalizadas:any = [];
   
   constructor(
     public client: ClientService,
@@ -47,25 +57,26 @@ export class BannerComponent implements OnInit{
     private Renderer: Renderer2
     ) { }
     
-    ngOnInit(): void {
-      this.form = new FormGroup({});
+  ngOnInit(): void {
+    this.form = new FormGroup({});
 
-      let tokenId = localStorage.getItem('idprog');
-      let signUp = tokenId.split(',')[0];
-      this.id = tokenId.split(',')[1];
-      
-      if(signUp == 'S'){
-        this.changeButton = false;
-      }else{
-        this.changeButton = true;
-      }
+    let tokenId = localStorage.getItem('idprog');
+    let signUp = tokenId.split(',')[0];
+    this.id = tokenId.split(',')[1];
+    
+    if(signUp == 'S'){
+      this.changeButton = false;
+    }else{
+      this.changeButton = true;
+    }
 
-      if(!localStorage.getItem('iduser')){
-        this.notProgrammer = false;
-      }else{
-        let iduser = localStorage.getItem('iduser');
-        this.client.getRequestAllProducts(`${this.BASE_API}/selectpropuesta?idprog=${this.id}&iduser=${iduser}`).subscribe(
-          (response: any) => {
+    if(!localStorage.getItem('iduser')){
+      this.notProgrammer = false;
+    }else{
+      let iduser = localStorage.getItem('iduser');
+      this.client.getRequestAllProducts(`${this.BASE_API}/selectpropuesta?idprog=${this.id}&iduser=${iduser}`).subscribe(
+        (response: any) => {
+          if(response[0]){
             if(response[0].estado == 'A'){
               this.pagar = true;
             }
@@ -73,57 +84,88 @@ export class BannerComponent implements OnInit{
             if(response.length >= 1){
               this.propuesta = false;
             }
-        },
-        (error) => {
-          console.log(error.status);
           }
-        )
-      }
-
-
-      this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${this.id}`).subscribe(
-        //cuando la respuesta del server llega es emitida por el observable mediante next()..
-        (response: any) => {
-          // console.log(response);
-          this.data = response; 
-          console.log(this.data);  
-
-          if(this.data[0].portada == 'N'){
-            this.nombrePortada = '../../../assets/portada.jpg';
-            this.nuevaPortada = 'N';
-          }else{
-            this.nombrePortada =`${this.BASE_API}/downloadimage?imagen=${this.data[0].portada}`;
-            this.nuevaPortada = this.nombrePortada.split('=')[1].split('/')[3];
-          }
-
-          if(this.data[0].perfil == 'N'){
-            this.nombrePerfil = '../../../assets/perfil.jpg';
-            this.nuevoPerfil = 'N';
-          }else{
-            this.nombrePerfil = `${this.BASE_API}/downloadimage?imagen=${this.data[0].perfil}`;
-            this.nuevoPerfil =  this.nombrePerfil.split('=')[1].split('/')[3];
-          }
-          
-          this.photoSelectedPortada = this.nombrePortada;
-          this.photoSelectedPerfil = this.nombrePerfil;
-
-          this.form = this.fb.group({
-            img: [null],
-            descripcion: [this.data[0].descripcion, Validators.required],
-            rango: [this.data[0].rango, Validators.required],
-            especialidad: [this.data[0].especialidad, Validators.required],
-            correo: [this.data[0].correo, Validators.required],
-            repositorio: [this.data[0].urlprog, Validators.required],
-          });
-        },
-        //si ocurre un error en el proceso de envío del formulario...
-        (error) => {
-          //se imprime el status del error
-          console.log(error.status);
-          // this.route.navigate( ['/']);
+      },
+      (error) => {
+        console.log(error.status);
         }
-      )   
+      )
     }
+
+
+    this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${this.id}`).subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+        // console.log(response);
+        this.data = response; 
+        console.log(this.data);  
+
+        if(this.data[0].portada == 'N'){
+          this.nombrePortada = '../../../assets/portada.jpg';
+          this.nuevaPortada = 'N';
+        }else{
+          this.nombrePortada =`${this.BASE_API}/downloadimage?imagen=${this.data[0].portada}`;
+          this.nuevaPortada = this.nombrePortada.split('=')[1].split('/')[3];
+        }
+
+        if(this.data[0].perfil == 'N'){
+          this.nombrePerfil = '../../../assets/perfil.jpg';
+          this.nuevoPerfil = 'N';
+        }else{
+          this.nombrePerfil = `${this.BASE_API}/downloadimage?imagen=${this.data[0].perfil}`;
+          this.nuevoPerfil =  this.nombrePerfil.split('=')[1].split('/')[3];
+        }
+        
+        this.photoSelectedPortada = this.nombrePortada;
+        this.photoSelectedPerfil = this.nombrePerfil;
+
+        this.form = this.fb.group({
+          img: [null],
+          descripcion: [this.data[0].descripcion, Validators.required],
+          rango: [this.data[0].rango, Validators.required],
+          especialidad: [this.data[0].especialidad, Validators.required],
+          correo: [this.data[0].correo, Validators.required],
+          repositorio: [this.data[0].urlprog, Validators.required],
+        });
+      },
+      //si ocurre un error en el proceso de envío del formulario...
+      (error) => {
+        //se imprime el status del error
+        console.log(error.status);
+        // this.route.navigate( ['/']);
+      }
+    )   
+
+    this.traerProyectos();
+
+  }
+
+  traerProyectos(){
+    this.nuevo.length = 0;
+    this.aceptadas.length = 0;
+    this.pagadas.length = 0;
+    this.finalizadas = 0;
+
+    this.client.getRequestAllProducts(`${this.BASE_API}/traerproyecto?id=${this.id}&campo=programador`).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.propuestas = response;
+        this.propuestas.forEach(e => {
+          if(e.estado == 'N') this.nuevo.push(e); 
+          if(e.estado == 'A') this.aceptadas.push(e); 
+          if(e.estado == 'P') this.pagadas.push(e); 
+          if(e.estado == 'F') this.finalizadas.push(e); 
+
+          e.archivo = e.archivo.split(',')[2];
+          e.fecentrega = e.fecentrega.slice(0,10);
+
+        });
+    },
+    (error) => {
+      console.log(error.status);
+      }
+    )
+  }
     
     
   editarPerfil(){
@@ -260,4 +302,41 @@ export class BannerComponent implements OnInit{
       }
     )
   }
+
+  changeview(tab:string){
+    this.tabs = tab;
+  }
+
+  changeStyle(tab){
+    if(tab == this.tabs){
+      return {'background-color': '#460e56', 'color': '#fdb824', 'font-weight': '600'};
+    }
+    return {'background-color': '#1c1321', 'color': '#fff', 'font-weight': '100'};
+  }
+
+  show(i){
+    let dropdown = document.querySelectorAll('.dropdown');
+    dropdown[i].classList.toggle('open-dropdown')
+  }
+
+  changeStatus(i,status,position){
+    let contprecio:any = document.querySelectorAll('.precio');
+    let precio = contprecio[position].value;
+
+    if(!precio) precio = null;
+    if(precio || status == 'R'){
+      this.client.putRequestSendForm(`${this.BASE_API}/actualizarestado`, {
+        proyecto: i.idproyecto,
+        estado: status,
+        valor: precio
+      }).subscribe(res => {
+        console.log('respuesta:', res);
+        this.traerProyectos();
+      },
+      (error) => {
+        console.log(error.status);
+      })
+    }
+  }
+  
 }

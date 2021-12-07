@@ -147,11 +147,15 @@ section{
     top: 95%;
 }
 
-.enviar,.propuesta, .editar{
-    right: 130px;
+.enviar,.propuesta, .targeta{
+    right: 100px;
 }
 
-.propuesta, .editar{
+.editar{
+    right: 320px;
+}
+
+.propuesta, .editar, .targeta{
     text-align: center;
     line-height: 35px;
     text-decoration: none;
@@ -161,6 +165,11 @@ section{
     color: white;
     border-radius: 20px; 
     cursor: pointer;
+}
+
+.botones .targeta{
+    font-weight: 600;
+    box-shadow: 3px 4px 0 #460e56;
 }
 
 #quitarEdicion{
@@ -219,3 +228,277 @@ section{
     width: 230px;
 }
 
+li{
+    list-style: none;
+}
+
+article{
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 1px;
+    height: 100vh;
+    width: 100vw;
+}
+
+article button{
+    border: none;
+}
+
+.container{
+    position: relative;
+    width: 600px;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.container i{
+    position: absolute;
+    top: 0px;
+    background-color: #ffffff;
+    padding: 6px;
+    border-radius: 50%;
+    right: 0px;
+    cursor: pointer;
+}
+
+.cont-tabs{
+    display: flex;
+    padding: 8px 12px 0 12px ;
+    background-color: transparent;
+    border-radius: 10px 10px 0 0;
+}
+
+.cont-tabs li{
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 10px 10px 0 0;
+    color: #ffffff;
+    background-color: #1c1321;
+}
+
+.cont-tabs .active{
+    font-weight: 500;
+    color: #fdb824;
+    background-color: #460e56;
+}
+
+.content{
+    height: 300px;
+    padding: 15px 8px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #460e56;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.cont-titles{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 8px;
+}
+
+.cont-titles li{
+    color: #fdb824;
+    font-weight: 800;
+    padding: 2px 15px;
+    border-radius: 10px;
+}
+
+.cont-tags{
+    max-height: 230px;
+    overflow-y: auto;
+    width: 90%;
+}
+
+.proposals{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.tag{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #929090;
+    border-radius: 6px;
+    height: 35px;
+    margin: 5px 0;
+    padding: 0 12px;
+    font-size: 18px;
+    width: 100%;
+}
+
+.tag p{
+    width: 100px;
+}
+
+.tag p:first-child{
+    width: 150px;
+    margin: 0;
+    text-align: left;
+}
+
+.tag p{
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.tag button{
+    width: 100px;
+    height: 22px;
+    border: 2px solid #fdb824;
+    background-color:#fdb824;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tag button:hover{
+    background-color: #929090;
+    color: #460e56;
+    border-color: #460e56;
+}
+
+
+.dropdown{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 130px;
+    background-color: #795279;
+    border-radius: 6px;
+    padding: 8px 10px;
+}
+
+.dropdown h2{
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.dropdown p{
+    font-size: 16px;
+    text-align: left;
+    padding: 5px 0;
+}
+
+.dropdown div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown div a{
+    border-radius: 6px;
+    padding: 5px 10px;
+    color: #ffffff;
+    background-color: #0a0a0a75;
+}
+
+.dropdown div a:hover{
+    background-color: #460e569d
+}
+
+.estado{
+    width: 100%;
+    display: flex;
+}
+
+.estado p span, .estado2 span{
+    font-weight: 600;
+}
+
+.estado div input{
+    width: 100px;
+    margin-right: 8px;
+    border-radius: 8px;
+    text-align: center;
+    outline: none;
+}
+
+.dropdown div button{
+    border-radius: 6px;
+    padding: 5px 10px;  
+    cursor: pointer;
+}
+
+.estado button{
+    background-color: #ff000096;
+}
+
+.estado button:hover{
+    background-color: #ff0000d0;
+}
+
+.estado div button{
+    background-color: #fdb824be;
+    padding: 7px 12px; 
+}
+
+.estado div button:hover{
+    background-color: #fdb824;
+}
+
+.dropdown .estado3,.dropdown .estado2{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.estado3 .send{
+    margin-left: 8px;
+    font-weight: 600;
+    background-color: #460e56;
+    color: #ffffff;
+}
+
+.open-dropdown{
+    display: flex;
+}
+
+.label-options{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.label-options:first-child{
+    display: flex;
+}
+
+.cont-tags::-webkit-scrollbar {
+    -webkit-appearance: none;
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+.cont-tags::-webkit-scrollbar:vertical {
+    width: 6px;
+}
+
+.cont-tags::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.cont-tags::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }

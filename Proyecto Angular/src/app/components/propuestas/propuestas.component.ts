@@ -35,6 +35,7 @@ export class PropuestasComponent implements OnInit {
           if(e.estado == 'A') e.estado = 'Aceptado'; 
           if(e.estado == 'P') e.estado = 'Pagado'; 
           if(e.estado == 'F') e.estado = 'Finalizado'; 
+          if(e.estado == 'R') e.estado = 'Rechazado';
 
           e.fecentrega = e.fecentrega.slice(0,10);
 
@@ -67,10 +68,12 @@ export class PropuestasComponent implements OnInit {
         if(this.proyecto.estado == 'A') this.proyecto.estado = 'Aceptado'; 
         if(this.proyecto.estado == 'P') this.proyecto.estado = 'Pagado'; 
         if(this.proyecto.estado == 'F') this.proyecto.estado = 'Finalizado'; 
+        if(this.proyecto.estado == 'R') this.proyecto.estado = 'Rechazado';
 
         this.proyecto.fecentrega = this.proyecto.fecentrega.slice(0,10);
+        this.proyecto.archivo = this.proyecto.archivo.split(',')[2];
         
-        if(!this.proyecto.valor) this.proyecto.valor = 'No hay valor'
+        if(!this.proyecto.valor) this.proyecto.valor = 'No hay valor';
         
     },
     (error) => {

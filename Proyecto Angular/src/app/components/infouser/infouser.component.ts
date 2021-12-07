@@ -38,7 +38,7 @@ export class InfouserComponent implements OnInit {
       nombre: new FormControl(),
       correo: new FormControl(),
       celular: new FormControl()
-   });
+    });
 
     this.id = localStorage.getItem('iduser');
 
@@ -64,7 +64,10 @@ export class InfouserComponent implements OnInit {
           nombre: [this.data[0].nomcompleto, Validators.required],
           celular: [this.data[0].celular, Validators.required],
         });
-    })
+      },
+      (error) => {
+        console.log(error.status);
+      })
   }
 
   
@@ -116,6 +119,9 @@ export class InfouserComponent implements OnInit {
 
         this.client.postRequestSendForm(`${this.BASE_API}/subirimagen`, fd).subscribe(res => {
           console.log('respuesta:', res);
+        },
+        (error) => {
+          console.log(error.status);
         }) 
       }      
     
@@ -130,9 +136,12 @@ export class InfouserComponent implements OnInit {
       }).subscribe(res => {
         window.location.reload();
         console.log('respuesta:', res);
+        this.archivos.length = 0;
+      },
+      (error) => {
+        console.log(error.status);
       })
 
-      this.archivos.length = 0;
       
     } catch (err) {
       console.log(`ERROR: ${err}`);

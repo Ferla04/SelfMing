@@ -229,7 +229,10 @@ function bringImages(c,idporta){
 
 function bringProjects(c,id, nombre){
     return new Promise((resolve,reject) =>{
-        c.query(`SELECT * FROM proyecto WHERE ${nombre} = ?`,[id],
+        c.query(`SELECT ru.nomcompleto as nomuser, p.*, rp.nomcompleto as nomprog
+        FROM proyecto p inner join registroprog rp on p.programador=rp.idprog 
+        inner join registrouser ru on p.usuario=ru.idusuario
+        WHERE p.${nombre}= ?`,[id],
         (err, results)=>{
             if(err){
                 return reject(err);
@@ -250,6 +253,19 @@ function selectProjects(c,idprog,iduser){
                 return reject(err);
             }
             return resolve(results);
+        })
+    })
+}
+
+
+function updateStatusPrice(c,idproyecto, estado, valor){
+    return new Promise((resolve,reject) =>{
+        c.query(`UPDATE proyecto SET estado="${estado}", valor=${valor} WHERE idproyecto=${idproyecto}`,
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results)
         })
     })
 }
@@ -283,6 +299,6 @@ module.exports = {
     bringImages,
     bringProjects,
     selectProjects,
+    updateStatusPrice,
     sleepTime,
-
 }

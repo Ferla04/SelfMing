@@ -1,6 +1,6 @@
 <body>
     <form action="">
-        <div class="datos">
+        <div class="datos" *ngIf="datos">
             <div class="datosGrupo">
                 <span>Proyecto: </span>
                 <span>{{proyecto.nomproyecto}}</span>
@@ -13,7 +13,7 @@
                 <span>valor: </span>
                 <span id="valor">{{proyecto.valor}}</span>
             </div>
-            <button type="submit">Enviar</button>
+            <button (click)="tarjetaUser()" type="submit">Enviar</button>
         </div>
         <div class="pago">
             <div class="extra">
@@ -63,6 +63,7 @@
                         <option value="pa">PA</option>
                     </select>
                 </div>
+                <button (click)="tarjetaProg()" *ngIf="!datos">Enviar</button>
             </div>
         </div>
     </form>
