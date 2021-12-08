@@ -28,11 +28,11 @@
         <form  [formGroup]="form" (ngSubmit)="onSubmit()">
             <div>
                 <label for="nombre">Nombre del Proyecto</label>
-                <input type="text" id="nombre" formControlName="nombre">
+                <input type="text" id="nombre" formControlName="nombre" autocomplete="off">
             </div>
             <div>
                 <label for="url">URL del Proyecto</label>
-                <input type="text" id="url" formControlName="url">
+                <input type="text" id="url" formControlName="url" autocomplete="off">
             </div>
             <div class="container-file" id="beforeDiv">
                 <p>{{mensaje}}</p>
