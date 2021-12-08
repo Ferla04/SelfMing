@@ -4,6 +4,7 @@ import { ClientService } from '../../servicios/client.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-proyecto',
@@ -83,15 +84,26 @@ export class ProyectoComponent implements OnInit {
 
   adjuntarArchivo(event):void{
     if(event.target.files && event.target.files[0]){
-      this.statusFile = 'Archivo adjuntado';
-      this.archivosCapturados = event.target.files[0];
-      console.log(this.archivosCapturados);
+      let typeFile = event.target.files[0].type.split('/')[1];
+      if(typeFile == 'pdf'){
+        this.statusFile = 'Archivo adjuntado';
+        this.archivosCapturados = event.target.files[0];
+        console.log(this.archivosCapturados);
+      }else{
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'Solo archivos pdf',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }
     }
   }
 
   onSubmit():void{
     if (this.form.valid){
-      let nomProyecto = `${this.idUser},${this.idProg},${this.form.value.nombre}`;
+      let nomProyecto = `${this.idUser},${this.idProg},${this.form.value.nombre}.pdf`;
       console.log(nomProyecto);
 
       const fd = new FormData();

@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from '../../servicios/client.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { HtmlAstPath } from '@angular/compiler';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-banner',
@@ -50,6 +50,7 @@ export class BannerComponent implements OnInit{
   finalizadas:any = [];
   
   statusFile: string = 'Adjuntar Archivo';
+  archivosCapturados:any; 
 
   constructor(
     public client: ClientService,
@@ -153,13 +154,14 @@ export class BannerComponent implements OnInit{
         console.log(response);
         this.propuestas = response;
         this.propuestas.forEach(e => {
+          e.archivo = `${e.archivo.split(',')[2]}.pdf`;
+          e.respuesta = e.respuesta.split(',')[2];
+          e.fecentrega = e.fecentrega.slice(0,10);
+
           if(e.estado == 'N') this.nuevo.push(e); 
           if(e.estado == 'A') this.aceptadas.push(e); 
           if(e.estado == 'P') this.pagadas.push(e); 
           if(e.estado == 'F') this.finalizadas.push(e); 
-
-          e.archivo = e.archivo.split(',')[2];
-          e.fecentrega = e.fecentrega.slice(0,10);
 
         });
         console.log(this.finalizadas);
@@ -270,9 +272,6 @@ export class BannerComponent implements OnInit{
     });
 
   }
-  
-  
-
 
   hacerPago(){
     this.client.getRequestAllProducts(`${this.BASE_API}/verificartoken`).subscribe(
@@ -332,7 +331,8 @@ export class BannerComponent implements OnInit{
       this.client.putRequestSendForm(`${this.BASE_API}/actualizarestado`, {
         proyecto: i.idproyecto,
         estado: status,
-        valor: precio
+        valor: precio,
+        resp: null
       }).subscribe(res => {
         console.log('respuesta:', res);
         this.traerProyectos();
@@ -342,5 +342,53 @@ export class BannerComponent implements OnInit{
       })
     }
   }
+
+  adjuntarArchivo(event):void{
+    if(event.target.files && event.target.files[0]){
+      let typeFile = event.target.files[0].type.split('/')[1];
+      if(typeFile == 'zip' || typeFile == 'rar'){
+        this.statusFile = 'Archivo adjuntado';
+        this.archivosCapturados = event.target.files[0];
+      }else{
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'Solo archivos comprimidos',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }
+    }
+  }
+
+  deleteFile(){
+    this.archivosCapturados = '';
+    this.statusFile = 'Adjuntar Archivo';
+  }
   
+
+  enviar(iduser,data){
+    if(this.archivosCapturados){
+      let nomProyecto = `${iduser},${this.id},${this.archivosCapturados.name}`;
+
+      const fd = new FormData();
+      fd.append('files',this.archivosCapturados, nomProyecto);
+      this.client.postRequestSendForm(`${this.BASE_API}/adjuntarArchivo`, fd).subscribe(res => {
+        console.log('respuesta:', res);
+      })  
+
+      this.client.putRequestSendForm(`${this.BASE_API}/actualizarestado`, {
+        proyecto: data.idproyecto,
+        estado: 'F',
+        valor: data.valor,
+        resp: nomProyecto
+      }).subscribe(res => {
+        console.log('respuesta:', res);
+        this.traerProyectos();
+      },
+      (error) => {
+        console.log(error.status);
+      })
+    }
+  }
 }

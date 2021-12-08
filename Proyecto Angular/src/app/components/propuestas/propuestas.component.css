@@ -64,8 +64,8 @@
 
 .prog{color: #fdb824;}
 .ojo{color:#b04ab6;}
+.help{color:#3cff3c;}
 .propuestas .rojo{color: #ff0000;}
-.propuestas .verde{color: #3cff3c;}
 
 
 .contModal{
@@ -114,7 +114,7 @@
 }
 
 .modal #respuesta{
-    max-height: 110px;
+    max-height: 115px;
 }
 
 .modal span{

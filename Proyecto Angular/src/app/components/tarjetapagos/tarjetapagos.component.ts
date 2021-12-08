@@ -78,7 +78,8 @@ export class TarjetapagosComponent implements OnInit {
     this.client.putRequestSendForm(`${this.BASE_API}/actualizarestado`, {
       proyecto: this.proyecto.idproyecto,
       estado: 'P',
-      valor: this.proyecto.valor
+      valor: this.proyecto.valor,
+      resp: null
     }).subscribe(res => {
       console.log('respuesta:', res);
       setTimeout(()=>{ this.route.navigate( ['/perfilUser']) }, 1500);

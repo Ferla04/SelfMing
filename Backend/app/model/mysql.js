@@ -258,9 +258,9 @@ function selectProjects(c,idprog,iduser){
 }
 
 
-function updateStatusPrice(c,idproyecto, estado, valor){
+function updateStatusPrice(c,idproyecto, estado, valor,resp){
     return new Promise((resolve,reject) =>{
-        c.query(`UPDATE proyecto SET estado="${estado}", valor=${valor} WHERE idproyecto=${idproyecto}`,
+        c.query(`UPDATE proyecto SET estado="${estado}", valor=${valor}, respuesta='${resp}' WHERE idproyecto=${idproyecto}`,
         (err, results) => {
             if(err){
                 return reject(err);

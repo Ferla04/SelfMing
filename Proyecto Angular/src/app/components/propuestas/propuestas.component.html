@@ -13,7 +13,8 @@
             <li>
                 <i class="prog fas fa-user-tie fa-lg" (click)="irPerfilProg(e.programador)"></i>
                 <i class="ojo fas fa-eye fa-lg" (click)="openProject(e.programador)"></i>
-                <i class="rojo fas fa-trash-alt fa-lg"></i>
+                <i class="help fas fa-question-circle fa-lg" *ngIf="e.estado == 'Pagado'"></i>
+                <i class="rojo fas fa-trash-alt fa-lg" *ngIf="e.estado != 'Pagado'"></i>
             </li>
         </ul>
     </div>
@@ -29,6 +30,7 @@
         <p><span>valor: </span>{{proyecto.valor}}</p>
         <p id="respuesta"><span>Descripcion: </span>{{proyecto.descripcion}}</p>
         <p><span>Archivo: </span>{{proyecto.archivo}}</p>
+        <p><span>Proyecto Final: </span>{{proyecto.respuesta}}</p>
 
     </div>
 </article>

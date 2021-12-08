@@ -1,6 +1,6 @@
 let uploadfile = (req, res) => {
 
-  req['files'].files.mv(`./files/${req['files'].files.name}.pdf`, function(err) {
+  req['files'].files.mv(`./files/${req['files'].files.name}`, function(err) {
     console.log(err);
   });
           
