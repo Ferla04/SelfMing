@@ -49,6 +49,8 @@ export class BannerComponent implements OnInit{
   pagadas:any = [];
   finalizadas:any = [];
   
+  statusFile: string = 'Adjuntar Archivo';
+
   constructor(
     public client: ClientService,
     private route: Router,
@@ -144,7 +146,7 @@ export class BannerComponent implements OnInit{
     this.nuevo.length = 0;
     this.aceptadas.length = 0;
     this.pagadas.length = 0;
-    this.finalizadas = 0;
+    this.finalizadas.length = 0;
 
     this.client.getRequestAllProducts(`${this.BASE_API}/traerproyecto?id=${this.id}&campo=programador`).subscribe(
       (response: any) => {
@@ -160,6 +162,8 @@ export class BannerComponent implements OnInit{
           e.fecentrega = e.fecentrega.slice(0,10);
 
         });
+        console.log(this.finalizadas);
+        
     },
     (error) => {
       console.log(error.status);

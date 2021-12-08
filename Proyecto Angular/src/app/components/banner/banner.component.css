@@ -476,6 +476,22 @@ article button{
     display: flex;
 }
 
+.archivo{
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.archivo label{
+    cursor: pointer;
+}
+
+.archivo input{
+    display: none;
+}
+
+
+
 .cont-tags::-webkit-scrollbar {
     -webkit-appearance: none;
     background-color: rgb(0, 0, 0);

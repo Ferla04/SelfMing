@@ -161,7 +161,10 @@
                             </div>
                             <p>{{i.descripcion}}</p>
                             <div class="estado3">
-                                <button>Adjuantar proyecto</button>
+                                <div class="archivo">
+                                    <label for="archivo">{{statusFile}}</label>
+                                    <input type="file" id="archivo" (change)="adjuntarArchivo($event)">
+                                </div>
                                 <button class="send">Enviar</button>
                             </div>
                         </div>
