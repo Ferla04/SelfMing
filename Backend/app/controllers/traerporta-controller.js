@@ -19,7 +19,7 @@ let traerporta = (req, res) => {
         connection.end();
         setTimeout(()=>{
             return res.status(200).json(resultPorta);
-        },200)
+        },300)
 
     }).catch(err =>{
         console.log(err);
