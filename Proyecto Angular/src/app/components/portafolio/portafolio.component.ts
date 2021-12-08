@@ -135,4 +135,17 @@ export class PortafolioComponent implements OnInit {
 
   }
 
+  eliminarProyecto(idprot){
+    console.log(idprot);
+    this.client.deleteRequestSendForm(`${this.BASE_API}/deleted?idproj=${idprot}&tabla=imagenes`).subscribe(
+      (response: any) => {
+        console.log(response)
+        this.ngOnInit();
+    },
+    (error) => {
+      console.log(error.status);
+      }
+    )
+  }
+
 }

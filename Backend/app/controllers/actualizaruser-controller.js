@@ -16,7 +16,8 @@ let actualizarUser = async (req, res) => {
             "Status": "ok registrado", 
             "reg": true,
             "correo": correo,
-            "nombre": nombre
+            "nombre": nombre,
+            "perfil":perfil
         })
     }).catch(err =>{
         console.log(err);

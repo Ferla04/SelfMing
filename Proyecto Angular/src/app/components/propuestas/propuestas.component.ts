@@ -85,4 +85,16 @@ export class PropuestasComponent implements OnInit {
 
   }
 
+  eliminarProyecto(idproj){
+    this.client.deleteRequestSendForm(`${this.BASE_API}/deleted?idproj=${idproj}&tabla=proyecto`).subscribe(
+      (response: any) => {
+        console.log(response)
+        this.ngOnInit();
+    },
+    (error) => {
+      console.log(error.status);
+      }
+    )
+  }
+
 }

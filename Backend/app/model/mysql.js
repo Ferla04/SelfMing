@@ -270,6 +270,18 @@ function updateStatusPrice(c,idproyecto, estado, valor,resp){
     })
 }
 
+function deleteProj(c,id,tabla,campo){
+    return new Promise((resolve,reject) =>{
+        c.query(`DELETE FROM ${tabla} WHERE ${campo}=${id};`,
+        (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results)
+        })
+    })
+}
+
 //Tiempo de espera
 function sleepTime(time) {
     return new Promise((resolve, reject)=>{
@@ -300,5 +312,6 @@ module.exports = {
     bringProjects,
     selectProjects,
     updateStatusPrice,
+    deleteProj,
     sleepTime,
 }

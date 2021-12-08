@@ -95,7 +95,12 @@ export class BannerComponent implements OnInit{
       )
     }
 
+    this.traerprog();
+    this.traerProyectos();
 
+  }
+
+  traerprog(){
     this.client.getRequestAllProducts(`${this.BASE_API}/traerprog?id=${this.id}`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
@@ -138,9 +143,6 @@ export class BannerComponent implements OnInit{
         // this.route.navigate( ['/']);
       }
     )   
-
-    this.traerProyectos();
-
   }
 
   traerProyectos(){
@@ -247,7 +249,7 @@ export class BannerComponent implements OnInit{
         portada: this.nuevaPortada,
         perfil: this.nuevoPerfil,
       }).subscribe(res => {
-        window.location.reload();
+        this.traerprog();
         console.log('respuesta:', res);
       })
 

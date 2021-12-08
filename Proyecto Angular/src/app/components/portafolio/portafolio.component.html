@@ -7,6 +7,7 @@
         <div class="info_galeria">
             <h3>Proyecto: <span class="nombre_proy">{{i.nombre}}</span></h3>
             <a target="_blank" href={{i.url}}>Visitar Sitio</a>
+            <i class="fas fa-trash-alt" (click)="eliminarProyecto(i.idportafolio)"></i>
         </div>
         <div class="imagenes">
             <img *ngFor="let j of i.imgsPort" src="{{BASE_API}}/downloadimage?imagen=images/portafolio/{{j.urlimagen}}">

@@ -23,9 +23,11 @@
     margin-bottom: 40px;
 }
 .info_galeria{
+    position: relative;
     display: flex;
     justify-content: space-between;
 }
+
 .info_galeria a{
     text-decoration: none;
     line-height: 30px;
@@ -38,6 +40,24 @@
     border-bottom: 2px solid #fdb824;
     cursor: pointer;
 }
+
+.info_galeria a:hover{
+    border-bottom: 2px solid #cc60ba;
+}
+
+.info_galeria i{
+    position: absolute;
+    top: 130px;
+    right: -20px;
+    color: #ff00006e;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+.info_galeria i:hover{
+    color: #ff0000;
+}
+
 .galeria h3{
     color: white;
     margin: 10px 0;

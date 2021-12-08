@@ -41,7 +41,6 @@ export class InfouserComponent implements OnInit {
     });
 
     this.id = localStorage.getItem('iduser');
-
     this.client.getRequestAllProducts(`${this.BASE_API}/traeruser?id=${this.id}`).subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
@@ -55,7 +54,6 @@ export class InfouserComponent implements OnInit {
         }else{
           this.photoSelectedPerfil = `${this.BASE_API}/downloadimage?imagen=${this.data[0].perfil}`;
           this.nuevoPerfil = this.photoSelectedPerfil.split('=')[1].split('/')[3];
-
         }
 
         this.form = this.fb.group({
@@ -69,7 +67,6 @@ export class InfouserComponent implements OnInit {
         console.log(error.status);
       })
   }
-
   
   editarPerfil(){
     this.editar = true;
@@ -133,8 +130,8 @@ export class InfouserComponent implements OnInit {
         correo: this.form.value.correo,
         celular: this.form.value.celular,
         perfil: this.nuevoPerfil,
-      }).subscribe(res => {
-        window.location.reload();
+      }).subscribe((res:any) => {
+
         console.log('respuesta:', res);
         this.archivos.length = 0;
       },

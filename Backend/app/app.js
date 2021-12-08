@@ -26,6 +26,7 @@ const adjuntarArchivo = require('./routes/adjuntarArchivo');
 const traerproyecto = require('./routes/traerproyecto');
 const selectpropuesta = require('./routes/selectpropuesta');
 const actualizarestado = require('./routes/actualizarestado');
+const deleted = require('./routes/eliminar');
 
 
 const app = express()
@@ -59,6 +60,7 @@ app.use(`${baseApi}/adjuntarArchivo`,adjuntarArchivo);
 app.use(`${baseApi}/traerproyecto`,traerproyecto);
 app.use(`${baseApi}/selectpropuesta`,selectpropuesta);
 app.use(`${baseApi}/actualizarestado`,actualizarestado);
+app.use(`${baseApi}/deleted`,deleted);
 
 
 
