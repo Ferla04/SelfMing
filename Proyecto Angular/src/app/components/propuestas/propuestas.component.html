@@ -5,6 +5,7 @@
         <li>Fecha de Entrega</li>
         <li>Estado</li>
     </ul>
+    
     <div class="propuestas" *ngFor="let e of propuestas">
         <ul>
             <li>{{e.nomproyecto}}</li>
@@ -23,7 +24,7 @@
 <article *ngIf="modalProject" class="contModal" id ="contModal" >
     <div class="modal">
         <i class="fas fa-times fa-lg" id ="close" (click)="modalProject = !modalProject"></i>
-        <h1>Sefming</h1>
+        <h1>{{proyecto.nomproyecto}}</h1>
         <p><span>Programador: </span>{{proyecto.programadorC}}</p>
         <p><span>Estado: </span>{{proyecto.estado}}</p>
         <p><span>Fecha Entrega: </span>{{proyecto.fecentrega}}</p>
@@ -31,6 +32,9 @@
         <p id="respuesta"><span>Descripcion: </span>{{proyecto.descripcion}}</p>
         <p><span>Archivo: </span>{{proyecto.archivo}}</p>
         <p><span>Proyecto Final: </span>{{proyecto.respuesta}}</p>
+        <div class="boton"> 
+            <a *ngIf="proyecto.estado == 'Finalizado'" href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{proyecto.usuario}},{{proyecto.programador}},{{proyecto.respuesta}}">Descargar Proyecto</a>
+        </div>
 
     </div>
 </article>

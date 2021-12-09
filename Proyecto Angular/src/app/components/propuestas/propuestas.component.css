@@ -122,3 +122,17 @@
     font-weight: 600;
     color: #460e56;
 }
+
+.boton{
+    margin-top: 25px;
+    text-align: center;
+}
+
+.boton a{
+    text-decoration: none;
+    padding: 6px 10px;
+    background-color: #460e56;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+}

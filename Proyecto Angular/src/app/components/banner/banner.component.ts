@@ -156,9 +156,10 @@ export class BannerComponent implements OnInit{
         console.log(response);
         this.propuestas = response;
         this.propuestas.forEach(e => {
-          e.archivo = `${e.archivo.split(',')[2]}.pdf`;
-          e.respuesta = e.respuesta.split(',')[2];
+          e.archivo = e.archivo.split(',')[2];
+          e.respuesta = (e.respuesta)? e.respuesta.split(',')[2] : 'No hay archivo' 
           e.fecentrega = e.fecentrega.slice(0,10);
+  
 
           if(e.estado == 'N') this.nuevo.push(e); 
           if(e.estado == 'A') this.aceptadas.push(e); 

@@ -66,12 +66,12 @@ export class PropuestasComponent implements OnInit {
 
 
         this.proyecto.fecentrega = this.proyecto.fecentrega.slice(0,10);
-        this.proyecto.archivo = `${this.proyecto.archivo.split(',')[2]}.pdf`;
+        this.proyecto.archivo = this.proyecto.archivo.split(',')[2];
         
         if(!this.proyecto.valor) this.proyecto.valor = 'No hay valor';
-        this.proyecto.respuesta = (this.proyecto.respuesta)? this.proyecto.respuesta.split(',')[2] : 'No hay archivo';
-        console.log(this.proyecto.respuesta)
 
+        this.proyecto.respuesta = (!this.proyecto.respuesta || this.proyecto.respuesta=='null' )? 'No hay archivo' :  this.proyecto.respuesta.split(',')[2];
+        
         if(this.proyecto.estado == 'N') this.proyecto.estado = 'Enviado'; 
         if(this.proyecto.estado == 'A') this.proyecto.estado = 'Aceptado'; 
         if(this.proyecto.estado == 'P') this.proyecto.estado = 'Pagado'; 

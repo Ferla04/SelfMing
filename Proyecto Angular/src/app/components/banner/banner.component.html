@@ -88,7 +88,7 @@
                         <div class="dropdown">
                             <div>
                                 <h2>{{i.nomproyecto}}</h2>
-                                <a href="" class="archivo">{{i.archivo}}</a>
+                                <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.usuario}},{{i.programador}},{{i.archivo}}" class="archivo">{{i.archivo}}</a>
                             </div>
                             <p>{{i.descripcion}}</p>
                             <div class="estado">
@@ -113,7 +113,7 @@
                         <div class="dropdown">
                             <div>
                                 <h2>{{i.nomproyecto}}</h2>
-                                <a href="" class="archivo">{{i.archivo}}</a>
+                                <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.usuario}},{{i.programador}},{{i.archivo}}"  class="archivo">{{i.archivo}}</a>
                             </div>
                             <p>{{i.descripcion}}</p>
                             <div class="estado">
@@ -137,7 +137,7 @@
                         <div class="dropdown">
                             <div>
                                 <h2>{{i.nomproyecto}}</h2>
-                                <a href="" class="archivo">{{i.archivo}}</a>
+                                <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.usuario}},{{i.programador}},{{i.archivo}}"  class="archivo">{{i.archivo}}</a>
                             </div>
                             <p>{{i.descripcion}}</p>
                             <div class="estado2">
@@ -165,12 +165,12 @@
                         <div class="dropdown">
                             <div>
                                 <h2>{{i.nomproyecto}}</h2>
-                                <a href="" class="archivo">{{i.archivo}}</a>
+                                <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.usuario}},{{i.programador}},{{i.archivo}}"  class="archivo">{{i.archivo}}</a>
                             </div>
                             <p>{{i.descripcion}}</p>
                             <div class="estado2">
                                 <p><span>Precio: </span>{{i.valor}}</p>
-                                <button>{{i.respuesta}}</button>
+                                <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.usuario}},{{i.programador}},{{i.respuesta}}" >{{i.respuesta}}</a>
                             </div>
                         </div>
                     </section>
