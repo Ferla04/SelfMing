@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../../servicios/client.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-propuestas',
@@ -70,7 +71,7 @@ export class PropuestasComponent implements OnInit {
         
         if(!this.proyecto.valor) this.proyecto.valor = 'No hay valor';
 
-        this.proyecto.respuesta = (!this.proyecto.respuesta || this.proyecto.respuesta=='null' )? 'No hay archivo' :  this.proyecto.respuesta.split(',')[2];
+        this.proyecto.respuesta = (!this.proyecto.respuesta || this.proyecto.respuesta=='null' )? 'No hay archivo' : this.proyecto.respuesta.split(',')[2];
         
         if(this.proyecto.estado == 'N') this.proyecto.estado = 'Enviado'; 
         if(this.proyecto.estado == 'A') this.proyecto.estado = 'Aceptado'; 
@@ -95,6 +96,36 @@ export class PropuestasComponent implements OnInit {
       console.log(error.status);
       }
     )
+  }
+
+  confirmarPago(data){
+
+    Swal.fire({
+      title: '¿Desea confirmar pago?',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmar',
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        Swal.fire('Pago Confirmado!', '', 'success');
+
+        this.client.putRequestSendForm(`${this.BASE_API}/actualizarestado`, {
+          proyecto: data.idproyecto,
+          estado: 'F',
+          valor: data.valor,
+          resp: data.respuesta,
+          video: data.video
+        }).subscribe(res => {
+          this.ngOnInit();
+        },
+        (error) => {
+          console.log(error.status);
+        })
+      }
+    })
+
+     
+    
   }
 
 }

@@ -469,6 +469,15 @@ article button{
     font-size: 18px;
 }
 
+.estado2 div{
+    display: flex;
+    align-items: center;
+}
+
+.estado2 div a{
+    margin-left: 10px;
+}
+
 .open-dropdown{
     display: flex;
 }
@@ -487,6 +496,7 @@ article button{
     background-color: #fff;
     border-radius: 8px;
     padding: 5px 10px;
+    margin-left: 10px;
 }
 
 .archivo:hover{

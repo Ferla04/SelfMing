@@ -57,6 +57,12 @@
     overflow: hidden;
 }
 
+.propuestas #coin{
+    width: 190px;
+    margin: 0;
+    overflow: hidden;
+}
+
 .propuestas i{
     margin: 0 10px;
     cursor: pointer;
@@ -64,7 +70,8 @@
 
 .prog{color: #fdb824;}
 .ojo{color:#b04ab6;}
-.help{color:#3cff3c;}
+.help{color:#3ca1ff;}
+.card{color: #3cff3c;}
 .propuestas .rojo{color: #ff0000;}
 
 

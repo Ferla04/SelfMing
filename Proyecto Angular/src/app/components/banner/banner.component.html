@@ -143,12 +143,18 @@
                             <div class="estado2">
                                 <p><span>Precio: </span>{{i.valor}}</p>
                                 <div>
-                                    <span *ngIf="statusFile == 'Archivo adjuntado'" (click)="deleteFile()" class="far fa-times-circle"></span>
-                                    <div class="archivo">
-                                        <label for="archivo">{{statusFile}}</label>
-                                        <input type="file" id="archivo" (change)="adjuntarArchivo($event)">
+                                    <span *ngIf="i.archivo2 == 'Archivo' && i.video2 == 'Video'" (click)="deleteFile(i.idproyecto)" class="fas fa-times"></span>
+                                    <a *ngIf="i.video2 == 'Video'" href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.video}}">{{i.video2}}</a>
+                                    <div *ngIf="i.video2 != 'Video'" class="archivo">
+                                        <label  for="video">{{i.video2}}</label>
+                                        <input  type="file" id="video" (change)="adjuntarVideo($event, i.idproyecto, i.usuario, i)">
                                     </div>
-                                    <button class="send" (click)="enviar(i.usuario,i)">Enviar</button>
+
+                                    <a *ngIf="i.archivo2 == 'Archivo'"href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.respuesta}}">{{i.archivo2}}</a>
+                                    <div *ngIf="i.archivo2 != 'Archivo'" class="archivo">
+                                        <label for="archivo">{{i.archivo2}}</label>
+                                        <input type="file" id="archivo" (change)="adjuntarArchivo($event, i.idproyecto, i.usuario, i)">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -170,15 +176,16 @@
                             <p>{{i.descripcion}}</p>
                             <div class="estado2">
                                 <p><span>Precio: </span>{{i.valor}}</p>
-                                <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.usuario}},{{i.programador}},{{i.respuesta}}" >{{i.respuesta}}</a>
+                                <div>
+                                    <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.video}}">Video</a>
+                                    <a href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{i.respuesta}}">Archivo</a>
+                                </div>
                             </div>
                         </div>
                     </section>
                 </div>
 
             </div>
-
-          <!-- <button type="button">hola</button> -->
 
         </div>
     </div>

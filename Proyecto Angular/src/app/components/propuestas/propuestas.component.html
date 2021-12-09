@@ -11,11 +11,12 @@
             <li>{{e.nomproyecto}}</li>
             <li>{{e.fecentrega}}</li>
             <li>{{e.estado}}</li>
-            <li>
-                <i class="prog fas fa-user-tie fa-lg" (click)="irPerfilProg(e.programador)"></i>
-                <i class="ojo fas fa-eye fa-lg" (click)="openProject(e.programador)"></i>
-                <i class="help fas fa-question-circle fa-lg" *ngIf="e.estado == 'Pagado'"></i>
-                <i class="rojo fas fa-trash-alt fa-lg" *ngIf="e.estado != 'Pagado'" (click)="eliminarProyecto(e.idproyecto)"></i>
+            <li id="coin">
+                <i class="prog fas fa-user-tie fa-lg" title="Ir Perfil Programador" (click)="irPerfilProg(e.programador)"></i>
+                <i class="ojo fas fa-eye fa-lg" title="Ver Proyecto" (click)="openProject(e.programador)"></i>
+                <i class="help fas fa-question-circle fa-lg" title="Help" *ngIf="e.estado == 'Pagado'"></i>
+                <i class="rojo fas fa-trash-alt fa-lg" title="Eliminar Proyecto" *ngIf="e.estado != 'Pagado'" (click)="eliminarProyecto(e.idproyecto)"></i>
+                <i class="card fas fa-money-check-alt fa-lg" title="Confirmar Pago" *ngIf="e.estado == 'Pagado'" (click)="confirmarPago(e)"></i>
             </li>
         </ul>
     </div>
@@ -32,6 +33,7 @@
         <p id="respuesta"><span>Descripcion: </span>{{proyecto.descripcion}}</p>
         <p><span>Archivo: </span>{{proyecto.archivo}}</p>
         <p><span>Proyecto Final: </span>{{proyecto.respuesta}}</p>
+        <a *ngIf="proyecto.video !== 'null'" href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{proyecto.video}}">Video del Proyecto</a>
         <div class="boton"> 
             <a *ngIf="proyecto.estado == 'Finalizado'" href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{proyecto.usuario}},{{proyecto.programador}},{{proyecto.respuesta}}">Descargar Proyecto</a>
         </div>

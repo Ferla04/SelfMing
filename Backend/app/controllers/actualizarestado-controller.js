@@ -8,8 +8,10 @@ let actualizarestado = async (req, res) => {
     const estado = req.body.estado;
     const valor = req.body.valor;
     const resp = req.body.resp
+    const video = req.body.video
 
-    db.updateStatusPrice(connection,idproyecto, estado, valor, resp).then(resolve => {
+
+    db.updateStatusPrice(connection,idproyecto, estado, valor, resp, video).then(resolve => {
         connection.end();
         return res.status(200).json({status: 'actualizado'});
     }).catch(err =>{

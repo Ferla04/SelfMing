@@ -79,7 +79,8 @@ export class TarjetapagosComponent implements OnInit {
       proyecto: this.proyecto.idproyecto,
       estado: 'P',
       valor: this.proyecto.valor,
-      resp: null
+      resp: null,
+      video: null
     }).subscribe(res => {
       console.log('respuesta:', res);
       setTimeout(()=>{ this.route.navigate( ['/perfilUser']) }, 1500);

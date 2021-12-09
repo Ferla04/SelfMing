@@ -50,7 +50,12 @@ export class BannerComponent implements OnInit{
   finalizadas:any = [];
   
   statusFile: string = 'Adjuntar Archivo';
+  statusVideo: string = 'Subir Video';
+  video: any;
   archivosCapturados:any; 
+
+  nomProyecto: string = null
+  nomVideo: string = null
 
   constructor(
     public client: ClientService,
@@ -83,7 +88,6 @@ export class BannerComponent implements OnInit{
             if(response[0].estado == 'A'){
               this.pagar = true;
             }
-
             if(response.length >= 1){
               this.propuesta = false;
             }
@@ -153,21 +157,23 @@ export class BannerComponent implements OnInit{
 
     this.client.getRequestAllProducts(`${this.BASE_API}/traerproyecto?id=${this.id}&campo=programador`).subscribe(
       (response: any) => {
-        console.log(response);
+
         this.propuestas = response;
+
         this.propuestas.forEach(e => {
           e.archivo = e.archivo.split(',')[2];
-          e.respuesta = (e.respuesta)? e.respuesta.split(',')[2] : 'No hay archivo' 
+          // e.respuesta = (e.respuesta)? e.respuesta.split(',')[2] : 'No hay archivo' 
           e.fecentrega = e.fecentrega.slice(0,10);
-  
-
+          
+          e['archivo2'] = (e.respuesta && e.respuesta !== 'null') ? 'Archivo' : 'Adjuntar Archivo';
+          e['video2'] = (e.video && e.video !== 'null') ? 'Video' : 'Subir Video';
+          
           if(e.estado == 'N') this.nuevo.push(e); 
           if(e.estado == 'A') this.aceptadas.push(e); 
           if(e.estado == 'P') this.pagadas.push(e); 
           if(e.estado == 'F') this.finalizadas.push(e); 
 
         });
-        console.log(this.finalizadas);
         
     },
     (error) => {
@@ -254,8 +260,6 @@ export class BannerComponent implements OnInit{
         console.log('respuesta:', res);
       })
 
-
-
       this.archivos.length = 0;
       
     } catch (err) {
@@ -335,7 +339,8 @@ export class BannerComponent implements OnInit{
         proyecto: i.idproyecto,
         estado: status,
         valor: precio,
-        resp: null
+        resp: null,
+        video: null
       }).subscribe(res => {
         console.log('respuesta:', res);
         this.traerProyectos();
@@ -346,12 +351,30 @@ export class BannerComponent implements OnInit{
     }
   }
 
-  adjuntarArchivo(event):void{
+  adjuntarArchivo(event, id, usuario, data):void{
     if(event.target.files && event.target.files[0]){
       let typeFile = event.target.files[0].type.split('/')[1];
       if(typeFile == 'zip' || typeFile == 'rar'){
-        this.statusFile = 'Archivo adjuntado';
+
+        this.pagadas.forEach(e => {
+          if(e.idproyecto == id){
+            e.archivo2 = 'Cargando...';
+            setTimeout(() => e.archivo2 = 'Archivo', 2000);
+          }
+        }); 
+
         this.archivosCapturados = event.target.files[0];
+
+        this.nomProyecto = `${usuario},${this.id},proyectoF.${this.archivosCapturados.type.split('/')[1]}`;
+
+        const fd = new FormData();
+        fd.append('files',this.archivosCapturados, this.nomProyecto);
+        this.client.postRequestSendForm(`${this.BASE_API}/adjuntarArchivo`, fd).subscribe(res => {
+          console.log('respuesta:', res);
+        })  
+        this.enviar(data);
+
+  
       }else{
         Swal.fire({
           position: 'center',
@@ -360,38 +383,71 @@ export class BannerComponent implements OnInit{
           showConfirmButton: false,
           timer: 2000
         });
-      }
+      } 
+    }
+  }
+  
+  adjuntarVideo(event, id, usuario, data):void{
+    if(event.target.files && event.target.files[0]){
+
+      this.pagadas.forEach(e => {
+        if(e.idproyecto == id){
+          e.video2 = 'Cargando...';
+          setTimeout(() => e.video2 = 'Video',2000)
+        }
+      });   
+      
+      this.video = event.target.files[0];
+
+      const fdVideo = new FormData();
+      this.nomVideo = `${usuario},${this.id},video.${this.video.type.split('/')[1]}`;
+      fdVideo.append('files',this.video, this.nomVideo);
+      this.client.postRequestSendForm(`${this.BASE_API}/adjuntarArchivo`, fdVideo).subscribe(res => {
+        console.log('respuesta:', res);
+        this.enviar(data);
+
+      })
     }
   }
 
-  deleteFile(){
+  deleteFile(id){
     this.archivosCapturados = '';
-    this.statusFile = 'Adjuntar Archivo';
+    this.video = '';
+    this.pagadas.forEach(e => {
+      if(e.idproyecto == id){
+        e.archivo2 = 'Adjuntar Archivo';
+        e.video2 = 'Subir Video';
+      }
+    });
   }
   
+  enviar(data){
+    if(!this.nomProyecto) this.nomProyecto = data.respuesta;
+    if(!this.nomVideo) this.nomVideo = data.video;
 
-  enviar(iduser,data){
-    if(this.archivosCapturados){
-      let nomProyecto = `${iduser},${this.id},${this.archivosCapturados.name}`;
-
-      const fd = new FormData();
-      fd.append('files',this.archivosCapturados, nomProyecto);
-      this.client.postRequestSendForm(`${this.BASE_API}/adjuntarArchivo`, fd).subscribe(res => {
-        console.log('respuesta:', res);
-      })  
-
+    if(this.archivosCapturados || this.video){
       this.client.putRequestSendForm(`${this.BASE_API}/actualizarestado`, {
         proyecto: data.idproyecto,
-        estado: 'F',
+        estado: 'P',
         valor: data.valor,
-        resp: nomProyecto
+        resp: this.nomProyecto,
+        video: this.nomVideo
       }).subscribe(res => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Archivos enviados',
+          showConfirmButton: false,
+          timer: 2000
+        });
         console.log('respuesta:', res);
         this.traerProyectos();
+
       },
       (error) => {
         console.log(error.status);
       })
+
     }
   }
 }
