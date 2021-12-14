@@ -66,7 +66,7 @@ function pagos(c, nomproyecto,programador,usuario,fecha,valorp){
 //PROYECTO
 function proyecto(c, nombre,fecha,descripcion,prog,user,archivo){
     return new Promise((resolve, reject) =>{
-        c.query('INSERT INTO proyecto SET ?', {nomproyecto:nombre, fecentrega:fecha, descripcion:descripcion, estado:'N', programador:prog, usuario:user, archivo:archivo},
+        c.query('INSERT INTO proyecto SET ?', {nomproyecto:nombre, fecentrega:fecha, descripcion:descripcion, estado:'N', programador:prog, usuario:user, archivo:archivo, video:'null', respuesta:'null'},
         (err, results) => {
             if(err){
                 return reject(err);

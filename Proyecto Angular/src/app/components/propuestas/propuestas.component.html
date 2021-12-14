@@ -14,7 +14,7 @@
             <li id="coin">
                 <i class="prog fas fa-user-tie fa-lg" title="Ir Perfil Programador" (click)="irPerfilProg(e.programador)"></i>
                 <i class="ojo fas fa-eye fa-lg" title="Ver Proyecto" (click)="openProject(e.programador)"></i>
-                <i class="help fas fa-question-circle fa-lg" title="Help" *ngIf="e.estado == 'Pagado'"></i>
+                <i class="help fas fa-question-circle fa-lg" title="Help" *ngIf="e.estado == 'Pagado' || e.estado == 'Finalizado'"></i>
                 <i class="rojo fas fa-trash-alt fa-lg" title="Eliminar Proyecto" *ngIf="e.estado != 'Pagado'" (click)="eliminarProyecto(e.idproyecto)"></i>
                 <i class="card fas fa-money-check-alt fa-lg" title="Confirmar Pago" *ngIf="e.estado == 'Pagado'" (click)="confirmarPago(e)"></i>
             </li>
