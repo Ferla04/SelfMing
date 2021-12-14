@@ -256,7 +256,8 @@ export class BannerComponent implements OnInit{
         portada: this.nuevaPortada,
         perfil: this.nuevoPerfil,
       }).subscribe(res => {
-        this.traerprog();
+
+        window.location.reload()
         console.log('respuesta:', res);
       })
 
