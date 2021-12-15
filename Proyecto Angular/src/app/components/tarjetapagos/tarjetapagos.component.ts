@@ -27,6 +27,15 @@ export class TarjetapagosComponent implements OnInit {
     let idprog = localStorage.getItem('idprog').split(',')[1];
     let iduser = localStorage.getItem('iduser');
 
+    
+    if(!iduser) {
+      let tarjeta = document.getElementById('tarjeta');
+      tarjeta.style.display = 'none';
+    }else{
+      let cuentaBanco = document.getElementById('cuentaBanco');
+      cuentaBanco.style.display = 'none';
+    }
+
     let inputTarget = document.getElementById('inputTarget');
     let date = document.getElementById('date');
 
@@ -45,7 +54,6 @@ export class TarjetapagosComponent implements OnInit {
       .slice(0,this.dateTarget.length)
     })
     
-    if(!iduser) this.datos = false;
    
     this.client.getRequestAllProducts(`${this.BASE_API}/selectpropuesta?idprog=${idprog}&iduser=${iduser}`).subscribe(
       (response: any) => {
@@ -89,5 +97,16 @@ export class TarjetapagosComponent implements OnInit {
       console.log(error.status);
     })
 
+  }
+
+  guardarCuenta(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Cuenta Guardada',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    setTimeout(()=>{ this.route.navigate( ['/perfilProg']) }, 1500);
   }
 }

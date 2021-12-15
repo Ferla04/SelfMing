@@ -35,7 +35,7 @@
         <p><span>Proyecto Final: </span>{{proyecto.respuesta}}</p>
         <a *ngIf="proyecto.video !== 'null'" href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{proyecto.video}}">Video del Proyecto</a>
         <div class="boton"> 
-            <a *ngIf="proyecto.estado == 'Finalizado'" href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{proyecto.usuario}},{{proyecto.programador}},{{proyecto.respuesta}}">Descargar Proyecto</a>
+            <a *ngIf="proyecto.estado == 'Finalizado'" href="{{BASE_API}}/downloadimage?type=archivo&imagen=files/{{proyecto.usuario}},{{proyecto.programador}},{{proyecto.respuesta}}">Descargar Manual</a>
         </div>
 
     </div>

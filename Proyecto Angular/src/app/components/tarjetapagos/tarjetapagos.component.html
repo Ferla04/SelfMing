@@ -1,6 +1,6 @@
 <body>
-    <form action="">
-        <div class="datos" *ngIf="datos">
+    <form id="tarjeta" action="">
+        <div class="datos">
             <div class="datosGrupo">
                 <span>Proyecto: </span>
                 <span>{{proyecto.nomproyecto}}</span>
@@ -63,9 +63,53 @@
                         <option value="pa">PA</option>
                     </select>
                 </div>
-                <button (click)="tarjetaProg()" *ngIf="!datos">Enviar</button>
             </div>
         </div>
     </form>
+
+
+    <div id="cuentaBanco" class="registro">
+        <h2>Cuenta Bancaria</h2>
+        <article>
+            <div class="grupo">
+                <input class="inputs" type="number">
+                <span class="barra"></span>
+                <label class="label" for=""><i class="fas fa-key"></i>Número de cuenta</label>
+            </div>
+            <div class="grupo">
+                <input class="inputs" type="text">
+                <span class="barra"></span>
+                <label class="label" for=""><i class="far fa-user-circle"></i>Nombres y Apellidos</label>
+            </div>
+            <div class="grupo">
+                <input class="inputs" type="number">
+                <span class="barra"></span>
+                <label class="label" for=""><i class="fas fa-id-card"></i>Documento</label>
+                <select >
+                    <option value="cc" selected>CC</option>
+                    <option value="ti">TI</option>
+                    <option value="ce">CE</option>
+                    <option value="rc">RC</option>
+                    <option value="pa">PA</option>
+                </select>
+            </div>
+            <div class="grupo">
+                <select class="bancoSelect">
+                    <option selected>Ahorros</option>
+                    <option >Corriente</option>
+                </select>
+            </div>
+            <div class="grupo">
+                <select class="bancoSelect">
+                    <option selected>Banco</option>
+                    <option>Bancolombia</option>
+                    <option>Banco de Bogota</option>
+                    <option>Banco de AV Villas</option>
+                    <option>BBVA</option>
+                </select>
+            </div>
+            <button class="cuenta" type="submit" (click)="guardarCuenta()">Guardar</button>
+        </article>
+    </div>
 </body>
 

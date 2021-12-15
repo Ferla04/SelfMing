@@ -49,7 +49,7 @@ export class BannerComponent implements OnInit{
   pagadas:any = [];
   finalizadas:any = [];
   
-  statusFile: string = 'Adjuntar Archivo';
+  statusFile: string = 'Adjuntar Manual';
   statusVideo: string = 'Subir Video';
   video: any;
   archivosCapturados:any; 
@@ -165,7 +165,7 @@ export class BannerComponent implements OnInit{
           // e.respuesta = (e.respuesta)? e.respuesta.split(',')[2] : 'No hay archivo' 
           e.fecentrega = e.fecentrega.slice(0,10);
           
-          e['archivo2'] = (e.respuesta && e.respuesta !== 'null') ? 'Archivo' : 'Adjuntar Archivo';
+          e['archivo2'] = (e.respuesta && e.respuesta !== 'null') ? 'Archivo' : 'Adjuntar Manual';
           e['video2'] = (e.video && e.video !== 'null') ? 'Video' : 'Subir Video';
           
           if(e.estado == 'N') this.nuevo.push(e); 
@@ -354,8 +354,6 @@ export class BannerComponent implements OnInit{
 
   adjuntarArchivo(event, id, usuario, data):void{
     if(event.target.files && event.target.files[0]){
-      let typeFile = event.target.files[0].type.split('/')[1];
-      if(typeFile == 'zip' || typeFile == 'rar'){
 
         this.pagadas.forEach(e => {
           if(e.idproyecto == id){
@@ -374,17 +372,6 @@ export class BannerComponent implements OnInit{
           console.log('respuesta:', res);
         })  
         this.enviar(data);
-
-  
-      }else{
-        Swal.fire({
-          position: 'center',
-          icon: 'warning',
-          title: 'Solo archivos comprimidos',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      } 
     }
   }
   
@@ -416,7 +403,7 @@ export class BannerComponent implements OnInit{
     this.video = '';
     this.pagadas.forEach(e => {
       if(e.idproyecto == id){
-        e.archivo2 = 'Adjuntar Archivo';
+        e.archivo2 = 'Adjuntar Manual';
         e.video2 = 'Subir Video';
       }
     });
