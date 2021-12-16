@@ -19,11 +19,10 @@ function sendEmail(tipo,destinatario,remitente,contraseña){
         to: destinatario,  //destinatario
         subject:"SelfMing Project",  //asunto del correo
         html:`
-        <div style="background-color: #1c1321; color: #fff; width: 400px;height: 450px; font-family: Arial, Helvetica, sans-serif;
+        <div style="background-color: #1c1321; color: #fff; width: 400px;height: 250px; font-family: Arial, Helvetica, sans-serif;
         text-align: center; margin: auto;">
             <h1 style="padding: 15px 0 0 ;">Bienvenido a SelfMing</h1>
-            <img width="200px" src="https://i.postimg.cc/gkLDKKTq/logo.png" alt="">
-            <p style="font-size: 18px;">Por favor confirmanos tu correo</p>
+            <p style="font-size: 18px; margin-bottom: 30px;">Por favor confirmanos tu correo</p>
             <a
             style="
                 font-size: 13px;
@@ -38,7 +37,7 @@ function sendEmail(tipo,destinatario,remitente,contraseña){
                 border-bottom: 5px solid #ffc957;
                 border-right: 4px solid #ffc957;
                 transition: all ease .5s;
-            " href="http://localhost:10103/api/v01/cEmail?email=${destinatario}">Confirmar</a>
+            " href="http://localhost:10101/api/v01/cEmail?email=${destinatario}">Confirmar</a>
             <p style="margin-top: 25px; font-size: 14px;"
             >Creadores: <br> Juan Esteban Reyes Quintero <br> Fernanda Velásquez Medina </p>
         </div>

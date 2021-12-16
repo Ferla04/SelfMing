@@ -28,7 +28,7 @@
                 <div *ngIf="changeButton" class="botones">
                     <a class="editar" *ngIf="!editar" id="entrarEdicion" (click)="editarPerfil()">Editar perfil</a>
                     <button type="submit" class="editar" *ngIf="editar" id="quitarEdicion" >Salir y Guardar</button>
-                    <a href="/pagos" class="targeta" *ngIf="editar">Tarjeta</a>
+                    <a href="/pagos" class="targeta" *ngIf="editar">Cuenta</a>
                     <a class="enviar" *ngIf="!editar" (click)="modal = !modal">Ver Propuestas</a>
                 </div>
             </div>
